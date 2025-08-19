@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
 import {
@@ -10,16 +11,6 @@ import {
   PiYoutubeLogoFill,
 } from "react-icons/pi";
 import AnimatedUnderline from "../ui/AnimatedUnderline";
-
-// Navigation links for the footer
-const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "Gemstones", href: "/gemstones" },
-  { name: "Jewellery", href: "/jewellery" },
-  { name: "Services", href: "/services" },
-  { name: "Education", href: "/education" },
-  { name: "Contact", href: "/contact" },
-];
 
 // Explore section links
 const exploreLinks = [
@@ -116,39 +107,53 @@ const Footer: React.FC = () => (
 
       {/* Payment Logos */}
       <div className="flex space-x-2 mx-auto w-full justify-center my-6">
-        <img
+        <Image
           src="/images/stripe.png"
           alt="Stripe"
+          width={40}
+          height={24}
           className="w-10 h-6 object-contain"
         />
-        <img
+        <Image
           src="/images/american_express.png"
           alt="American Express"
+          width={40}
+          height={24}
           className="w-10 h-6 object-contain"
         />
-        <img
+        <Image
           src="/images/visa.png"
           alt="Visa"
+          width={40}
+          height={24}
           className="w-10 h-6 object-contain"
         />
-        <img
+        <Image
           src="/images/mastercard.png"
           alt="Mastercard"
+          width={40}
+          height={24}
           className="w-10 h-6 object-contain"
         />
-        <img
+        <Image
           src="/images/jcb.png"
           alt="JCB"
+          width={40}
+          height={24}
           className="w-10 h-6 object-contain"
         />
-        <img
+        <Image
           src="/images/unionpay.png"
           alt="UnionPay"
+          width={40}
+          height={24}
           className="w-10 h-6 object-contain"
         />
-        <img
+        <Image
           src="/images/atome.png"
           alt="Atome"
+          width={40}
+          height={24}
           className="w-10 h-6 object-contain"
         />
       </div>

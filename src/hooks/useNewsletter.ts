@@ -24,6 +24,7 @@ export const useNewsletter = () => {
       setEmail('');
     } catch (error) {
       setMessage('Failed to subscribe. Please try again.');
+      console.error('Error subscribing:', error);
     } finally {
       setIsSubscribing(false);
     }

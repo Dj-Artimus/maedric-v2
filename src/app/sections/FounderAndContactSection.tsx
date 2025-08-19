@@ -59,7 +59,7 @@ const FounderAndContactSection: React.FC = () => (
               Isaiah Here.
             </AnimatedUnderline>
             <br />
-            I'm{" "}
+            I&apos;m{" "}
             <AnimatedUnderline underlineColor="accent">
               The Artisan
             </AnimatedUnderline>{" "}

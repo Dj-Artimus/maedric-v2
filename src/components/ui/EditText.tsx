@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 
 interface EditTextProps {
   value?: string;
@@ -46,7 +46,6 @@ const EditText: React.FC<
   readOnly = false,
   ...props
 }) => {
-  const [isFocused, setIsFocused] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

@@ -1,18 +1,38 @@
 "use client";
 import AnimatedUnderline from "@/components/ui/AnimatedUnderline";
 import SlantedFillButton from "@/components/ui/SlantedFillButton";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { HiArrowLongUp } from "react-icons/hi2";
 
 const HeroSection: React.FC = () => {
-  const handleClick = (e) => {
-    e.preventDefault();
-    const itemID = e.target.getAttribute("itemID");
-    if (itemID.startsWith("#")) {
-      const element = document.querySelector(itemID);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Get the hero section height
+      const heroSection = document.querySelector("section");
+      if (heroSection) {
+        const heroHeight = heroSection.offsetHeight;
+        // Show button when scrolled past hero section
+        setShowScrollTop(window.scrollY > heroHeight);
       }
-    }
+    };
+
+    // Add scroll event listener
+    window.addEventListener("scroll", handleScroll);
+
+    // Initial check
+    handleScroll();
+
+    // Clean up event listener
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
   return (
     <section className="w-full h-screen bg-primary/60 flex flex-col md:flex-row items-center justify-start relative overflow-hidden">
@@ -49,6 +69,20 @@ const HeroSection: React.FC = () => {
             Explore Our Jewellery
           </SlantedFillButton>
         </div>
+      </div>
+
+      {/* Arrow Up */}
+      <div
+        className={`fixed ${showScrollTop ? "md:block" : "hidden"} bottom-8 right-8 rounded-full overflow-hidden group`}
+        onClick={scrollToTop}
+      >
+        <SlantedFillButton
+          backgroundColor="#051e33"
+          fillColor="#d2ae6d"
+          className="md:flex items-center justify-center w-full h-full p-3 cursor-pointer"
+        >
+          <HiArrowLongUp className="z-10 text-3xl text-accent group-hover:text-primary" />
+        </SlantedFillButton>
       </div>
     </section>
   );
