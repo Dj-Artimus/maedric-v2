@@ -5,6 +5,7 @@ import React, { useRef } from "react";
 import AnimatedUnderline from "@/components/ui/AnimatedUnderline";
 import SlantedFillButton from "@/components/ui/SlantedFillButton";
 import { PROCESS_STEPS } from "@/utils/constants";
+import type { Swiper as SwiperClass } from "swiper";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/scrollbar";
@@ -14,7 +15,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 const ProcessSection: React.FC = () => {
   // Process steps data
   const processSteps = PROCESS_STEPS;
-  const swiperRef = useRef(null);
+  const swiperRef = useRef<SwiperClass | null>(null);
 
   return (
     <section className="w-full md:max-w-4xl lg:max-w-6xl mx-auto px-4 sm:px-6 mt-[62px]">
@@ -43,11 +44,11 @@ const ProcessSection: React.FC = () => {
           <div className="flex flex-col justify-start items-center w-full bg-white sm:px-12">
             <div className="xs:max-w-sm sm:max-w-lg md:max-w-xl lg:max-w-3xl w-full overflow-hidden shadow-[0px_0px_12px_#0000003f]">
               <Image
-                src="/images/img_image_20.png"
+                src="/images/processImg.png"
                 alt="process"
                 width={600}
                 height={500}
-                className="w-full mx-auto aspect-square sm:aspect-[4/3] max-w-[600px] h-auto object-cover object-center  hover:scale-110 transition-all duration-700"
+                className="w-full mx-auto aspect-square sm:aspect-[4/3] max-w-[600px] h-auto object-cover object-center  hover:scale-110 transition-all duration-1000"
               />
             </div>
           </div>

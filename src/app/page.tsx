@@ -2,15 +2,15 @@
 import React from "react";
 import CTASection from "./sections/CTASection";
 import CollectionsSection from "./sections/CollectionsSection";
-import TestimonialsSection from "./sections/TestimonialsSection";
 import FeaturedCardsSection from "./sections/FeaturedCardsSection";
-import HeroSection from "./sections/HeroSection";
-import JewelryTypeSection from "./sections/JewelryTypeSection";
 import FounderAndContactSection from "./sections/FounderAndContactSection";
+import HeroSection from "./sections/HeroSection";
+import JewelleryTypeSection from "./sections/JewelleryTypeSection";
 import NewsletterSection from "./sections/NewsletterSection";
 import PopularProductsSection from "./sections/PopularProductsSection";
 import ProcessSection from "./sections/ProcessSection";
 import StayConnectedSection from "./sections/StayConnectedSection";
+import TestimonialsSection from "./sections/TestimonialsSection";
 
 const HomePage: React.FC = () => {
   return (
@@ -19,7 +19,7 @@ const HomePage: React.FC = () => {
       <HeroSection />
 
       {/* Shop by Jewellery Type Section */}
-      <JewelryTypeSection />
+      <JewelleryTypeSection />
 
       {/* Collections Section */}
       <CollectionsSection />

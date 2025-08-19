@@ -1,3 +1,5 @@
+import React from "react";
+
 /**
  * --------------------------------------------------------
  * ✏️ Author: DjArtimus
@@ -14,7 +16,7 @@
  * @param {string} color - The color name (e.g., 'primary', 'accent', etc.)
  * @returns {string} Tailwind class for the underline color.
  */
-const getUnderlineClass = (color) => {
+const getUnderlineClass = (color: string) => {
   switch (color) {
     case "primary":
       return "after:bg-primary";
@@ -39,7 +41,7 @@ const getUnderlineClass = (color) => {
  * @param {string} size - The thickness size (e.g., '1', '2', '3', '4').
  * @returns {string|undefined} Tailwind class for the underline thickness.
  */
-const getSizeClass = (size) => {
+const getSizeClass = (size: string) => {
   switch (size) {
     case "1":
       return "after:h-[1px]";
@@ -51,6 +53,15 @@ const getSizeClass = (size) => {
       return "after:h-[4px]";
   }
 };
+
+/**
+ * Props for the AnimatedUnderlineLoop component
+ */
+interface AnimatedUnderlineLoopProps {
+  children: React.ReactNode;
+  underlineColor?: string;
+  size?: string;
+}
 
 /**
  * AnimatedUnderlineLoop
@@ -70,7 +81,7 @@ const AnimatedUnderlineLoop = ({
   children,
   underlineColor = "primary",
   size,
-}) => {
+}: AnimatedUnderlineLoopProps) => {
   return (
     <span
       className={`
@@ -80,7 +91,7 @@ const AnimatedUnderlineLoop = ({
             ? getSizeClass(size)
             : "after:left-0 after:h-[1px] sm:after:h-[2px] md:after:h-[3px] lg:after:h-[4px]"
         } after:w-full
-        ${getUnderlineClass(underlineColor)} after:block after:content-['']
+        ${getUnderlineClass(underlineColor)} after:block after:content-[''] 
         after:origin-left
         after:transition-all after:duration-300 after:ease-in-out
         group-hover:after:animate-[slide-away_0.6s_forwards]

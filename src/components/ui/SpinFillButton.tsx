@@ -11,8 +11,11 @@
 "use client";
 
 import Link from "next/link";
+import { ReactNode } from "react";
 
-const getColorClass = (color) => {
+type ColorType = "primary" | "accent" | "white" | "transparent" | "black" | "secondary" | "neutral";
+
+const getColorClass = (color: ColorType | string): string => {
   switch (color) {
     case "primary":
       return "bg-primary";
@@ -33,6 +36,17 @@ const getColorClass = (color) => {
   }
 };
 
+interface SpinFillButtonProps {
+  children: ReactNode;
+  className?: string;
+  backgroundColor?: ColorType | string;
+  fillColor?: ColorType | string;
+  href?: string;
+  ariaLabel?: string;
+  rel?: string;
+  target?: string;
+}
+
 const SpinFillButton = ({
   children,
   className,
@@ -42,7 +56,7 @@ const SpinFillButton = ({
   ariaLabel = "Button",
   rel = "noopener noreferrer",
   target = "_self",
-}) => {
+}: SpinFillButtonProps) => {
   return (
     <button
       className={`w-fit h-fit relative overflow-hidden group ${getColorClass(

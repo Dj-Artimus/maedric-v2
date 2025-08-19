@@ -1,19 +1,20 @@
 "use client";
 import AnimatedUnderline from "@/components/ui/AnimatedUnderline";
-import { JEWELRY_CATEGORIES } from "@/utils/constants";
+import { JEWELLERY_CATEGORIES } from "@/utils/constants";
 import Image from "next/image";
 import React, { useRef } from "react";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
+import type { Swiper as SwiperClass } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const JewelryTypeSection: React.FC = () => {
-  // Jewelry categories data
-  const jewelryCategories = JEWELRY_CATEGORIES;
-  const swiperRef = useRef(null);
+const JewelleryTypeSection: React.FC = () => {
+  // Jewellery categories data
+  const jewelleryCategories = JEWELLERY_CATEGORIES;
+  const swiperRef = useRef<SwiperClass | null>(null);
 
   return (
     <section className="w-full max-w-sm xs:max-w-md px-4 md:px-0 sm:max-w-lg md:max-w-3xl lg:max-w-4xl xl:max-w-[1170px] mt-[34px]">
@@ -34,7 +35,7 @@ const JewelryTypeSection: React.FC = () => {
               >
                 <SlArrowLeft className="w-5 h-5 sm:w-6 sm:h-6 hover:scale-110 transition-transform text-primary/70" />
               </button>
-              {/* Jewelry Categories Grid */}
+              {/* Jewellery Categories Grid */}
               <Swiper
                 modules={[Navigation]}
                 spaceBetween={20}
@@ -58,9 +59,9 @@ const JewelryTypeSection: React.FC = () => {
                 }}
               >
                 {/* <div className="w-full flex flex-row gap-5 overflow-x-hidden"> */}
-                {jewelryCategories.map((item) => (
+                {jewelleryCategories.map((item) => (
                   <SwiperSlide
-                    key={item}
+                    key={item.id}
                     onMouseEnter={() => swiperRef.current?.autoplay?.stop()}
                     onMouseLeave={() => swiperRef.current?.autoplay?.start()}
                   >
@@ -74,7 +75,7 @@ const JewelryTypeSection: React.FC = () => {
                           alt={item.name}
                           width={200}
                           height={200}
-                          className="w-full aspect-square object-cover group-hover:scale-110 transition-transform duration-500 ease-in-out"
+                          className="w-full aspect-square object-cover group-hover:scale-110 transition-transform duration-1000 ease-in-out"
                         />
                       </div>
                       <div className="flex flex-row justify-between sm:justify-between items-center w-full mb-2">
@@ -104,4 +105,4 @@ const JewelryTypeSection: React.FC = () => {
   );
 };
 
-export default JewelryTypeSection;
+export default JewelleryTypeSection;

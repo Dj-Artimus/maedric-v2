@@ -101,7 +101,7 @@ const FounderAndContactSection: React.FC = () => (
         <div className="flex-1 shrink flex justify-center md:justify-end">
           <div className="w-full h-full aspect-auto max-w-md md:max-w-lg lg:max-w-[584px] lg:max-h-[580px] relative rounded-[2px] overflow-hidden bg-[#F7F8FA] shadow-md">
             <Image
-              src="/images/Founder.png"
+              src="/images/founder.png"
               alt="Isaiah, Founder of Maedric"
               width={584}
               height={580}

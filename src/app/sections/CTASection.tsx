@@ -28,7 +28,7 @@ const CTASection: React.FC = () => {
               style={{
                 "--bg-color": "transparent",
                 "--fill-color": "#051e33",
-              }}
+              } as React.CSSProperties & Record<string, string>}
             >
               <span className="z-10 hover:text-white">Request A Quote!</span>
             </Link>
@@ -40,7 +40,7 @@ const CTASection: React.FC = () => {
               style={{
                 "--bg-color": "#d2ae6d",
                 "--fill-color": "#051e33",
-              }}
+              } as React.CSSProperties & Record<string, string>}
             >
               <span className="z-10 hover:text-white">
                 Discover Our Legacy!

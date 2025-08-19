@@ -11,7 +11,7 @@ src/
 │       ├── page.tsx                 # Main homepage
 │       └── sections/                # Page sections
 │           ├── HeroSection.tsx
-│           ├── JewelryTypeSection.tsx
+│           ├── JewelleryTypeSection.tsx
 │           ├── CollectionsSection.tsx
 │           ├── FeaturedCardsSection.tsx
 │           ├── PopularProductsSection.tsx
@@ -50,7 +50,7 @@ src/
 ### 2. **Data Management**
 
 - Created `utils/constants.ts` to centralize static data
-- Moved jewelry categories, collections, products, and process steps data to constants
+- Moved jewellery categories, collections, products, and process steps data to constants
 - Updated all section components to use centralized data
 
 ### 3. **Custom Hooks**
@@ -88,12 +88,12 @@ src/
 ### Using Constants
 
 ```tsx
-import { JEWELRY_CATEGORIES } from "@/utils/constants";
+import { JEWELLERYRY_CATEGORIES } from "@/utils/constants";
 
 const MyComponent = () => {
   return (
     <div>
-      {JEWELRY_CATEGORIES.map((category) => (
+      {JEWELLERY_CATEGORIES.map((category) => (
         <div key={category.id}>{category.name}</div>
       ))}
     </div>

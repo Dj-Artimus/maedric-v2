@@ -1,19 +1,20 @@
 "use client";
 import React from "react";
 
-interface EditTextProps {
-  value?: string;
-  onChange?: (value: string) => void;
+type VariantType = 'outlined' | 'filled' | 'standard';
+
+export interface EditTextProps {
+  value: string;
+  onValueChange: (value: string) => void;
   placeholder?: string;
-  type?: "text" | "email" | "password" | "number" | "tel" | "url";
+  type?: string;
   disabled?: boolean;
   required?: boolean;
   className?: string;
   label?: string;
-  error?: string;
+  error?: boolean;
   helperText?: string;
-  size?: "sm" | "md" | "lg";
-  variant?: "outlined" | "filled" | "standard";
+  variant?: VariantType;
   fullWidth?: boolean;
   multiline?: boolean;
   rows?: number;
@@ -23,11 +24,10 @@ interface EditTextProps {
 }
 
 const EditText: React.FC<
-  EditTextProps &
-    React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement>
+  EditTextProps & React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement>
 > = ({
   value,
-  onChange,
+  onValueChange,
   placeholder = "",
   type = "text",
   disabled = false,
@@ -36,7 +36,6 @@ const EditText: React.FC<
   label,
   error,
   helperText,
-  size = "md",
   variant = "outlined",
   fullWidth = false,
   multiline = false,
@@ -46,16 +45,18 @@ const EditText: React.FC<
   readOnly = false,
   ...props
 }) => {
-
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    if (onChange) {
-      onChange(e.target.value);
+    if (onValueChange) {
+      onValueChange(e.target.value);
+    }
+    if (props.onChange) {
+      props.onChange(e);
     }
   };
 
-  const variants = {
+  const variants: Record<VariantType, string> = {
     outlined:
       "border border-black/60 bg-accent focus:border-blue-500 focus:ring-1 focus:ring-blue-500",
     filled:
@@ -64,19 +65,12 @@ const EditText: React.FC<
       "border-0 border-b border-gray-300 bg-transparent focus:border-blue-500 rounded-none",
   };
 
-  const sizes = {
-    sm: "px-2 py-1.5 text-xs sm:px-3 sm:py-2 sm:text-sm",
-    md: "text-sm px-4 py-3 sm:text-base",
-    lg: "px-4 py-3 text-base sm:text-lg",
-  };
-
   const baseClasses = `
     transition-all
     duration-200
     ease-in-out
     focus:outline-none
     ${variants[variant]}
-    ${sizes[size]}
     ${fullWidth ? "w-full" : ""}
     ${disabled ? "opacity-50 cursor-not-allowed bg-gray-50" : ""}
     ${error ? "border-red-500 focus:border-red-500 focus:ring-red-500" : ""}
@@ -104,8 +98,6 @@ const EditText: React.FC<
           {...(multiline ? {} : { type })}
           value={value}
           onChange={handleChange}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
           placeholder={placeholder}
           disabled={disabled}
           required={required}

@@ -1,6 +1,6 @@
-import React from "react";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
+import React from "react";
 import "./globals.css";
 
 export const metadata = {
@@ -37,7 +37,11 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <head>
@@ -61,11 +65,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta property="og:image" content={metadata.openGraph.images[0].url} />
         <meta
           property="og:image:width"
-          content={metadata.openGraph.images[0].width}
+          content={String(metadata.openGraph.images[0].width)}
         />
         <meta
           property="og:image:height"
-          content={metadata.openGraph.images[0].height}
+          content={String(metadata.openGraph.images[0].height)}
         />
         <meta property="og:type" content={metadata.openGraph.type} />
         <meta name="twitter:card" content={metadata.twitter.card} />

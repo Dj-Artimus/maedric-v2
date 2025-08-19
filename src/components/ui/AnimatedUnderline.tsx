@@ -1,3 +1,5 @@
+import React from 'react';
+
 /**
  * --------------------------------------------------------
  * ✏️ Author: DjArtimus
@@ -14,7 +16,7 @@
  * @param {string} color - The color name (e.g., 'primary', 'accent', etc.)
  * @returns {string} Tailwind class for the underline color.
  */
-const getUnderlineClass = (color) => {
+const getUnderlineClass = (color: string) => {
   switch (color) {
     case "primary":
       return "after:bg-primary";
@@ -48,13 +50,18 @@ const getUnderlineClass = (color) => {
  * @example
  * <AnimatedUnderline underlineColor="accent">Text</AnimatedUnderline>
  */
-const AnimatedUnderline = ({ children, underlineColor = "primary" }) => {
+interface AnimatedUnderlineProps {
+  children: React.ReactNode;
+  underlineColor?: string;
+}
+
+const AnimatedUnderline = ({ children, underlineColor = "primary" }: AnimatedUnderlineProps) => {
   return (
     <span
       className={`
         relative inline-block tracking-wide
         after:absolute after:bottom-[-3] after:right-0 after:h-[2px] after:w-0
-        ${getUnderlineClass(underlineColor)} after:block after:content-['']
+        ${getUnderlineClass(underlineColor)} after:block after:content-[''] 
         after:transition-all after:duration-200 after:ease-in
         group-hover:after:left-0 group-hover:after:right-auto group-hover:after:w-full
       `}

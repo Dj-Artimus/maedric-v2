@@ -25,11 +25,10 @@ const NewsletterSection: React.FC = () => {
           <div className="flex flex-col md:flex-row items-center gap-2 xs:gap-4 sm:gap-6 md:gap-2 w-fit">
             <EditText
               value={email}
-              onChange={setEmail}
-              size={"md"}
+              onValueChange={setEmail}
               placeholder="sarah@yahoomail.com"
               type="email"
-              className="w-[82vw] xs:w-80 text-[19px] font-figtree font-light text-primary placeholder:text-primary border"
+              className="w-[82vw] xs:w-80 text-[19px] font-figtree font-light text-primary placeholder:text-primary border px-4 py-3"
             />
             <SlantedFillButton
               onClick={handleSubscribe}

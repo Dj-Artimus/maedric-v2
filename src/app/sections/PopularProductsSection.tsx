@@ -10,11 +10,12 @@ import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { POPULAR_PRODUCTS } from "@/utils/constants";
+import type { Swiper as SwiperClass } from "swiper";
 
 const PopularProductsSection: React.FC = () => {
   // Popular products data
   const popularProducts = POPULAR_PRODUCTS;
-  const swiperRef = useRef(null);
+  const swiperRef = useRef<SwiperClass | null>(null);
   return (
     <section className="w-full max-w-sm xs:max-w-md  px-4 md:px-0 sm:max-w-lg md:max-w-3xl lg:max-w-4xl xl:max-w-[1170px] my-4 xs:mt-0 sm:mt-4 mb-8 xs:mb-14">
       <div className="flex flex-row justify-start items-center w-full">
@@ -41,7 +42,7 @@ const PopularProductsSection: React.FC = () => {
               >
                 <SlArrowLeft className="w-5 h-5 sm:w-6 sm:h-6 hover:scale-110 transition-transform text-primary/70" />
               </button>
-              {/* Jewelry Categories Grid */}
+              {/* Jewellery Categories Grid */}
               <Swiper
                 modules={[Navigation]}
                 spaceBetween={20}
@@ -67,12 +68,11 @@ const PopularProductsSection: React.FC = () => {
                 {/* <div className="w-full flex flex-row gap-5 overflow-x-hidden"> */}
                 {popularProducts.map((item) => (
                   <SwiperSlide
-                    key={item}
+                    key={item.id}
                     onMouseEnter={() => swiperRef.current?.autoplay?.stop()}
                     onMouseLeave={() => swiperRef.current?.autoplay?.start()}
                   >
                     <div
-                      key={item.id}
                       className={`flex flex-col gap-[30px] h-fit items-center xs:min-w-[300px] sm:min-w-[350px] md:min-w-[310px] border border-[#d2ae6d] p-[22px] sm:p-5 group`}
                     >
                       <div className="flex flex-col justify-start items-center w-full bg-black overflow-hidden">
@@ -81,7 +81,7 @@ const PopularProductsSection: React.FC = () => {
                           alt={item.name}
                           width={200}
                           height={260}
-                          className="w-full aspect-[3/4] object-cover group-hover:scale-110 transition-transform duration-500 ease-in-out"
+                          className="w-full aspect-[3/4] object-cover group-hover:scale-110 transition-transform duration-1000 ease-in-out"
                         />
                       </div>
                       <div className="flex flex-row justify-between sm:justify-between items-center w-full mb-2">

@@ -68,7 +68,7 @@ const Header: React.FC = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const handleClick = (e) => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname === "/") {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -80,7 +80,7 @@ const Header: React.FC = () => {
   return (
     <header className={`w-full sticky h-0 top-0 left-0 z-50 backdrop-blur-md`}>
       <div
-        className={`w-full flex flex-col mx-auto text-primary transition-all duration-300 ${isScrolled ? "px-6" : " px-4 sm:px-6 lg:px-24 xl:px-[166px] lg:py-2 lg:pb-12"} ${mobileMenuOpen ? "h-screen" : ""}  ${isScrolled || (!isScrolled && mobileMenuOpen) ? "bg-white" : "bg-white/40"}`}
+        className={`w-full flex flex-col mx-auto  transition-all duration-300 text-primary ${isScrolled ? "px-6" : " px-4 sm:px-6 lg:px-24 xl:px-[166px] lg:py-2 lg:pb-12"} ${mobileMenuOpen ? "h-screen" : ""}  ${isScrolled || (!isScrolled && mobileMenuOpen) ? "bg-white" : "bg-white/40 "}`}
       >
         <div className="mb-2">
           <div className="flex flex-row justify-between items-center lg:items-end w-full transition-all duration-300">
@@ -89,7 +89,7 @@ const Header: React.FC = () => {
               className={`${mobileMenuOpen ? "flex" : isScrolled ? "hidden" : "hidden lg:flex"} absolute lg:w-[13%] lg:static top-[90vh] left-1/2 -translate-x-1/2 flex-row gap-[6px] items-center lg:max-xl:items-start lg:max-xl:mb-[14px] mb-[26px] text-nowrap overflow-visible cursor-pointer group`}
             >
               <LiaPhoneSolid className="w-[18px] h-[18px] shrink-0 group-hover:scale-110 group-hover:animate-bounce group-hover:text-tertiary transition-all duration-200" />
-              <span className="text-[12px] sm:text-[14px] md:text-[16px] font-figtree font-light leading-[16px] sm:leading-[18px] md:leading-[20px] text-center uppercase text-primary tracking-wide">
+              <span className="text-[12px] sm:text-[14px] md:text-[16px] font-figtree font-light leading-[16px] sm:leading-[18px] md:leading-[20px] text-center uppercase tracking-wide">
                 Call or WhatsApp <br className="lg:max-xl:block hidden" /> 65
                 8343 3698
               </span>
@@ -102,10 +102,10 @@ const Header: React.FC = () => {
               className="flex flex-col justify-start items-center self-center cursor-pointer"
               onClick={handleClick}
             >
-              <span className="text-[28px] sm:text-[40px] lg:text-[48px] -mb-2 sm:mb-[-3] font-cinzel font-normal text-left text-[#051e33]">
+              <span className="text-[28px] sm:text-[40px] lg:text-[48px] -mb-2 sm:mb-[-3] font-cinzel font-normal text-left">
                 MAEDRIC
               </span>
-              <span className="text-[10px] sm:text-[14px] lg:text-[17px] font-cinzel font-normal leading-none tracking-[1px] text-left text-primary">
+              <span className="text-[10px] sm:text-[14px] lg:text-[17px] font-cinzel font-normal leading-none tracking-[1px] text-left">
                 Gemstones & Jewellery
               </span>
             </Link>
@@ -128,7 +128,7 @@ const Header: React.FC = () => {
                     key={link.name}
                     href={link.href}
                     role="menuitem"
-                    className="flex gap-2 w-full sm:w-fit text-[14px] sm:text-[16px] font-figtree font-light leading-[18px] sm:leading-[20px] tracking-[3px] sm:tracking-[4px] text-center lg:text-left uppercase text-primary hover:text-tertiary transition-colors py-2 lg:py-0 border-b lg:border-b-0 group"
+                    className="flex gap-2 w-full sm:w-fit text-[14px] sm:text-[16px] font-figtree font-light leading-[18px] sm:leading-[20px] tracking-[3px] sm:tracking-[4px] text-center lg:text-left uppercase hover:text-tertiary transition-colors py-2 lg:py-0 border-b lg:border-b-0 group"
                   >
                     <AnimatedUnderline underlineColor="tertiary">
                       {link.name}
@@ -159,7 +159,7 @@ const Header: React.FC = () => {
                   <button aria-label="Shopping cart">
                     <PiShoppingCartSimple className="w-[20px] h-[20px] sm:w-[24px] sm:h-[24px] hover:scale-110 transition-transform -mb-1.5" />
                   </button>
-                  <span className="absolute top-0 sm:top-[-1] -right-1 bg-white text-primary text-[8px] sm:text-[10px] font-figtree font-bold leading-[4px] w-[10px] h-[10px] sm:w-[12px] sm:h-[12px] rounded-[6px] flex items-center justify-center border border-primary">
+                  <span className="absolute top-[1px] sm:top-[-3px] right-0 translate-x-1 bg-white text-primary text-[8px] sm:text-[10px] font-figtree font-bold rounded-full flex items-center justify-center border border-primary w-3 h-3 sm:w-3.5 sm:h-3.5 sm:pt-[1px]">
                     1
                   </span>
                 </div>
@@ -175,9 +175,9 @@ const Header: React.FC = () => {
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 {mobileMenuOpen ? (
-                  <IoCloseOutline className="w-6 h-6 text-primary" />
+                  <IoCloseOutline className="w-6 h-6" />
                 ) : (
-                  <FiMenu className="w-6 h-6 text-primary" />
+                  <FiMenu className="w-6 h-6" />
                 )}
               </button>
             </div>

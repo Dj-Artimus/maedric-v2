@@ -35,7 +35,7 @@ const HeroSection: React.FC = () => {
     });
   };
   return (
-    <section className="w-full h-screen bg-primary/60 flex flex-col md:flex-row items-center justify-start relative overflow-hidden">
+    <section className="w-full h-[85vh] md:h-[90vh] lg:h-[100vh] bg-primary/60 flex flex-col md:flex-row items-center justify-start relative overflow-hidden">
       {/* Background video */}
       <video
         className="md:absolute aspect-auto inset-0 w-full h-full object-cover z-0"
@@ -64,16 +64,17 @@ const HeroSection: React.FC = () => {
             backgroundColor="transparent"
             fillColor="#d2ae6d"
             className="w-full h-fit xl:w-fit xl:text-nowrap text-[16px] font-figtree font-normal leading-[18px] sm:leading-[20px] tracking-[4px] sm:tracking-[3px] text-center uppercase text-white border border-global-7 bg-transparent hover:bg-global-7 hover:text-primary px-3 py-3 sm:px-4 xl:px-2 xl:ps-3 sm:py-3 "
-            onClick={() => console.log("Explore clicked")}
           >
-            Explore Our Jewellery
+            <span onClick={() => console.log("Explore clicked")}>
+              Explore Our Jewellery
+            </span>
           </SlantedFillButton>
         </div>
       </div>
 
       {/* Arrow Up */}
       <div
-        className={`fixed ${showScrollTop ? "md:block" : "hidden"} bottom-8 right-8 rounded-full overflow-hidden group`}
+        className={`fixed ${showScrollTop ? "md:block" : "hidden"} bottom-8 right-8 rounded-full overflow-hidden z-[999] group`}
         onClick={scrollToTop}
       >
         <SlantedFillButton

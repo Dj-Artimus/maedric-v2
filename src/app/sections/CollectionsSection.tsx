@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useRef } from "react";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
+import type { Swiper as SwiperClass } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper/modules";
@@ -14,7 +15,7 @@ import { COLLECTIONS } from "@/utils/constants";
 const CollectionsSection: React.FC = () => {
   // Collections data
   const collections = COLLECTIONS;
-  const swiperRef = useRef(null);
+  const swiperRef = useRef<SwiperClass | null>(null);
 
   return (
     <section className="w-full max-w-sm xs:max-w-md px-4 md:px-0 sm:max-w-lg md:max-w-3xl lg:max-w-4xl xl:max-w-[1170px] -mt-20 xs:mt-0 sm:my-6 md:my-0 mb-6 lg:my-6 h-full">
@@ -41,7 +42,7 @@ const CollectionsSection: React.FC = () => {
               >
                 <SlArrowLeft className="w-5 h-5 sm:w-6 sm:h-6 hover:scale-110 transition-transform text-primary/70" />
               </button>
-              {/* Jewelry Categories Grid */}
+              {/* Jewellery Categories Grid */}
               <Swiper
                 modules={[Navigation, Autoplay]}
                 spaceBetween={20}
@@ -67,12 +68,11 @@ const CollectionsSection: React.FC = () => {
                 {/* <div className="w-full flex flex-row gap-5 overflow-x-hidden"> */}
                 {collections.map((item) => (
                   <SwiperSlide
-                    key={item}
+                    key={item.id}
                     onMouseEnter={() => swiperRef.current?.autoplay?.stop()}
                     onMouseLeave={() => swiperRef.current?.autoplay?.start()}
                   >
                     <div
-                      key={item.id}
                       className={`flex flex-col gap-[30px] h-fit items-center xs:min-w-[300px] sm:min-w-[350px] md:min-w-[310px] border border-[#d2ae6d] p-[22px] sm:p-5 group`}
                     >
                       <div className="flex flex-col justify-start items-center w-full bg-black overflow-hidden">
@@ -81,7 +81,7 @@ const CollectionsSection: React.FC = () => {
                           alt={item.name}
                           width={200}
                           height={260}
-                          className="w-full aspect-[3/4] object-cover group-hover:scale-110 transition-transform duration-500 ease-in-out"
+                          className="w-full aspect-[3/4] object-cover group-hover:scale-110 transition-transform duration-1000 ease-in-out"
                         />
                       </div>
                       <div className="flex flex-row justify-between sm:justify-between items-center w-full mb-2">

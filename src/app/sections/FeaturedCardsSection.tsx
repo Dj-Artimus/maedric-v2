@@ -13,11 +13,11 @@ const FeaturedCardsSection: React.FC = () => {
   const featuredCards: FeaturedCard[] = [
     {
       title: "Rare Gems. Remarkable Stories.",
-      bgImage: "/images/img_bespoke_bd0yooom_min.png",
+      bgImage: "/images/featureCTA_Img1.png",
     },
     {
       title: "Jewel Boutique. Lives Beyond Trends.",
-      bgImage: "/images/img_image_10.png",
+      bgImage: "/images/featureCTA_Img2.png",
     },
   ];
 
@@ -35,7 +35,7 @@ const FeaturedCardsSection: React.FC = () => {
                 src={card.bgImage}
                 alt={card.title}
                 fill
-                className="object-cover group-hover:scale-110 transition-transform duration-500 ease-in-out"
+                className="object-cover group-hover:scale-110 transition-transform duration-1000 ease-in-out"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary flex flex-row justify-between items-end p-[20px] sm:p-[40px]">
                 <h3 className="text-[20px] sm:text-[24px] md:text-[28px] font-quiche font-normal leading-[24px] sm:leading-[28px] md:leading-[32px] text-left capitalize text-white w-[65%] mt-[348px]">
