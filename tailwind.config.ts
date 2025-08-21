@@ -22,7 +22,6 @@ const config: Config = {
         'cinzel': ['Cinzel', 'serif'],
         'figtree': ['Figtree', 'sans-serif'],
         'quiche': ['Quiche Display', 'serif'],
-        'proxima': ['Proxima Nova', 'sans-serif'],
         'montserrat': ['Montserrat', 'sans-serif'],
       },
       screens: {
