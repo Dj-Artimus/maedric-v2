@@ -102,7 +102,6 @@ const InstagramGallarySection = () => {
                     height={400}
                     loading="lazy"
                     className="object-cover w-full h-full hover:scale-110 opacity-80 bg-neutral transition-all duration-700"
-                    priority
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-primary/50 opacity-0 hover:opacity-100 transition-all duration-700">
                     <PiInstagramLogoBold className="w-14 h-14 text-neutral" />

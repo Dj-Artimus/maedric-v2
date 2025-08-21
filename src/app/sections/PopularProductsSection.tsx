@@ -1,7 +1,7 @@
 "use client";
 import AnimatedUnderline from "@/components/ui/AnimatedUnderline";
 import Image from "next/image";
-import React, { useRef } from "react";
+import React from "react";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import "swiper/css";
@@ -10,12 +10,10 @@ import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { POPULAR_PRODUCTS } from "@/utils/constants";
-import type { Swiper as SwiperClass } from "swiper";
 
 const PopularProductsSection: React.FC = () => {
   // Popular products data
   const popularProducts = POPULAR_PRODUCTS;
-  const swiperRef = useRef<SwiperClass | null>(null);
   return (
     <section className="w-full max-w-sm xs:max-w-md  px-4 md:px-0 sm:max-w-lg md:max-w-3xl lg:max-w-4xl xl:max-w-[1170px] my-4 xs:mt-0 sm:mt-4 mb-8 xs:mb-14">
       <div className="flex flex-row justify-start items-center w-full">
@@ -56,24 +54,11 @@ const PopularProductsSection: React.FC = () => {
                   prevEl: ".featured-prev",
                   nextEl: ".featured-next",
                 }}
-                // loop
-                // autoplay={{
-                //   delay: 3500,
-                //   disableOnInteraction: false,
-                // }}
-                onSwiper={(swiper) => {
-                  swiperRef.current = swiper;
-                }}
               >
-                {/* <div className="w-full flex flex-row gap-5 overflow-x-hidden"> */}
                 {popularProducts.map((item) => (
-                  <SwiperSlide
-                    key={item.id}
-                    onMouseEnter={() => swiperRef.current?.autoplay?.stop()}
-                    onMouseLeave={() => swiperRef.current?.autoplay?.start()}
-                  >
+                  <SwiperSlide key={item.id}>
                     <div
-                      className={`flex flex-col gap-2 h-fit items-center xs:min-w-[300px] sm:min-w-[350px] md:min-w-[310px] border border-[#d2ae6d] p-5 pb-3 group`}
+                      className={`flex flex-col gap-[30px] h-fit items-center xs:min-w-[300px] sm:min-w-[350px] md:min-w-[310px] border border-[#d2ae6d] p-[22px] sm:p-5 group`}
                     >
                       <div className="flex flex-col justify-start items-center w-full bg-black overflow-hidden">
                         <Image
@@ -81,22 +66,20 @@ const PopularProductsSection: React.FC = () => {
                           alt={item.name}
                           width={200}
                           height={260}
-                          loading="lazy"
                           className="w-full aspect-[3/4] object-cover group-hover:scale-110 transition-transform duration-1000 ease-in-out"
                         />
                       </div>
-                      <div className="flex flex-row justify-between sm:justify-between items-center w-full">
-                        <h3 className="text-[24px] sm:text-[28px] font-figtree font-normal leading-[30px] sm:leading-[34px] text-left text-black/60 self-end">
+                      <div className="flex flex-row justify-between sm:justify-between items-center w-full mb-2">
+                        <h3 className="text-[25px] font-figtree font-normal text-left text-black/60 self-end">
                           <AnimatedUnderline underlineColor="accent">
                             {item.name}
                           </AnimatedUnderline>
                         </h3>
-                        <HiArrowLongRight className="w-10 h-10 sm:w-10 sm:h-10 hover:scale-110 transition-transform text-primary/70 group-hover:animate-pulse" />
+                        <HiArrowLongRight className="w-9 h-9 hover:scale-110 transition-transform text-primary/70 group-hover:animate-pulse" />
                       </div>
                     </div>
                   </SwiperSlide>
                 ))}
-                {/* </div> */}
               </Swiper>
               <button
                 aria-label="Next"
