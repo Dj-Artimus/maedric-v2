@@ -10,7 +10,7 @@ import {
   PiWallet,
   PiYoutubeLogoFill,
 } from "react-icons/pi";
-import AnimatedUnderline from "../ui/AnimatedUnderline";
+// import AnimatedUnderline from "../ui/AnimatedUnderline";
 
 // Explore section links
 const exploreLinks = [
@@ -54,7 +54,7 @@ const Footer: React.FC = () => (
               >
                 MAEDRIC
               </span>
-              <span className="font-quiche font-normal text-[8.28px] sm:text-[9.8px] text-headerText uppercase tracking-[0.12em] select-none">
+              <span className="font-cinzel font-normal text-[9px] text-headerText uppercase tracking-[0.12em] select-none">
                 Gemstones & Jewellery
               </span>
             </div>
@@ -73,12 +73,12 @@ const Footer: React.FC = () => (
               {exploreLinks.map((link) => (
                 <li
                   key={link.name}
-                  className="flex items-center hover:text-accent group w-fit"
+                  className="flex items-center hover:text-white group w-fit"
                 >
-                  <FiChevronRight className="inline-block w-6 h-6 mr-[1px]" />
-                  <AnimatedUnderline underlineColor="accent">
+                  <FiChevronRight className="inline-block w-4 h-4 mr-1" />
+                  {/* <AnimatedUnderline underlineColor="accent"> */}
                     <Link href={link.href}>{link.name}</Link>
-                  </AnimatedUnderline>
+                  {/* </AnimatedUnderline> */}
                 </li>
               ))}
             </ul>
@@ -92,12 +92,12 @@ const Footer: React.FC = () => (
               {contactLinks.map((link) => (
                 <li
                   key={link.name}
-                  className="flex items-center hover:text-accent group w-fit"
+                  className="flex items-center hover:text-white group w-fit"
                 >
-                  <FiChevronRight className="inline-block w-6 h-6 mr-[1px]" />
-                  <AnimatedUnderline underlineColor="accent">
+                  <FiChevronRight className="inline-block w-4 h-4 mr-1" />
+                  {/* <AnimatedUnderline underlineColor="accent"> */}
                     <Link href={link.href}>{link.name}</Link>
-                  </AnimatedUnderline>
+                  {/* </AnimatedUnderline> */}
                 </li>
               ))}
             </ul>

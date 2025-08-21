@@ -1,5 +1,5 @@
 "use client";
-import AnimatedUnderline from "@/components/ui/AnimatedUnderline";
+// import AnimatedUnderline from "@/components/ui/AnimatedUnderline";
 import Image from "next/image";
 import React from "react";
 import { HiArrowLongRight } from "react-icons/hi2";
@@ -39,12 +39,12 @@ const FeaturedCardsSection: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary flex flex-row justify-between items-end p-[20px] sm:p-[40px]">
                 <h3 className="text-[20px] sm:text-[24px] md:text-[28px] font-quiche font-normal leading-[24px] sm:leading-[28px] md:leading-[32px] text-left capitalize text-white w-[65%] mt-[348px]">
-                  <AnimatedUnderline underlineColor="accent">
+                  {/* <AnimatedUnderline underlineColor="accent"> */}
                     {card.title}
-                  </AnimatedUnderline>
+                  {/* </AnimatedUnderline> */}
                 </h3>
                 <div className="flex flex-row justify-end items-center py-[6px] group-hover:animate-pulse">
-                  <HiArrowLongRight className="w-10 h-10 sm:w-10 sm:h-10 hover:scale-110 transition-transform text-neutral" />
+                  <HiArrowLongRight className="w-10 h-10 sm:w-10 sm:h-10 hover:scale-110 text-neutral group-hover:translate-x-2 transition-transform duration-700 ease-in" />
                 </div>
               </div>
             </div>

@@ -66,11 +66,11 @@ const TestimonialsSection = () => {
         </p>
 
         {/* Testimonials carousel container */}
-        <div className="relative flex items-start md:items-center justify-center">
+        <div className="relative flex items-start md:items-stretch justify-center">
           {/* Custom Previous Button */}
           <button
             aria-label="Previous"
-            className="testimonial-prev md:text-primary/70 hover:text-accent transition-colors duration-200 translate-y-44 md:translate-y-0 min-h-[334px] me-2 hidden sm:block"
+            className="testimonial-prev md:text-primary/70 hover:text-accent transition-colors duration-200 translate-y-44 md:translate-y-0 me-2 hidden sm:block"
           >
             <FiChevronLeft className="w-9 h-9" />
           </button>
@@ -169,7 +169,7 @@ const TestimonialsSection = () => {
           {/* Custom Next Button */}
           <button
             aria-label="Next"
-            className="testimonial-next md:text-primary/70 hover:text-accent transition-colors duration-200 translate-y-44 md:translate-y-0 min-h-[334px] ms-2 hidden sm:block"
+            className="testimonial-next md:text-primary/70 hover:text-accent transition-colors duration-200 translate-y-44 md:translate-y-0 ms-2 hidden sm:block"
           >
             <FiChevronRight className="w-9 h-9" />
           </button>

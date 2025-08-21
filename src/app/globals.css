@@ -1,9 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Figtree:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Quiche+Display:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@400;500;600;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Italiana&display=swap");
+@font-face {
+  font-family: "Quiche Display";
+  src: url("/fonts/Quiche Display Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
+/* Add additional @font-face declarations for other weights/styles */
+@font-face {
+  font-family: "Quiche Display";
+  src: url("/fonts/Quiche Display Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;
@@ -122,6 +136,59 @@
   100% {
     clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%);
   }
+}
+
+/* Horizontal Fill Button Styles */
+.horizontal-fill-btn {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-color, transparent);
+  cursor: pointer;
+  z-index: 0;
+}
+
+.horizontal-fill-btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0%;
+  height: 100%;
+  background: var(--fill-color, #051e33);
+  transition: width 0.3s ease;
+  z-index: 0;
+}
+
+.horizontal-fill-btn:hover::before {
+  width: 100%;
+}
+
+.horizontal-fill-btn button,
+.horizontal-fill-btn span,
+.horizontal-fill-btn a {
+  position: relative;
+  z-index: 1;
+}
+
+/* Phone Ringing Animation */
+@keyframes phoneRinging {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(-7deg); }
+  20% { transform: rotate(7deg); }
+  30% { transform: rotate(-7deg); }
+  40% { transform: rotate(7deg); }
+  50% { transform: rotate(-7deg); }
+  60% { transform: rotate(7deg); }
+  70% { transform: rotate(-7deg); }
+  80% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.animate-ringing {
+  animation: phoneRinging 3s ease infinite;
+  transform-origin: 50% 50%;
+  display: inline-block;
+  will-change: transform;
 }
 
 /* Override NProgress bar color */

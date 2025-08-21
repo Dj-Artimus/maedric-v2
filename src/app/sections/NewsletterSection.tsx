@@ -28,7 +28,7 @@ const NewsletterSection: React.FC = () => {
               onValueChange={setEmail}
               placeholder="sarah@yahoomail.com"
               type="email"
-              className="w-[82vw] xs:w-80 text-[19px] font-figtree font-light text-primary placeholder:text-primary border px-4 py-3"
+              className="w-[82vw] xs:w-80 text-[19px] font-figtree font-light text-primary placeholder:text-primary border px-4 py-2"
             />
             <SlantedFillButton
               onClick={handleSubscribe}

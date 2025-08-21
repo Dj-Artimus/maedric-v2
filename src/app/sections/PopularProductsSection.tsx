@@ -73,7 +73,7 @@ const PopularProductsSection: React.FC = () => {
                     onMouseLeave={() => swiperRef.current?.autoplay?.start()}
                   >
                     <div
-                      className={`flex flex-col gap-[30px] h-fit items-center xs:min-w-[300px] sm:min-w-[350px] md:min-w-[310px] border border-[#d2ae6d] p-[22px] sm:p-5 group`}
+                      className={`flex flex-col gap-2 h-fit items-center xs:min-w-[300px] sm:min-w-[350px] md:min-w-[310px] border border-[#d2ae6d] p-5 pb-3 group`}
                     >
                       <div className="flex flex-col justify-start items-center w-full bg-black overflow-hidden">
                         <Image
@@ -84,7 +84,7 @@ const PopularProductsSection: React.FC = () => {
                           className="w-full aspect-[3/4] object-cover group-hover:scale-110 transition-transform duration-1000 ease-in-out"
                         />
                       </div>
-                      <div className="flex flex-row justify-between sm:justify-between items-center w-full mb-2">
+                      <div className="flex flex-row justify-between sm:justify-between items-center w-full">
                         <h3 className="text-[24px] sm:text-[28px] font-figtree font-normal leading-[30px] sm:leading-[34px] text-left text-black/60 self-end">
                           <AnimatedUnderline underlineColor="accent">
                             {item.name}

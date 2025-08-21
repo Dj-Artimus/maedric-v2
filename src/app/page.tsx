@@ -14,7 +14,7 @@ import TestimonialsSection from "./sections/TestimonialsSection";
 
 const HomePage: React.FC = () => {
   return (
-    <div className="flex flex-col justify-start items-center w-full">
+    <div className="flex flex-col justify-start items-center w-full scroll-smooth">
       {/* Hero Section */}
       <HeroSection />
 

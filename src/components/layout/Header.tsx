@@ -80,20 +80,25 @@ const Header: React.FC = () => {
   return (
     <header className={`w-full sticky h-0 top-0 left-0 z-50 backdrop-blur-md`}>
       <div
-        className={`w-full flex flex-col mx-auto  transition-all duration-300 text-primary ${isScrolled ? "px-6" : " px-4 sm:px-6 lg:px-24 xl:px-[166px] lg:py-2 lg:pb-12"} ${mobileMenuOpen ? "h-screen" : ""}  ${isScrolled || (!isScrolled && mobileMenuOpen) ? "bg-white" : "bg-white/40 "}`}
+        className={`w-full flex flex-col mx-auto  transition-all duration-300 text-primary ${isScrolled ? "px-6" : " px-4 sm:px-6 lg:px-24 xl:px-[166px] lg:pb-8"} ${mobileMenuOpen ? "h-screen" : ""}  ${isScrolled || (!isScrolled && mobileMenuOpen) ? "bg-white" : "bg-white/40 "}`}
       >
         <div className="mb-2">
-          <div className="flex flex-row justify-between items-center lg:items-end w-full transition-all duration-300">
+          <div className="flex flex-row justify-between items-center lg:items-end w-full transition-all duration-300 -mt-1">
             {/* Contact Info */}
-            <div
+            <a
+              href="https://wa.me/6583433698"
+              target="_blank"
+              rel="noopener noreferrer"
               className={`${mobileMenuOpen ? "flex" : isScrolled ? "hidden" : "hidden lg:flex"} absolute lg:w-[13%] lg:static top-[90vh] left-1/2 -translate-x-1/2 flex-row gap-[6px] items-center lg:max-xl:items-start lg:max-xl:mb-[14px] mb-[26px] text-nowrap overflow-visible cursor-pointer group`}
             >
-              <LiaPhoneSolid className="w-[18px] h-[18px] shrink-0 group-hover:scale-110 group-hover:animate-bounce group-hover:text-tertiary transition-all duration-200" />
+              <div className="animate-ringing inline-block">
+                <LiaPhoneSolid className="w-[18px] h-[18px] shrink-0 group-hover:text-tertiary" />
+              </div>
               <span className="text-[12px] sm:text-[14px] md:text-[16px] font-figtree font-light leading-[16px] sm:leading-[18px] md:leading-[20px] text-center uppercase tracking-wide">
                 Call or WhatsApp <br className="lg:max-xl:block hidden" /> 65
                 8343 3698
               </span>
-            </div>
+            </a>
 
             {/* Logo */}
             <Link
@@ -113,12 +118,13 @@ const Header: React.FC = () => {
             {/* Divider Line */}
             {!isScrolled && (
               <div
-                className={`${!isScrolled ? "hidden lg:block absolute top-[100px] left-0" : "hidden"} w-full h-[1px] bg-white/50`}
+                className={`${!isScrolled ? "hidden lg:block absolute top-[85px] left-0" : "hidden"} w-full h-[1px] bg-white/50`}
               ></div>
             )}
 
             <nav
-              className={`${isScrolled ? "mb-[25px]" : "absolute top-28 left-1/2 -translate-x-1/2"} transition-all duration-300 ${mobileMenuOpen ? "flex" : "hidden"} lg:flex`}
+              className={`${isScrolled ? "mb-[25px]" : "absolute top-[92px] left-1/2 -translate-x-1/2"} transition-all duration-300 ${mobileMenuOpen ? "flex" : "hidden"} lg:flex`}
+
             >
               <div
                 className={`flex flex-col lg:flex-row lg:justify-between sm:items-center gap-4 lg:gap-8 xl:gap-16 ${mobileMenuOpen ? "flex-col items-start max-sm:w-screen px-4" : "flex-row"}`}

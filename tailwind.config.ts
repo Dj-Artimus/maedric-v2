@@ -21,7 +21,7 @@ const config: Config = {
       fontFamily: {
         'cinzel': ['Cinzel', 'serif'],
         'figtree': ['Figtree', 'sans-serif'],
-        'quiche': ['Italiana', 'serif'],
+        'quiche': ['Quiche Display', 'serif'],
         'proxima': ['Proxima Nova', 'sans-serif'],
         'montserrat': ['Montserrat', 'sans-serif'],
       },

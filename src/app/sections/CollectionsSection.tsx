@@ -18,7 +18,7 @@ const CollectionsSection: React.FC = () => {
   const swiperRef = useRef<SwiperClass | null>(null);
 
   return (
-    <section className="w-full max-w-sm xs:max-w-md px-4 md:px-0 sm:max-w-lg md:max-w-3xl lg:max-w-4xl xl:max-w-[1170px] -mt-20 xs:mt-0 sm:my-6 md:my-0 mb-6 lg:my-6 h-full">
+    <section className="w-full max-w-sm xs:max-w-md px-4 md:px-0 sm:max-w-lg md:max-w-3xl lg:max-w-4xl xl:max-w-[1170px] -mt-20 xs:mt-0 sm:my-6 md:my-0 mb-6 lg:my-6 lg:mt-16 h-full">
       <div className="flex flex-row justify-start items-center w-full">
         {/* Content */}
         <div className="flex-1 relative w-full">

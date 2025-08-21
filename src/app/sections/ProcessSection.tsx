@@ -22,11 +22,11 @@ const ProcessSection: React.FC = () => {
       <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-14 lg:max-h-[590px] overflow-hidden">
         {/* Left Content */}
         <div className="flex flex-col gap-[40px] justify-start items-center w-full">
-          <div className="flex flex-col gap-[24px] justify-start items-center w-full px-[24px]">
-            <h2 className="text-[30px] md:text-[36px] font-quiche font-normal leading-[32px] sm:leading-[38px] md:leading-[42px] text-center capitalize text-primary w-full">
+          <div className="flex flex-col gap-5 justify-start items-center w-full px-[24px]">
+            <h2 className="text-[24px] md:text-[30px] font-quiche font-normal leading-[32px] sm:leading-[38px] md:leading-[42px] text-center capitalize text-primary w-full">
               How did we get here?
             </h2>
-            <p className="text-[16px] sm:text-[18px] md:text-[20px] font-figtree font-normal leading-[22px] sm:leading-[26px] md:leading-[28px] text-center text-black/70 w-full">
+            <p className="text-[16px] md:text-[18px] font-figtree font-normal leading-[22px] sm:leading-[26px] md:leading-[28px] text-center text-black/70 w-full">
               Every journey has a start and an end, hover over the buttons on
               the right to learn more about how we get from a cup of tea to your
               masterpiece.
@@ -68,13 +68,13 @@ const ProcessSection: React.FC = () => {
                     </span>
                   </div>
                 </div>
-                <div className="flex flex-col gap-[6px] sm:gap-[12px] justify-start items-start self-center flex-1">
-                  <h3 className="text-[18px] sm:text-[20px] md:text-[22px] font-figtree font-medium leading-[22px] sm:leading-[25px] md:leading-[27px] text-left text-primary">
+                <div className="flex flex-col gap-1.5 justify-start items-start self-center flex-1">
+                  <h3 className="text-[18px] md:text-[20px] font-figtree font-medium leading-[22px] sm:leading-[25px] md:leading-[27px] text-left text-primary">
                     <AnimatedUnderline underlineColor="accent">
                       {step.title}
                     </AnimatedUnderline>
                   </h3>
-                  <p className="text-[16px] sm:text-[18px] md:text-[20px] font-figtree font-normal leading-[22px] sm:leading-[26px] md:leading-[28px] text-left text-black/70 w-full">
+                  <p className="text-[16px] md:text-[18px] font-figtree font-normal leading-[22px] sm:leading-[26px] md:leading-[28px] text-left text-black/70 w-full">
                     {step.description}
                   </p>
                 </div>

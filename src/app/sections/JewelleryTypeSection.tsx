@@ -20,7 +20,7 @@ const JewelleryTypeSection: React.FC = () => {
     <section className="w-full max-w-sm xs:max-w-md px-4 md:px-0 sm:max-w-lg md:max-w-3xl lg:max-w-4xl xl:max-w-[1170px] mt-[34px]">
       <div className="flex flex-row justify-start items-center w-full">
         {/* Content */}
-        <div className="flex-1 relative w-full h-[558px]">
+        <div className="flex-1 relative w-full">
           <div className="flex flex-col gap-[18px] justify-start items-start w-full">
             {/* Section Title */}
             <div className="w-full max-w-[1326px] mx-auto px-4 sm:px-6 md:px-[56px] flex justify-center items-center">
@@ -67,7 +67,7 @@ const JewelleryTypeSection: React.FC = () => {
                   >
                     <div
                       key={item.id}
-                      className={`flex flex-col gap-[30px] h-fit items-center xs:min-w-[300px] sm:min-w-[350px] md:min-w-[310px] border border-[#d2ae6d] p-[22px] sm:p-5 group`}
+                      className={`flex flex-col gap-2 h-fit items-center xs:min-w-[300px] sm:min-w-[350px] md:min-w-[310px] border border-[#d2ae6d] p-5 pb-3 group`}
                     >
                       <div className="flex flex-col justify-start items-center w-full bg-black overflow-hidden">
                         <Image
@@ -78,7 +78,7 @@ const JewelleryTypeSection: React.FC = () => {
                           className="w-full aspect-square object-cover group-hover:scale-110 transition-transform duration-1000 ease-in-out"
                         />
                       </div>
-                      <div className="flex flex-row justify-between sm:justify-between items-center w-full mb-2">
+                      <div className="flex flex-row justify-between sm:justify-between items-center w-full">
                         <h3 className="text-[24px] sm:text-[28px] font-figtree font-normal leading-[30px] sm:leading-[34px] text-left text-black/60 self-end">
                           <AnimatedUnderline underlineColor="accent">
                             {item.name}
