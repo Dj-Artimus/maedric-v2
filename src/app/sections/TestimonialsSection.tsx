@@ -97,6 +97,7 @@ const TestimonialsSection = () => {
                       alt={item.name}
                       width={400}
                       height={400}
+                      loading="lazy"
                       className="w-[85%] xs:w-[300px] md:w-[400px] lg:w-[500px] shadow-[0px_0px_7px_#0000003f] shadow-primary/40"
                     />
                     {/* Ring overlay - desktop only */}
@@ -106,6 +107,7 @@ const TestimonialsSection = () => {
                         alt="Ring"
                         width={180}
                         height={180}
+                        loading="lazy"
                         className="w-[120px] lg:w-[120px] xl:w-[180px] aspect-square"
                       />
                     </div>

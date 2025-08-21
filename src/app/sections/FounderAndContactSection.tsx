@@ -105,6 +105,7 @@ const FounderAndContactSection: React.FC = () => (
               alt="Isaiah, Founder of Maedric"
               width={584}
               height={580}
+              loading="lazy"
               className="object-cover object-top"
             />
           </div>

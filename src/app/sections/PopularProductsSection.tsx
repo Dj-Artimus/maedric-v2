@@ -81,6 +81,7 @@ const PopularProductsSection: React.FC = () => {
                           alt={item.name}
                           width={200}
                           height={260}
+                          loading="lazy"
                           className="w-full aspect-[3/4] object-cover group-hover:scale-110 transition-transform duration-1000 ease-in-out"
                         />
                       </div>

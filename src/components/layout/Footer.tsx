@@ -77,7 +77,7 @@ const Footer: React.FC = () => (
                 >
                   <FiChevronRight className="inline-block w-4 h-4 mr-1" />
                   {/* <AnimatedUnderline underlineColor="accent"> */}
-                    <Link href={link.href}>{link.name}</Link>
+                  <Link href={link.href}>{link.name}</Link>
                   {/* </AnimatedUnderline> */}
                 </li>
               ))}
@@ -96,7 +96,7 @@ const Footer: React.FC = () => (
                 >
                   <FiChevronRight className="inline-block w-4 h-4 mr-1" />
                   {/* <AnimatedUnderline underlineColor="accent"> */}
-                    <Link href={link.href}>{link.name}</Link>
+                  <Link href={link.href}>{link.name}</Link>
                   {/* </AnimatedUnderline> */}
                 </li>
               ))}
@@ -112,6 +112,7 @@ const Footer: React.FC = () => (
           alt="Stripe"
           width={40}
           height={24}
+          loading="lazy"
           className="w-10 h-6 object-contain"
         />
         <Image
@@ -119,6 +120,7 @@ const Footer: React.FC = () => (
           alt="American Express"
           width={40}
           height={24}
+          loading="lazy"
           className="w-10 h-6 object-contain"
         />
         <Image
@@ -126,6 +128,7 @@ const Footer: React.FC = () => (
           alt="Visa"
           width={40}
           height={24}
+          loading="lazy"
           className="w-10 h-6 object-contain"
         />
         <Image
@@ -133,6 +136,7 @@ const Footer: React.FC = () => (
           alt="Mastercard"
           width={40}
           height={24}
+          loading="lazy"
           className="w-10 h-6 object-contain"
         />
         <Image
@@ -140,6 +144,7 @@ const Footer: React.FC = () => (
           alt="JCB"
           width={40}
           height={24}
+          loading="lazy"
           className="w-10 h-6 object-contain"
         />
         <Image
@@ -147,6 +152,7 @@ const Footer: React.FC = () => (
           alt="UnionPay"
           width={40}
           height={24}
+          loading="lazy"
           className="w-10 h-6 object-contain"
         />
         <Image
@@ -154,6 +160,7 @@ const Footer: React.FC = () => (
           alt="Atome"
           width={40}
           height={24}
+          loading="lazy"
           className="w-10 h-6 object-contain"
         />
       </div>

@@ -100,6 +100,7 @@ const InstagramGallarySection = () => {
                     alt={img.alt}
                     width={400}
                     height={400}
+                    loading="lazy"
                     className="object-cover w-full h-full hover:scale-110 opacity-80 bg-neutral transition-all duration-700"
                     priority
                   />

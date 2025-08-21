@@ -48,6 +48,7 @@ const ProcessSection: React.FC = () => {
                 alt="process"
                 width={600}
                 height={500}
+                loading="lazy"
                 className="w-full mx-auto aspect-square sm:aspect-[4/3] max-w-[600px] h-auto object-cover object-center  hover:scale-110 transition-all duration-1000"
               />
             </div>
