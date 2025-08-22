@@ -42,7 +42,7 @@ interface SlantedFillButtonProps {
   ariaLabel?: string;
   rel?: string;
   target?: string;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
   disabled?: boolean;
   loading?: boolean;
 }
@@ -71,13 +71,13 @@ const SlantedFillButton: React.FC<SlantedFillButtonProps> = ({
       style={{
         ...styleVars,
       }}
-      onClick={disabled ? undefined : onClick ? onClick : undefined}
     >
       <Link
         href={href}
         aria-label={ariaLabel}
         rel={rel}
         target={target}
+        onClick={disabled ? undefined : onClick ? onClick : undefined}
         className={`block ${className}${disabled ? " cursor-not-allowed" : ""}`}
         tabIndex={disabled ? -1 : 0}
       >

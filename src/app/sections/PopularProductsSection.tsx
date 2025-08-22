@@ -1,21 +1,33 @@
 "use client";
 import AnimatedUnderline from "@/components/ui/AnimatedUnderline";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperType } from "swiper";
 
 import { POPULAR_PRODUCTS } from "@/utils/constants";
+
+
+type SwiperInstance = SwiperType;
 
 const PopularProductsSection: React.FC = () => {
   // Popular products data
   const popularProducts = POPULAR_PRODUCTS;
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
+
+  const handleSlideChange = (swiper: SwiperInstance) => {
+    setIsBeginning(swiper.isBeginning);
+    setIsEnd(swiper.isEnd);
+  };
+
   return (
-    <section className="w-full max-w-sm xs:max-w-md  px-4 md:px-0 sm:max-w-lg md:max-w-3xl lg:max-w-4xl xl:max-w-[1170px] my-4 xs:mt-0 sm:mt-4 mb-8 xs:mb-14">
+    <section className="w-full max-w-sm xs:max-w-md sm:max-w-lg md:max-w-3xl lg:max-w-5xl xl:max-w-6xl xs:max-sm:px-6 px-4 my-4 xs:mt-0 sm:mt-4 mb-8 xs:mb-14">
       <div className="flex flex-row justify-start items-center w-full">
         {/* Content */}
         <div className="flex-1 relative w-full">
@@ -36,9 +48,18 @@ const PopularProductsSection: React.FC = () => {
             <div className="flex flex-row items-stretch gap-1 w-full">
               <button
                 aria-label="Previous"
-                className="featured-prev-product hidden sm:flex items-center "
+                className={`featured-prev-product hidden sm:flex items-center ${
+                  isBeginning
+                    ? "opacity-30 cursor-not-allowed"
+                    : "cursor-pointer"
+                }`}
+                disabled={isBeginning}
               >
-                <SlArrowLeft className="w-5 h-5 sm:w-6 sm:h-6 hover:scale-110 transition-transform text-primary/70" />
+                <SlArrowLeft
+                  className={`w-5 h-5 sm:w-6 sm:h-6 ${
+                    !isBeginning ? "hover:scale-110" : ""
+                  } transition-transform text-primary/70`}
+                />
               </button>
               {/* Jewellery Categories Grid */}
               <Swiper
@@ -54,6 +75,8 @@ const PopularProductsSection: React.FC = () => {
                   prevEl: ".featured-prev-product",
                   nextEl: ".featured-next-product",
                 }}
+                onSlideChange={handleSlideChange}
+                onInit={(swiper) => handleSlideChange(swiper)}
               >
                 {popularProducts.map((item) => (
                   <SwiperSlide key={item.id}>
@@ -83,9 +106,16 @@ const PopularProductsSection: React.FC = () => {
               </Swiper>
               <button
                 aria-label="Next"
-                className="featured-next-product hidden sm:flex items-center"
+                className={`featured-next-product hidden sm:flex items-center ${
+                  isEnd ? "opacity-30 cursor-not-allowed" : "cursor-pointer"
+                }`}
+                disabled={isEnd}
               >
-                <SlArrowRight className="w-5 h-5 sm:w-6 sm:h-6 hover:scale-110 transition-transform text-primary/70" />
+                <SlArrowRight
+                  className={`w-5 h-5 sm:w-6 sm:h-6 ${
+                    !isEnd ? "hover:scale-110" : ""
+                  } transition-transform text-primary/70`}
+                />
               </button>
             </div>
           </div>

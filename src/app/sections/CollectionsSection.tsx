@@ -1,22 +1,32 @@
 "use client";
 import AnimatedUnderline from "@/components/ui/AnimatedUnderline";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperType } from "swiper";
 
 import { COLLECTIONS } from "@/utils/constants";
+
+type SwiperInstance = SwiperType;
 
 const CollectionsSection: React.FC = () => {
   // Collections data
   const collections = COLLECTIONS;
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
+
+  const handleSlideChange = (swiper: SwiperInstance) => {
+    setIsBeginning(swiper.isBeginning);
+    setIsEnd(swiper.isEnd);
+  };
 
   return (
-    <section className="w-full max-w-sm xs:max-w-md px-4 md:px-0 sm:max-w-lg md:max-w-3xl lg:max-w-4xl xl:max-w-[1170px] my-6 mt-10 sm:mt-12 md:mt-16 h-full">
+    <section className="w-full max-w-sm xs:max-w-md sm:max-w-lg md:max-w-3xl lg:max-w-5xl xl:max-w-6xl xs:max-sm:px-6 px-4 my-6 mt-10 sm:mt-12 md:mt-16 h-full">
       <div className="flex flex-row justify-start items-center w-full">
         {/* Content */}
         <div className="flex-1 relative w-full">
@@ -36,9 +46,14 @@ const CollectionsSection: React.FC = () => {
             <div className="flex flex-row items-stretch gap-1 w-full">
               <button
                 aria-label="Previous"
-                className="featured-prev-collection hidden sm:flex items-center "
+                className={`featured-prev-collection hidden sm:flex items-center ${
+                  isBeginning
+                    ? "opacity-30 cursor-not-allowed"
+                    : "cursor-pointer"
+                }`}
+                disabled={isBeginning}
               >
-                <SlArrowLeft className="w-5 h-5 sm:w-6 sm:h-6 hover:scale-110 transition-transform text-primary/70" />
+                <SlArrowLeft className={`w-5 h-5 sm:w-6 sm:h-6`} />
               </button>
               {/* Jewellery Categories Grid */}
               <Swiper
@@ -54,6 +69,8 @@ const CollectionsSection: React.FC = () => {
                   prevEl: ".featured-prev-collection",
                   nextEl: ".featured-next-collection",
                 }}
+                onSlideChange={handleSlideChange}
+                onInit={(swiper) => handleSlideChange(swiper)}
               >
                 {collections.map((item) => (
                   <SwiperSlide key={item.id}>
@@ -84,9 +101,12 @@ const CollectionsSection: React.FC = () => {
               </Swiper>
               <button
                 aria-label="Next"
-                className="featured-next-collection hidden sm:flex items-center"
+                className={`featured-next-collection hidden sm:flex items-center ${
+                  isEnd ? "opacity-30 cursor-not-allowed" : "cursor-pointer"
+                }`}
+                disabled={isEnd}
               >
-                <SlArrowRight className="w-5 h-5 sm:w-6 sm:h-6 hover:scale-110 transition-transform text-primary/70" />
+                <SlArrowRight className={`w-5 h-5 sm:w-6 sm:h-6`} />
               </button>
             </div>
           </div>

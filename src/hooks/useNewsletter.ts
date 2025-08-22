@@ -6,7 +6,11 @@ export const useNewsletter = () => {
   const [isSubscribing, setIsSubscribing] = useState(false);
   const [message, setMessage] = useState('');
 
-  const handleSubscribe = async () => {
+  const handleSubscribe = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // Prevent the default button behavior
+    e.preventDefault();
+    e.stopPropagation();
+
     if (!email || !validateEmail(email)) {
       setMessage('Please enter a valid email address');
       return;
@@ -30,16 +34,11 @@ export const useNewsletter = () => {
     }
   };
 
-  const resetMessage = () => {
-    setMessage('');
-  };
-
   return {
     email,
     setEmail,
     isSubscribing,
     message,
-    handleSubscribe,
-    resetMessage
+    handleSubscribe
   };
 };

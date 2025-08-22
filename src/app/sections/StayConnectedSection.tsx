@@ -67,7 +67,7 @@ const InstagramGallarySection = () => {
 
   return (
     <section className="bg-white py-12 md:py-16 md:pt-8">
-      <div className=" max-w-md sm:max-w-lg md:max-w-3xl lg:max-w-6xl mx-auto px-4">
+      <div className=" max-w-md sm:max-w-lg md:max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto px-4">
         {/* Section title */}
         <h2 className="font-quiche text-[32px] text-primary text-center mb-10">
           Stay Connected with Maedric

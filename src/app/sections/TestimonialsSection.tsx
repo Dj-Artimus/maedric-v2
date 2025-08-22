@@ -54,7 +54,7 @@ const TestimonialsSection = () => {
   };
   return (
     <section className="bg-white py-12 md:py-16">
-      <div className="max-w-[100vw] md:max-w-3xl md1:max-w-4xl lg:max-w-5xl xl:max-w-7xl mx-auto px-4">
+      <div className="max-w-[100vw] md:max-w-3xl md1:max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto px-4">
         {/* Section title */}
         <h2 className="font-quiche text-primary text-[36px] md:text-[40px] mb-2 text-center capitalize">
           Experiences to cherish

@@ -80,7 +80,7 @@ const Header: React.FC = () => {
   return (
     <header className={`w-full sticky h-0 top-0 left-0 z-50 backdrop-blur-md`}>
       <div
-        className={`w-full flex mx-auto text-primary justify-between lg:justify-center items-start lg:items-center py-1 px-4 pe-2 sm:px-12 lg:px-4 ${isScrolled ? "lg:gap-[3%] xl:gap-[5%]" : "lg:gap-[20%] xl:gap-[25%] lg:pb-8"} ${mobileMenuOpen ? "h-screen" : ""}  ${isScrolled || (!isScrolled && mobileMenuOpen) ? "bg-white" : "bg-white/40 "}`}
+        className={`w-full flex mx-auto text-primary justify-between lg:justify-center items-start lg:items-center py-1 px-4 pe-2 sm:px-12 lg:px-4 ${isScrolled ? "lg:gap-[3%] xl:gap-[5%]" : "lg:gap-[20%] xl:gap-[25%] lg:pb-11"} ${mobileMenuOpen ? "h-screen" : ""}  ${isScrolled || (!isScrolled && mobileMenuOpen) ? "bg-white" : "bg-white/40 "}`}
       >
         {/* Contact Info */}
         <a
@@ -89,9 +89,7 @@ const Header: React.FC = () => {
           rel="noopener noreferrer"
           className={`${mobileMenuOpen ? "flex" : isScrolled ? "hidden" : "hidden lg:flex"} absolute lg:static top-[90vh] left-1/2 -translate-x-1/2 lg:translate-x-0 flex-row gap-[6px] items-center text-nowrap overflow-visible cursor-pointer group`}
         >
-          <div className="animate-ringing inline-block">
-            <LiaPhoneSolid className="w-[18px] h-[18px] shrink-0 group-hover:text-tertiary" />
-          </div>
+          <LiaPhoneSolid className="w-[18px] h-[18px] shrink-0 group-hover:text-tertiary animate-on-hover" />
           <span className="text-[12px] sm:text-[14px] md:text-[16px] font-figtree font-light text-center uppercase tracking-wide">
             Call or WhatsApp <br className="lg:max-xl:block hidden" /> 65 8343
             3698
@@ -121,7 +119,7 @@ const Header: React.FC = () => {
         )}
 
         <nav
-          className={`${isScrolled ? "" : "absolute top-[87px] left-1/2 -translate-x-1/2"} ${mobileMenuOpen ? "flex transition-all duration-300" : "hidden"} lg:flex`}
+          className={`${isScrolled ? "" : "absolute top-[92px] left-1/2 -translate-x-1/2"} ${mobileMenuOpen ? "flex" : "hidden"} lg:flex`}
         >
           <div
             className={`flex flex-col lg:flex-row lg:justify-between sm:items-center gap-4 lg:gap-8 xl:gap-16 ${mobileMenuOpen ? "flex-col items-start max-sm:w-screen px-4" : "flex-row"}`}

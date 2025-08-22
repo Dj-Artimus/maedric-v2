@@ -21,9 +21,7 @@
 :root {
   --background: #ffffff;
   --foreground: #ffffff;
-}
 
-@theme {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
@@ -200,10 +198,14 @@
 }
 
 .animate-ringing {
-  animation: phoneRinging 3s ease infinite;
+  animation: phoneRinging 3s ease;
   transform-origin: 50% 50%;
   display: inline-block;
-  will-change: transform;
+}
+
+/* Add new class for hover state */
+.group:hover .animate-on-hover {
+  animation: phoneRinging 3s ease infinite;
 }
 
 /* Override NProgress bar color */

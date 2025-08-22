@@ -169,7 +169,7 @@ const Footer: React.FC = () => (
       <div className="border-t-[0.3px] border-neutral/20 pt-6" />
 
       <div className="bg-primary w-full lg:-mt-4 lg:py-2 text-neutral-100 text-sm">
-        <div className="relative w-full mx-auto flex items-center justify-between gap-2 pb-16 sm:pb-10 md:pb-0">
+        <div className="relative w-full mx-auto flex items-center justify-between gap-4 pb-16 sm:pb-10 md:pb-0">
           {/* Left Section: Language and Currency Dropdowns */}
           <div className="flex items-center space-x-2 xs:space-x-4">
             {/* Language Dropdown */}
