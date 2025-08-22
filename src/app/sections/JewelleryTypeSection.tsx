@@ -29,7 +29,7 @@ const JewelleryTypeSection: React.FC = () => {
             <div className="flex flex-row items-stretch gap-1 w-full">
               <button
                 aria-label="Previous"
-                className="featured-prev hidden sm:flex items-center"
+                className="featured-prev-type hidden sm:flex items-center"
               >
                 <SlArrowLeft className="w-5 h-5 sm:w-6 sm:h-6 hover:scale-110 transition-transform text-primary/70" />
               </button>
@@ -44,8 +44,8 @@ const JewelleryTypeSection: React.FC = () => {
                   1280: { slidesPerView: 3.2 },
                 }}
                 navigation={{
-                  prevEl: ".featured-prev",
-                  nextEl: ".featured-next",
+                  prevEl: ".featured-prev-type",
+                  nextEl: ".featured-next-type",
                 }}
               >
                 {jewelleryCategories.map((item) => (
@@ -79,7 +79,7 @@ const JewelleryTypeSection: React.FC = () => {
               </Swiper>
               <button
                 aria-label="Next"
-                className="featured-next hidden sm:flex items-center"
+                className="featured-next-type hidden sm:flex items-center"
               >
                 <SlArrowRight className="w-5 h-5 sm:w-6 sm:h-6 hover:scale-110 transition-transform text-primary/70" />
               </button>

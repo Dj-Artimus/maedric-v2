@@ -36,7 +36,7 @@ const NewsletterSection: React.FC = () => {
               loading={isSubscribing}
               backgroundColor="#051e33"
               fillColor="#ffffff"
-              className="w-[82vw] xs:w-80 sm:w-full shrink-0 text-[16px] font-figtree flex justify-center items-center gap-2 tracking-[2px] sm:tracking-[3px] uppercase text-white hover:text-primary hover:font-semibold hover:bg-opacity-90 px-5 py-3"
+              className="w-[82vw] xs:w-80 sm:w-full text-[16px] font-figtree flex justify-center items-center gap-2 tracking-[2px] sm:tracking-[3px] uppercase text-white hover:text-primary hover:bg-opacity-90 px-5 py-3"
             >
               <span>{isSubscribing ? "Subscribing..." : "Subscribe"}</span>
               <SlArrowRight className="w-3 h-3 sm:w-4 sm:h-4 hover:scale-110 transition-transform" />

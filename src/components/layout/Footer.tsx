@@ -199,35 +199,35 @@ const Footer: React.FC = () => (
           {/* Right Section: Social Media Icons */}
           <div className="flex space-x-2 xs:space-x-4">
             <Link
-              href="#"
+              href="https://www.facebook.com/profile.php?id=61578280781352"
               className="text-neutral hover:text-accent transition duration-150"
               aria-label="Facebook"
             >
               <PiFacebookLogoFill className="h-6 w-6" />
             </Link>
             <Link
-              href="#"
+              href="https://instagram.com/maedric_gems"
               className="text-neutral-200 hover:text-accent transition duration-150"
               aria-label="Instagram"
             >
               <PiInstagramLogoFill className="h-6 w-6" />
             </Link>
             <Link
-              href="#"
+              href="https://www.tiktok.com/@maedric_gems"
               className="text-neutral-200 hover:text-accent transition duration-150"
               aria-label="TikTok"
             >
               <PiTiktokLogoFill className="h-6 w-6" />
             </Link>
             <Link
-              href="#"
+              href="https://www.youtube.com/@Maedric"
               className="text-neutral-200 hover:text-accent transition duration-150"
               aria-label="YouTube"
             >
               <PiYoutubeLogoFill className="h-6 w-6" />
             </Link>
             <Link
-              href="#"
+              href="https://t.me/@Maedric_Gems"
               className="text-neutral-200 hover:text-accent transition duration-150"
               aria-label="Telegram"
             >

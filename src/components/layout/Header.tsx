@@ -131,7 +131,7 @@ const Header: React.FC = () => {
                 key={link.name}
                 href={link.href}
                 role="menuitem"
-                className="flex gap-2 w-full sm:w-fit text-[14px] sm:text-[16px] font-figtree font-light leading-[18px] sm:leading-[20px] tracking-[3px] sm:tracking-[4px] text-center lg:text-left uppercase hover:text-tertiary transition-colors py-2 lg:py-0 border-b lg:border-b-0 group"
+                className="flex gap-2 w-full sm:w-fit text-[14px] sm:text-[15px] font-figtree font-light leading-[18px] sm:leading-[20px] tracking-[3px] sm:tracking-[4px] text-center lg:text-left uppercase hover:text-tertiary transition-colors py-2 lg:py-0 border-b lg:border-b-0 group"
               >
                 <AnimatedUnderline underlineColor="tertiary">
                   {link.name}
