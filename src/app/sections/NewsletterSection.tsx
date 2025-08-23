@@ -46,7 +46,7 @@ const NewsletterSection: React.FC = () => {
               </SlantedFillButton>
             </div>
             {message && (
-              <div className="w-full mt-4 absolute top-16 sm:top-10 left-0">
+              <div className="w-full mt-4 absolute top-20 sm:top-10 left-0">
                 <p
                   className={`text-sm text-center md:text-left ${
                     message.includes("Thank you")
