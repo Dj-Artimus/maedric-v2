@@ -23,7 +23,7 @@ const NewsletterSection: React.FC = () => {
             </p>
           </div>
           <div className="flex flex-col justify-start relative">
-            <div className="flex flex-col md:flex-row items-center gap-2 xs:gap-4 sm:gap-6 md:gap-2 w-fit">
+            <div className="flex flex-col md:flex-row items-center gap-2 xs:gap-4 sm:gap-6 md:gap-2 w-fit pb-4 sm:pb-0">
               <EditText
                 value={email}
                 onValueChange={setEmail}
