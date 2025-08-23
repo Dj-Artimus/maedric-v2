@@ -4,11 +4,11 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
+import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import type { Swiper as SwiperType } from "swiper";
 
 import { COLLECTIONS } from "@/utils/constants";
 
@@ -26,7 +26,7 @@ const CollectionsSection: React.FC = () => {
   };
 
   return (
-    <section className="w-full max-w-sm xs:max-w-md sm:max-w-lg md:max-w-3xl lg:max-w-5xl xl:max-w-6xl xs:max-sm:px-6 px-4 my-6 mt-10 sm:mt-12 md:mt-16 h-full">
+    <section className="w-full max-w-sm xs:max-w-md px-4 md:px-0 sm:max-w-lg md:max-w-3xl lg:max-w-4xl xl:max-w-[1176px] my-6 mt-10 sm:mt-12 md:mt-16 h-full">
       <div className="flex flex-row justify-start items-center w-full">
         {/* Content */}
         <div className="flex-1 relative w-full">
@@ -47,13 +47,13 @@ const CollectionsSection: React.FC = () => {
               <button
                 aria-label="Previous"
                 className={`featured-prev-collection hidden sm:flex items-center ${
-                  isBeginning
-                    ? "opacity-30 cursor-not-allowed"
-                    : "cursor-pointer"
+                  isBeginning ? "opacity-30" : "cursor-pointer"
                 }`}
                 disabled={isBeginning}
               >
-                <SlArrowLeft className={`w-5 h-5 sm:w-6 sm:h-6`} />
+                <SlArrowLeft
+                  className={`w-5 h-5 sm:w-6 sm:h-6 text-primary/70`}
+                />
               </button>
               {/* Jewellery Categories Grid */}
               <Swiper
@@ -102,11 +102,13 @@ const CollectionsSection: React.FC = () => {
               <button
                 aria-label="Next"
                 className={`featured-next-collection hidden sm:flex items-center ${
-                  isEnd ? "opacity-30 cursor-not-allowed" : "cursor-pointer"
+                  isEnd ? "opacity-30" : "cursor-pointer"
                 }`}
                 disabled={isEnd}
               >
-                <SlArrowRight className={`w-5 h-5 sm:w-6 sm:h-6`} />
+                <SlArrowRight
+                  className={`w-5 h-5 sm:w-6 sm:h-6 text-primary/70`}
+                />
               </button>
             </div>
           </div>

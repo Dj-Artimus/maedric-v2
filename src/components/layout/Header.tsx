@@ -89,7 +89,7 @@ const Header: React.FC = () => {
           rel="noopener noreferrer"
           className={`${mobileMenuOpen ? "flex" : isScrolled ? "hidden" : "hidden lg:flex"} absolute lg:static top-[90vh] left-1/2 -translate-x-1/2 lg:translate-x-0 flex-row gap-[6px] items-center text-nowrap overflow-visible cursor-pointer group`}
         >
-          <LiaPhoneSolid className="w-[18px] h-[18px] shrink-0 group-hover:text-tertiary animate-on-hover" />
+          <LiaPhoneSolid className="w-[18px] h-[18px] shrink-0 group-hover:text-tertiary group-hover:rotate-12 transition-transform duration-300" />
           <span className="text-[12px] sm:text-[14px] md:text-[16px] font-figtree font-light text-center uppercase tracking-wide">
             Call or WhatsApp <br className="lg:max-xl:block hidden" /> 65 8343
             3698

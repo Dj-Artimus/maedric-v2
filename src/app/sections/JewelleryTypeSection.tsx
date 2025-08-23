@@ -27,7 +27,7 @@ const JewelleryTypeSection: React.FC = () => {
   };
 
   return (
-    <section className="w-full max-w-sm xs:max-w-md sm:max-w-lg md:max-w-3xl lg:max-w-5xl xl:max-w-6xl mt-[34px] xs:max-sm:px-6 px-4">
+    <section className="w-full max-w-sm xs:max-w-md px-4 md:px-0 sm:max-w-lg md:max-w-3xl lg:max-w-4xl xl:max-w-[1176px] mt-[34px]">
       <div className="flex flex-row justify-start items-center w-full">
         {/* Content */}
         <div className="flex-1 relative w-full">
@@ -43,7 +43,7 @@ const JewelleryTypeSection: React.FC = () => {
                 aria-label="Previous"
                 className={`featured-prev-type hidden sm:flex items-center ${
                   isBeginning
-                    ? "opacity-30 cursor-not-allowed"
+                    ? "opacity-30"
                     : "cursor-pointer"
                 }`}
                 disabled={isBeginning}
@@ -99,7 +99,7 @@ const JewelleryTypeSection: React.FC = () => {
               <button
                 aria-label="Next"
                 className={`featured-next-type hidden sm:flex items-center ${
-                  isEnd ? "opacity-30 cursor-not-allowed" : "cursor-pointer"
+                  isEnd ? "opacity-30" : "cursor-pointer"
                 }`}
                 disabled={isEnd}
               >
