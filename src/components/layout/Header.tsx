@@ -80,7 +80,7 @@ const Header: React.FC = () => {
   return (
     <header className={`w-full sticky h-0 top-0 left-0 z-50 backdrop-blur-md`}>
       <div
-        className={`w-full flex mx-auto text-primary justify-between lg:justify-center items-start lg:items-center py-1 px-4 pe-2 sm:px-12 lg:px-4 ${isScrolled ? "lg:gap-[3%] xl:gap-[5%]" : "lg:gap-[20%] xl:gap-[25%] lg:pb-11"} ${mobileMenuOpen ? "h-screen" : ""}  ${isScrolled || (!isScrolled && mobileMenuOpen) ? "bg-white" : "bg-white/40 "}`}
+        className={`w-full flex mx-auto text-primary justify-between lg:justify-center items-start lg:items-center py-1 px-4 pe-2 sm:px-12 lg:px-4 ${isScrolled ? "lg:gap-[3%] xl:gap-[5%]" : "lg:gap-[20%] xl:gap-[25%] lg:pb-8"} ${mobileMenuOpen ? "h-screen" : ""}  ${isScrolled || (!isScrolled && mobileMenuOpen) ? "bg-white" : "bg-white/40 "}`}
       >
         {/* Contact Info */}
         <a
@@ -103,10 +103,10 @@ const Header: React.FC = () => {
           className={`flex flex-col justify-center items-center cursor-pointer transition-all duration-300 ${!isScrolled && "lg:ms-[-3.5%] xl:ms-[-10%]"}`}
           onClick={handleClick}
         >
-          <span className="text-[28px] sm:text-[40px] lg:text-[48px] leading-none font-cinzel font-normal">
+          <span className="text-[28px] sm:text-[40px] lg:text-[44px] leading-none font-cinzel font-normal">
             MAEDRIC
           </span>
-          <span className="text-[10px] sm:text-[14px] lg:text-[17px] font-cinzel font-normal tracking-[1px]">
+          <span className="text-[10px] sm:text-[14px] lg:text-[15px] font-cinzel font-normal tracking-[1px]">
             Gemstones & Jewellery
           </span>
         </Link>
@@ -114,12 +114,12 @@ const Header: React.FC = () => {
         {/* Divider Line */}
         {!isScrolled && (
           <div
-            className={`${!isScrolled ? "hidden lg:block absolute top-20 left-0" : "hidden"} w-full h-[1px] bg-white/50`}
+            className={`${!isScrolled ? "hidden lg:block absolute top-[74px] left-0" : "hidden"} w-full h-[1px] bg-white/50`}
           ></div>
         )}
 
         <nav
-          className={`${isScrolled ? "" : "absolute top-[92px] left-1/2 -translate-x-1/2"} ${mobileMenuOpen ? "flex" : "hidden"} lg:flex`}
+          className={`${isScrolled ? "" : "absolute top-[78px] left-1/2 -translate-x-1/2"} ${mobileMenuOpen ? "flex" : "hidden"} lg:flex`}
         >
           <div
             className={`flex flex-col lg:flex-row lg:justify-between sm:items-center gap-4 lg:gap-8 xl:gap-16 ${mobileMenuOpen ? "flex-col items-start max-sm:w-screen px-4" : "flex-row"}`}

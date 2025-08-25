@@ -22,8 +22,8 @@ const FeaturedCardsSection: React.FC = () => {
   ];
 
   return (
-    <section className="w-full xs:max-w-md sm:max-w-xl md:max-w-2xl md1:max-w-4xl lg:max-w-5xl xl:max-w-[1166px] mx-auto my-4 xs:my-9 px-4 sm:px-6">
-      <div className="flex flex-col md1:flex-row gap-[24px] w-full">
+    <section className="w-full xs:max-w-md sm:max-w-xl md:max-w-2xl md1:max-w-4xl lg:max-w-5xl xl:max-w-[1168px] mx-auto my-4 xs:my-9 px-4 sm:px-6">
+      <div className="flex flex-col md1:flex-row gap-[24px] w-full px-1.5 xl:px-0">
         {/* Card */}
         {featuredCards.map((card, index) => (
           <div

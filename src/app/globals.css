@@ -18,6 +18,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Process Swiper Scrollbar Styles */
+.process-swiper .swiper-scrollbar {
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.process-swiper .swiper-scrollbar-drag {
+  background-color: #d2ae6d;
+  border-radius: 4px;
+  height: 4px;
+  margin-top: -1px;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #ffffff;

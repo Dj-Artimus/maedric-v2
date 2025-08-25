@@ -11,7 +11,7 @@ import JewelleryTypeSection from "./sections/JewelleryTypeSection";
 import NewsletterSection from "./sections/NewsletterSection";
 import PopularProductsSection from "./sections/PopularProductsSection";
 import ProcessSection from "./sections/ProcessSection";
-import StayConnectedSection from "./sections/StayConnectedSection";
+import InstagramGallarySection from "./sections/InstagramGallarySection;";
 import TestimonialsSection from "./sections/TestimonialsSection";
 
 const HomePage: React.FC = () => {
@@ -77,7 +77,7 @@ const HomePage: React.FC = () => {
       <FounderAndContactSection />
 
       {/* Stay Connected Section */}
-      <StayConnectedSection />
+      <InstagramGallarySection />
 
       {/* Newsletter Section */}
       <NewsletterSection />

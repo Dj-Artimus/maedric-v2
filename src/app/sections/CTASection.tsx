@@ -3,7 +3,7 @@ import React from "react";
 
 const CTASection: React.FC = () => {
   return (
-    <section className="relative w-full lg:max-w-4xl xl:max-w-6xl px-4 py-6 lg:py-16 lg:px-32 text-center border-y">
+    <section className="relative w-full lg:max-w-4xl xl:max-w-6xl px-4 py-6 lg:px-32 text-center border-y">
       <div className=" mx-auto flex flex-col items-center gap-10 z-20">
         {/* Banner Content */}
         <div className=" text-center">
@@ -25,10 +25,12 @@ const CTASection: React.FC = () => {
               aria-label="Request a quote"
               rel="noopener noreferrer"
               className="w-full sm:w-[50%] py-3 text-[12px] lg:text-[16px] border text-black hover:text-white border-black rounded-[2px] transition-all duration-300 font-figtree text-center uppercase tracking-[4px] slanted-fill-btn"
-              style={{
-                "--bg-color": "transparent",
-                "--fill-color": "#051e33",
-              } as React.CSSProperties & Record<string, string>}
+              style={
+                {
+                  "--bg-color": "transparent",
+                  "--fill-color": "#051e33",
+                } as React.CSSProperties & Record<string, string>
+              }
             >
               <span className="z-10 hover:text-white">Request A Quote!</span>
             </Link>
@@ -37,10 +39,12 @@ const CTASection: React.FC = () => {
               aria-label="Request a quote"
               rel="noopener noreferrer"
               className="w-full sm:w-[50%] py-3 text-[12px] lg:text-[16px] border text-white border-accent rounded-[2px] transition-all duration-300 font-figtree text-center uppercase tracking-[4px] slanted-fill-btn"
-              style={{
-                "--bg-color": "#d2ae6d",
-                "--fill-color": "#051e33",
-              } as React.CSSProperties & Record<string, string>}
+              style={
+                {
+                  "--bg-color": "#d2ae6d",
+                  "--fill-color": "#051e33",
+                } as React.CSSProperties & Record<string, string>
+              }
             >
               <span className="z-10 hover:text-white">
                 Discover Our Legacy!

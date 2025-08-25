@@ -1,6 +1,8 @@
 "use client";
 import Image from "next/image";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
+
+// Swiper scrollbar styles are in globals.css
 
 import AnimatedUnderline from "@/components/ui/AnimatedUnderline";
 import SlantedFillButton from "@/components/ui/SlantedFillButton";
@@ -17,9 +19,32 @@ const ProcessSection: React.FC = () => {
   const processSteps = PROCESS_STEPS;
   const swiperRef = useRef<SwiperClass | null>(null);
 
+  // State for active image index
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+
+  // Images for each process step
+  const processImages = [
+    "/images/processImg.png",
+    "/images/collection1.png",
+    "/images/collection2.png",
+    "/images/collection3.png",
+    "/images/collection4.png",
+    "/images/featureCTA_Img1.png",
+  ];
+
+  // Handle hover for desktop with smooth transition
+  const handleStepHover = (index: number) => {
+    setActiveImageIndex(index);
+  };
+
+  // Reset to default image when not hovering any step
+  const handleMouseLeave = () => {
+    setActiveImageIndex(0);
+  };
+
   return (
     <section className="w-full md:max-w-4xl lg:max-w-6xl mx-auto px-4 sm:px-6 mt-[62px]">
-      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-14 lg:max-h-[590px] overflow-hidden">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-14 lg:max-h-[650px] overflow-hidden">
         {/* Left Content */}
         <div className="flex flex-col gap-[40px] justify-start items-center w-full">
           <div className="flex flex-col gap-5 justify-start items-center w-full px-[24px]">
@@ -43,23 +68,42 @@ const ProcessSection: React.FC = () => {
           </div>
           <div className="flex flex-col justify-start items-center w-full bg-white sm:px-12">
             <div className="xs:max-w-sm sm:max-w-lg md:max-w-xl lg:max-w-3xl w-full overflow-hidden shadow-[0px_0px_12px_#0000003f]">
-              <Image
-                src="/images/processImg.png"
-                alt="process"
-                width={600}
-                height={500}
-                loading="lazy"
-                className="w-full mx-auto aspect-square sm:aspect-[4/3] max-w-[600px] h-auto object-cover object-center  hover:scale-110 transition-all duration-1000"
-              />
+              <div
+                className="relative w-full overflow-hidden"
+                style={{ minHeight: "400px" }}
+              >
+                {/* Stack all images with absolute positioning */}
+                {processImages.map((image, index) => (
+                  <div
+                    key={image}
+                    className="absolute inset-0 w-full h-full transition-opacity duration-500 ease-in-out"
+                    style={{
+                      opacity: activeImageIndex === index ? 1 : 0,
+                      zIndex: activeImageIndex === index ? 20 : 10 - index,
+                    }}
+                  >
+                    <Image
+                      src={image}
+                      alt={`process step ${index + 1}`}
+                      priority={index === 0} // Prioritize loading the first image
+                      fill
+                      sizes="(max-width: 768px) 100vw, 600px"
+                      className="object-cover object-center hover:scale-110 transition-all duration-700 ease-in-out"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
         {/* Right Content - Process Steps */}
-        <div className="lg:max-h-[56%] hidden sm:flex flex-col justify-center mx-auto lg:justify-start items-center xs:max-w-sm sm:max-w-md md:max-w-xl md1:max-w-2xl lg:w-full sm:divide-y divide-black/20 overflow-auto scrollbar-thin">
-          {processSteps.map((step) => (
+        <div className="lg:max-h-[77%] hidden sm:flex flex-col justify-center mx-auto lg:justify-start items-center xs:max-w-sm sm:max-w-md md:max-w-xl md1:max-w-2xl lg:w-full sm:divide-y divide-black/20 overflow-auto scrollbar-thin">
+          {processSteps.map((step, index) => (
             <div
               key={step.number}
               className="flex flex-col gap-6 text-wrap shrink-0 w-full py-4 group"
+              onMouseEnter={() => handleStepHover(index)}
+              onMouseLeave={handleMouseLeave}
             >
               <div className="flex flex-row gap-[14px] justify-start items-start w-full">
                 <div className="flex flex-col justify-center items-center w-[56px] mt-[6px]">
@@ -75,7 +119,7 @@ const ProcessSection: React.FC = () => {
                       {step.title}
                     </AnimatedUnderline>
                   </h3>
-                  <p className="text-[16px] md:text-[18px] font-figtree font-normal leading-[22px] sm:leading-[26px] md:leading-[28px] text-left text-black/70 w-full">
+                  <p className="text-[16px] font-figtree font-normal text-left text-black/70 w-full">
                     {step.description}
                   </p>
                 </div>
@@ -86,18 +130,6 @@ const ProcessSection: React.FC = () => {
 
         {/* Mobile Swiper for Process Steps (visible only below sm breakpoint) */}
         <div className="sm:hidden w-full overflow-hidden process-swiper">
-          <style jsx global>{`
-            .process-swiper .swiper-scrollbar {
-              height: 2px;
-              background-color: rgba(0, 0, 0, 0.1);
-            }
-            .process-swiper .swiper-scrollbar-drag {
-              background-color: #d2ae6d;
-              border-radius: 4px;
-              height: 4px;
-              margin-top: -1px;
-            }
-          `}</style>
           <Swiper
             modules={[FreeMode, Scrollbar]}
             spaceBetween={20}
@@ -111,6 +143,9 @@ const ProcessSection: React.FC = () => {
             className="w-full scrollbar-thin"
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
+            }}
+            onSlideChange={(swiper) => {
+              setActiveImageIndex(swiper.activeIndex);
             }}
           >
             {processSteps.map((step) => (

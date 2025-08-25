@@ -26,7 +26,7 @@ const CollectionsSection: React.FC = () => {
   };
 
   return (
-    <section className="w-full max-w-sm xs:max-w-md px-4 md:px-0 sm:max-w-lg md:max-w-3xl lg:max-w-4xl xl:max-w-[1176px] my-6 mt-10 sm:mt-12 md:mt-16 h-full">
+    <section className="w-full max-w-sm xs:max-w-md px-4 md:px-0 sm:max-w-xl md:max-w-2xl md1:max-w-4xl lg:max-w-5xl xl:max-w-[1176px] my-6 mt-10 sm:mt-12 md:mt-16 h-full">
       <div className="flex flex-row justify-start items-center w-full">
         {/* Content */}
         <div className="flex-1 relative w-full">
@@ -88,12 +88,12 @@ const CollectionsSection: React.FC = () => {
                         />
                       </div>
                       <div className="flex flex-row justify-between sm:justify-between items-center w-full">
-                        <h3 className="text-[25px] font-figtree font-normal leading-[30px] sm:leading-[34px] text-left text-black/60 self-end">
+                        <h3 className="text-[20px] font-figtree font-normal leading-[30px] sm:leading-[34px] text-left text-black/60 self-end">
                           <AnimatedUnderline underlineColor="accent">
                             {item.name}
                           </AnimatedUnderline>
                         </h3>
-                        <HiArrowLongRight className="w-9 h-9 hover:scale-110 transition-transform text-primary/70 group-hover:animate-pulse" />
+                        <HiArrowLongRight className="w-7 h-7 hover:scale-110 transition-transform text-primary/70 group-hover:animate-pulse" />
                       </div>
                     </div>
                   </SwiperSlide>
