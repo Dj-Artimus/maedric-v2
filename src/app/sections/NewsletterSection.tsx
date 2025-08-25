@@ -23,7 +23,7 @@ const NewsletterSection: React.FC = () => {
             </p>
           </div>
           <div className="flex flex-col justify-start relative">
-            <div className="flex flex-col md:flex-row items-center gap-2 xs:gap-4 sm:gap-6 md:gap-2 w-fit">
+            <div className="flex flex-col md:flex-row items-center gap-2 xs:gap-4 sm:gap-6 md:gap-2 w-fit pb-4 sm:pb-0">
               <EditText
                 value={email}
                 onValueChange={setEmail}
@@ -46,7 +46,7 @@ const NewsletterSection: React.FC = () => {
               </SlantedFillButton>
             </div>
             {message && (
-              <div className="w-full mt-4 absolute top-10 left-0">
+              <div className="w-full mt-4 absolute top-24 sm:top-10 left-0">
                 <p
                   className={`text-sm text-center md:text-left ${
                     message.includes("Thank you")
