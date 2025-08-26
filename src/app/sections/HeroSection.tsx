@@ -21,11 +21,11 @@ const HeroSection: React.FC = () => {
       {/* Hero Content */}
       <div className="absolute w-full lg:w-[78%] bottom-0 left-1/2 -translate-x-1/2 inset-0 flex flex-col justify-center items-center px-4 md:px-12 lg:px-0 pt-16 pb-8 sm:pt-20 sm:pb-12 md:pb-16 xl:pb-24 overflow-visible">
         <div className="flex flex-col md:flex-row gap-[36px] items-center justify-between md:items-end w-full h-screen">
-          <div className="flex flex-col items-center text-center md:text-start md:items-start w-full xl:w-[65%] gap-2 sm:gap-0">
-            <h1 className="text-[40px] sm:text-[48px] md:text-[56px] font-quiche font-light leading-[44px] sm:leading-[56px] md:leading-[72px] text-white w-full sm:w-[80%] lg:w-[72%] xl:w-[60%]">
+          <div className="flex flex-col items-center text-center md:text-start md:items-start w-full xl:w-[65%] xl:ms-8 gap-2 sm:gap-0">
+            <h1 className="text-[40px] sm:text-[48px] md:text-[52px] font-quiche font-light leading-[44px] sm:leading-[56px] md:leading-[72px] text-white w-full sm:w-[80%] lg:w-[72%] xl:w-[60%]">
               Your Dream Jewellery, One Click Away
             </h1>
-            <p className="text-[22px] md:text-[26px] font-figtree font-normal leading-[24px] sm:leading-[28px] md:leading-[32px] text-white w-full md:w-[60%] xl:w-[50%] group">
+            <p className="text-[22px] font-figtree font-normal text-white w-full md:w-[60%] xl:w-[45%] group">
               <AnimatedUnderline underlineColor="accent">
                 Designed by artisans, made for your moments
               </AnimatedUnderline>
