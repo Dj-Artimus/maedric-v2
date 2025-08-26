@@ -1,6 +1,7 @@
 "use client";
 import AnimatedUnderline from "@/components/ui/AnimatedUnderline";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
@@ -77,27 +78,29 @@ const PopularProductsSection: React.FC = () => {
               >
                 {popularProducts.map((item) => (
                   <SwiperSlide key={item.id}>
-                    <div
-                      className={`flex flex-col gap-[30px] h-fit items-center xs:min-w-[300px] sm:min-w-[350px] md:min-w-[310px] border border-[#d2ae6d] p-[22px] sm:p-5 group`}
-                    >
-                      <div className="flex flex-col justify-start items-center w-full bg-black overflow-hidden">
-                        <Image
-                          src={item.image}
-                          alt={item.name}
-                          width={200}
-                          height={260}
-                          className="w-full aspect-[3/4] object-cover group-hover:scale-110 transition-transform duration-1000 ease-in-out"
-                        />
+                    <Link href={`/product/${item.id}`} className="cursor-pointer">
+                      <div
+                        className={`flex flex-col gap-[30px] h-fit items-center xs:min-w-[300px] sm:min-w-[350px] md:min-w-[310px] border border-[#d2ae6d] p-[22px] sm:p-5 group`}
+                      >
+                        <div className="flex flex-col justify-start items-center w-full bg-black overflow-hidden">
+                          <Image
+                            src={item.image}
+                            alt={item.name}
+                            width={200}
+                            height={260}
+                            className="w-full aspect-[3/4] object-cover group-hover:scale-110 transition-transform duration-1000 ease-in-out"
+                          />
+                        </div>
+                        <div className="flex flex-row justify-between sm:justify-between items-center w-full mb-2">
+                          <h3 className="text-[20px] font-figtree font-normal text-left text-black/60 self-end">
+                            <AnimatedUnderline underlineColor="accent">
+                              {item.name}
+                            </AnimatedUnderline>
+                          </h3>
+                          <HiArrowLongRight className="w-7 h-7 hover:scale-110 transition-transform text-primary/70 group-hover:animate-pulse" />
+                        </div>
                       </div>
-                      <div className="flex flex-row justify-between sm:justify-between items-center w-full mb-2">
-                        <h3 className="text-[20px] font-figtree font-normal text-left text-black/60 self-end">
-                          <AnimatedUnderline underlineColor="accent">
-                            {item.name}
-                          </AnimatedUnderline>
-                        </h3>
-                        <HiArrowLongRight className="w-7 h-7 hover:scale-110 transition-transform text-primary/70 group-hover:animate-pulse" />
-                      </div>
-                    </div>
+                    </Link>
                   </SwiperSlide>
                 ))}
               </Swiper>
