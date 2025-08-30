@@ -43,10 +43,10 @@ export const COLLECTIONS: CollectionItem[] = [
 
 // Popular products data
 export const POPULAR_PRODUCTS: ProductItem[] = [
-  { id: '1', name: 'Product Name', description: 'Placeholder text goes here', image: '/images/popularJewellery1.png' },
-  { id: '2', name: 'Product Name', description: 'Placeholder text goes here', image: '/images/popularJewellery2.png' },
-  { id: '3', name: 'Product Name', description: 'Placeholder text goes here', image: '/images/popularJewellery3.png' },
-  { id: '4', name: 'Product Name', description: 'Placeholder text goes here', image: '/images/popularJewellery4.png' }
+  { id: '1', name: 'Product Name', description: 'This 0.90ct Pigeonblood Red Ruby ring has a spread of diamonds that enhances its firey nature, creating a ring that echoes the feel of a blazing sun.', image: '/images/popularJewellery1.png' },
+  { id: '2', name: 'Product Name', description: 'This 2.44ct Zambian Emerald ring is a real blingy showstopper to take to weddings or fancy events. The large diamonds complement the Emerald for a stunning package.', image: '/images/popularJewellery2.png' },
+  { id: '3', name: 'Product Name', description: 'This natural fancy yellow unheated Sapphire ring makes a good piece to wear on a dinner night out with friends. The stones excellent proportions and cut gives it a great luster.', image: '/images/popularJewellery3.png' },
+  { id: '4', name: 'Product Name', description: 'This flower design silver and CZ ring makes a lovely piece for daily wear', image: '/images/popularJewellery4.png' }
 ];
 
 // Process steps data

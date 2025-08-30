@@ -116,7 +116,7 @@ const TestimonialsSection = () => {
                   {/* Quote and client info */}
                   <div className=" w-full md:max-w-sm lg:max-w-xl text-center md:text-left md:px-4 mt-5 pb-1">
                     {/* Client quote */}
-                    <div className="font-figtree text-secondary text-[16px] lg:text-[20px] mb-6 leading-relaxed text-left sm:text-justify md:ps-24 lg:ps-24 xl:ps-32 md:pe-0">
+                    <div className="font-figtree text-secondary text-[16px] mb-6 leading-relaxed text-left sm:text-justify md:ps-24 md:pe-0">
                       <div className="relative">
                         <p
                           className={`${expandedQuotes.includes(idx) ? "" : "sm:line-clamp-none line-clamp-3"} relative`}
@@ -157,7 +157,7 @@ const TestimonialsSection = () => {
                       </div>
                     </div>
                     {/* Client name and location with animated underline */}
-                    <div className="font-figtree text-primary font-semibold text-[28px] md:text-[30px] text-center sm:text-end">
+                    <div className="font-figtree text-primary font-semibold text-[18px] text-center sm:text-end">
                       <AnimatedUnderline underlineColor="accent">
                         {item.name}, {item.location}
                       </AnimatedUnderline>

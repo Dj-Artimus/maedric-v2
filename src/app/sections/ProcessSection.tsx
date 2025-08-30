@@ -97,7 +97,7 @@ const ProcessSection: React.FC = () => {
           </div>
         </div>
         {/* Right Content - Process Steps */}
-        <div className="lg:max-h-[77%] hidden sm:flex flex-col justify-center mx-auto lg:justify-start items-center xs:max-w-sm sm:max-w-md md:max-w-xl md1:max-w-2xl lg:w-full sm:divide-y divide-black/20 overflow-auto scrollbar-thin">
+        <div className="lg:max-h-[85%] hidden sm:flex flex-col justify-center mx-auto lg:justify-start items-center xs:max-w-sm sm:max-w-md md:max-w-xl md1:max-w-2xl lg:w-full sm:divide-y divide-black/20 overflow-auto scrollbar-thin">
           {processSteps.map((step, index) => (
             <div
               key={step.number}
@@ -107,19 +107,19 @@ const ProcessSection: React.FC = () => {
             >
               <div className="flex flex-row gap-[14px] justify-start items-start w-full">
                 <div className="flex flex-col justify-center items-center w-[56px] mt-[6px]">
-                  <div className="w-[56px] h-[56px] border border-tertiary text-tertiary rounded-full flex items-center justify-center group-hover:bg-accent group-hover:border-primary group-hover:text-primary transition-all duration-300">
-                    <span className="text-[18px] sm:text-[20px] font-figtree font-semibold leading-[22px] sm:leading-[24px] text-center">
+                  <div className="w-[46px] h-[46px] border border-tertiary text-tertiary rounded-full flex items-center justify-center group-hover:bg-accent group-hover:border-primary group-hover:text-primary transition-all duration-300">
+                    <span className="text-[18px] font-figtree font-semibold leading-[22px] sm:leading-[24px] text-center">
                       {step.number}
                     </span>
                   </div>
                 </div>
                 <div className="flex flex-col gap-1.5 justify-start items-start self-center flex-1">
-                  <h3 className="text-[18px] md:text-[20px] font-figtree font-medium leading-[22px] sm:leading-[25px] md:leading-[27px] text-left text-primary">
+                  <h3 className="text-[18px] font-figtree font-[500] leading-[22px] text-left text-primary">
                     <AnimatedUnderline underlineColor="accent">
                       {step.title}
                     </AnimatedUnderline>
                   </h3>
-                  <p className="text-[16px] font-figtree font-normal text-left text-black/70 w-full">
+                  <p className="text-[15px] font-figtree font-normal text-left text-black/70 w-full">
                     {step.description}
                   </p>
                 </div>

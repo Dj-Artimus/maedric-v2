@@ -8,23 +8,23 @@ const CTASection: React.FC = () => {
         {/* Banner Content */}
         <div className=" text-center">
           {/* Main heading */}
-          <h2 className="mb-4 px-8 font-quiche text-primary text-[36px] md:text-[40px] capitalize">
+          <h2 className="mb-4 px-8 font-quiche text-primary text-[36px] capitalize">
             Looking for something truly one-of-a-kind?
           </h2>
 
           {/* Description text */}
-          <p className=" font-figtree text-primary/60 text-[16px] lg:text-[20px] mb-6">
+          <p className=" font-figtree text-primary/60 text-[18px] mb-6">
             Let us source rare gemstones or craft bespoke pieces tailored just
             for you.
           </p>
 
           {/* CTA Buttons */}
-          <div className="relative w-full mx-auto flex flex-col items-center sm:flex-row gap-4 mt-6 max-w-2xl px-4">
+          <div className="relative w-full mx-auto flex flex-col items-center justify-center sm:flex-row gap-4 mt-6 max-w-2xl px-4">
             <Link
               href="#"
               aria-label="Request a quote"
               rel="noopener noreferrer"
-              className="w-full sm:w-[50%] py-3 text-[12px] lg:text-[16px] border text-black hover:text-white border-black rounded-[2px] transition-all duration-300 font-figtree text-center uppercase tracking-[4px] slanted-fill-btn"
+              className="w-full sm:w-[35%] py-2 text-[14px] border text-black hover:text-white border-black rounded-[2px] transition-all duration-300 font-figtree text-center uppercase tracking-[1px] slanted-fill-btn"
               style={
                 {
                   "--bg-color": "transparent",
@@ -38,7 +38,7 @@ const CTASection: React.FC = () => {
               href="#"
               aria-label="Request a quote"
               rel="noopener noreferrer"
-              className="w-full sm:w-[50%] py-3 text-[12px] lg:text-[16px] border text-white border-accent rounded-[2px] transition-all duration-300 font-figtree text-center uppercase tracking-[4px] slanted-fill-btn"
+              className="w-full sm:w-[35%] py-2 text-[14px] border text-white border-accent rounded-[2px] transition-all duration-300 font-figtree text-center uppercase tracking-[1px] slanted-fill-btn"
               style={
                 {
                   "--bg-color": "#d2ae6d",

@@ -7,7 +7,7 @@ const FounderAndContactSection: React.FC = () => (
   <section className="bg-white py-12 md:py-16 w-full border-y">
     <div className="lg:max-w-5xl xl:max-w-6xl mx-auto xs:max-sm:px-6 px-4">
       {/* Top Heading and Tabs */}
-      <div className="mb-8">
+      <div className="mb-11">
         {/* Main heading */}
         <h2 className="font-quiche text-[36px] md:text-[40px] text-primary text-center mb-2">
           Let Us Begin Your Jewellery, Your Way

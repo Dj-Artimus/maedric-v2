@@ -27,7 +27,7 @@ const PopularProductsSection: React.FC = () => {
   };
 
   return (
-    <section className="w-full max-w-sm xs:max-w-md px-4 md:px-0 sm:max-w-xl md:max-w-2xl md1:max-w-4xl lg:max-w-5xl xl:max-w-[1176px] my-4 xs:mt-0 sm:mt-4 mb-8 xs:mb-14">
+    <section className="w-full max-w-sm xs:max-w-md px-4 md:px-0 sm:max-w-xl md:max-w-3xl md1:max-w-4xl lg:max-w-5xl xl:max-w-[1176px] my-4 xs:mt-0 sm:mt-4 mb-8 xs:mb-14">
       <div className="flex flex-row justify-start items-center w-full">
         {/* Content */}
         <div className="flex-1 relative w-full">
@@ -80,7 +80,7 @@ const PopularProductsSection: React.FC = () => {
                   <SwiperSlide key={item.id}>
                     <Link href={`/product/${item.id}`} className="cursor-pointer">
                       <div
-                        className={`flex flex-col gap-[30px] h-fit items-center xs:min-w-[300px] sm:min-w-[350px] md:min-w-[310px] border border-[#d2ae6d] p-[22px] sm:p-5 group`}
+                        className={`flex flex-col gap-[10px] h-fit items-center xs:min-w-[300px] sm:min-w-[350px] md:min-w-[310px] border border-[#d2ae6d] p-[22px] sm:p-5 group`}
                       >
                         <div className="flex flex-col justify-start items-center w-full bg-black overflow-hidden">
                           <Image
@@ -99,6 +99,9 @@ const PopularProductsSection: React.FC = () => {
                           </h3>
                           <HiArrowLongRight className="w-7 h-7 hover:scale-110 transition-transform text-primary/70 group-hover:animate-pulse" />
                         </div>
+                        <p className="text-[15px] font-figtree font-normal text-left text-primary/60 line-clamp-2 -mt-4">
+                          {item.description}
+                        </p>
                       </div>
                     </Link>
                   </SwiperSlide>

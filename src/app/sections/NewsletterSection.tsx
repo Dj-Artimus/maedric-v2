@@ -11,13 +11,13 @@ const NewsletterSection: React.FC = () => {
 
   return (
     <section className="w-full -mb-16">
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="bg-accent flex flex-col gap-5 lg:gap-0 lg:flex-row justify-between items-center w-full py-6 xs:py-8 px-6 transition-all duration-1000">
+      <div className="sm:max-w-xl md:max-w-2xl md1:max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto px-6 lg:px-4">
+        <div className="bg-accent flex flex-col gap-5 lg:gap-0 lg:flex-row justify-between items-center w-full py-6 pb-8 lg:pb-0 px-6 transition-all duration-1000">
           <div className="flex flex-col xs:max-lg:justify-center justify-start xs:max-lg:items-center items-start w-full mb-[6px]">
             <h2 className="text-[36px] font-quiche font-normal leading-[45px] text-center lg:text-left capitalize text-primary">
               Newsletter
             </h2>
-            <p className="w-full text-[20px] font-figtree font-normal leading-[24px] xs:max-lg:text-center text-primary">
+            <p className="w-full text-[15px] font-figtree font-normal leading-[24px] xs:max-lg:text-center text-primary">
               Be the first to discover new collections, stories, and exclusive
               offers.
             </p>

@@ -40,7 +40,7 @@ const contactLinks = [
  */
 const Footer: React.FC = () => (
   <footer className="bg-primary text-neutral pt-24 pb-6">
-    <div className="max-w-md sm:max-w-xl md:max-w-full md:w-full lg:max-w-7xl mx-auto px-4">
+    <div className="sm:max-w-xl md:max-w-2xl md1:max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto px-6 lg:px-4">
       <div className="lg:block grid grid-cols-1 md:gap-12 items-end-safe md:max-lg:px-8 ">
         {/* Upper sections: About, Explore, Contact, Newsletter */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 lg:gap-16 mb-4 md:mb-8">
@@ -49,16 +49,15 @@ const Footer: React.FC = () => (
             {/* Logo and Tagline */}
             <div className={`transition-all duration-300 flex flex-col mb-5`}>
               <span
-                className={`font-cinzel font-normal text-[29px]
-              text-headerText leading-none select-none tracking-[0]`}
+                className={`font-cinzel font-normal text-[28px] sm:text-[42px] text-headerText leading-none select-none tracking-[0]`}
               >
                 MAEDRIC
               </span>
-              <span className="font-cinzel font-normal text-[9px] text-headerText uppercase tracking-[0.12em] select-none">
+              <span className="font-cinzel font-normal text-[10px] sm:text-[15px] text-headerText uppercase tracking-[0.12em] select-none">
                 Gemstones & Jewellery
               </span>
             </div>
-            <p className="font-figtree text-[16px] text-neutral/80 lg:text-justify leading-5">
+            <p className="font-figtree text-[15px] text-neutral/80 lg:text-justify leading-5">
               At Maedric, we aim to make the beauty of coloured gemstones more
               accessible, inviting new collectors and jewellery lovers to
               appreciate true quality and craftsmanship.
@@ -69,7 +68,7 @@ const Footer: React.FC = () => (
             <h4 className="font-quiche text-accent font-semibold text-[20px] py-1 md:-ms-6 mb-3 border-b-[0.5px] border-neutral w-fit">
               Explore
             </h4>
-            <ul className="font-figtree text-[16px] text-neutral/50 space-y-3.5">
+            <ul className="font-figtree text-[15px] text-neutral/50 space-y-2.5">
               {exploreLinks.map((link) => (
                 <li
                   key={link.name}
@@ -88,7 +87,7 @@ const Footer: React.FC = () => (
             <h4 className="font-quiche text-accent font-semibold text-[20px] py-1 ms-2 mb-3 border-b-[0.5px] border-neutral w-fit">
               Contact
             </h4>
-            <ul className="font-figtree text-[16px] text-neutral/50 space-y-3.5">
+            <ul className="font-figtree text-[15px] text-neutral/50 space-y-2.5">
               {contactLinks.map((link) => (
                 <li
                   key={link.name}
