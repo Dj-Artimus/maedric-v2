@@ -97,7 +97,7 @@ const ProcessSection: React.FC = () => {
           </div>
         </div>
         {/* Right Content - Process Steps */}
-        <div className="lg:max-h-[85%] hidden sm:flex flex-col justify-center mx-auto lg:justify-start items-center xs:max-w-sm sm:max-w-md md:max-w-xl md1:max-w-2xl lg:w-full sm:divide-y divide-black/20 overflow-auto scrollbar-thin">
+        <div className="lg:max-h-[82%] hidden sm:flex flex-col justify-center mx-auto lg:justify-start items-center xs:max-w-sm sm:max-w-md md:max-w-xl md1:max-w-2xl lg:w-full sm:divide-y divide-black/20 overflow-auto scrollbar-thin">
           {processSteps.map((step, index) => (
             <div
               key={step.number}

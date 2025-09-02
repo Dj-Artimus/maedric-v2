@@ -80,7 +80,7 @@ const Header: React.FC = () => {
   return (
     <header className={`w-full sticky h-0 top-0 left-0 z-50 backdrop-blur-md`}>
       <div
-        className={`w-full flex mx-auto text-primary justify-between lg:justify-center items-start lg:items-center py-1 px-4 pe-2 sm:px-12 lg:px-4 ${isScrolled ? "lg:gap-[6%] xl:gap-[10%]" : "lg:gap-[20%] xl:gap-[25%] lg:pb-9"} ${mobileMenuOpen ? "h-screen" : ""}  ${isScrolled || (!isScrolled && mobileMenuOpen) ? "bg-white" : " hover:bg-white transition-colors duration-700"}`}
+        className={`w-full flex mx-auto text-primary justify-between lg:justify-center items-start lg:items-center py-1 px-4 pe-2 sm:px-12 lg:px-4 ${isScrolled ? "lg:gap-[6%] xl:gap-[10%]" : "lg:gap-[20%] xl:gap-[27.6%] lg:pb-10"} ${mobileMenuOpen ? "h-screen" : ""}  ${isScrolled || (!isScrolled && mobileMenuOpen) ? "bg-white" : " hover:bg-white transition-colors duration-700"}`}
       >
         {/* Contact Info */}
         <a
@@ -89,9 +89,9 @@ const Header: React.FC = () => {
           rel="noopener noreferrer"
           className={`${mobileMenuOpen ? "flex" : isScrolled ? "hidden" : "hidden lg:flex"} absolute lg:static top-[90vh] left-1/2 -translate-x-1/2 lg:translate-x-0 flex-row gap-[6px] items-center text-nowrap overflow-visible cursor-pointer group`}
         >
-          <LiaPhoneSolid className="w-[16px] h-[16px] shrink-0 group-hover:text-tertiary group-hover:rotate-12 transition-transform duration-300" />
+          <LiaPhoneSolid className="w-[16px] h-[16px] shrink-0 group-hover:text-tertiary group-hover:rotate-12 transition-transform duration-300 font-[0]" />
           <span className="text-[12px] sm:text-[14px] font-figtree font-light text-center uppercase tracking-wide">
-            Call or WhatsApp <br className="lg:max-xl:block hidden" /> 65 8343
+            Call or WhatsApp <br className="lg:max-xl:block hidden" /> +65 8343
             3698
           </span>
         </a>
@@ -100,7 +100,7 @@ const Header: React.FC = () => {
         <Link
           href="/"
           aria-label="Logo"
-          className={`flex flex-col justify-center items-center cursor-pointer transition-all duration-700 ${!isScrolled && "lg:ms-[-3.5%] xl:ms-[-9%]"}`}
+          className={`flex flex-col justify-center items-center cursor-pointer transition-all duration-700 ${!isScrolled && "lg:ms-[-3.5%] xl:ms-[-9.6%]"}`}
           onClick={handleClick}
         >
           <span className="text-[28px] sm:text-[42px] leading-none font-cinzel font-normal">
@@ -119,7 +119,7 @@ const Header: React.FC = () => {
         )}
 
         <nav
-          className={`${isScrolled ? "" : "absolute top-[78px] left-1/2 -translate-x-1/2"} ${mobileMenuOpen ? "flex" : "hidden"} lg:flex`}
+          className={`${isScrolled ? "" : "absolute top-[81px] left-1/2 -translate-x-1/2"} ${mobileMenuOpen ? "flex" : "hidden"} lg:flex`}
         >
           <div
             className={`flex flex-col lg:flex-row lg:justify-between sm:items-center gap-4 lg:gap-8 ${mobileMenuOpen ? "flex-col items-start max-sm:w-screen px-4" : "flex-row"}`}
@@ -129,9 +129,9 @@ const Header: React.FC = () => {
                 key={link.name}
                 href={link.href}
                 role="menuitem"
-                className="flex gap-2 w-full sm:w-fit text-[15px] font-figtree font-normal text-center lg:text-left uppercase hover:text-tertiary transition-colors py-2 lg:py-0 border-b lg:border-b-0 group"
+                className="flex gap-2 w-full sm:w-fit text-[14px] font-figtree font-[0] text-center lg:text-left uppercase transition-colors py-2 lg:py-0 border-b lg:border-b-0 group"
               >
-                <AnimatedUnderline underlineColor="tertiary">
+                <AnimatedUnderline underlineColor="black">
                   <span className="tracking-[3px] sm:tracking-widest">
                     {link.name}
                   </span>

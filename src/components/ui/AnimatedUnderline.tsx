@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 /**
  * --------------------------------------------------------
@@ -55,7 +55,10 @@ interface AnimatedUnderlineProps {
   underlineColor?: string;
 }
 
-const AnimatedUnderline = ({ children, underlineColor = "primary" }: AnimatedUnderlineProps) => {
+const AnimatedUnderline = ({
+  children,
+  underlineColor = "primary",
+}: AnimatedUnderlineProps) => {
   return (
     <span
       className={`
