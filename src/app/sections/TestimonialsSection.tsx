@@ -1,3 +1,14 @@
+/**
+ * --------------------------------------------------------
+ * ✏️ Author: DjArtimus
+ * 📅 Created: 12-08-2025 - 04-09-2025
+ *
+ * 📌 Description:
+ *   Displays client testimonials in an interactive slider format
+ *   with customer photos, jewelry images, and feedback quotes.
+ * --------------------------------------------------------
+ */
+
 "use client";
 
 import "swiper/css";
@@ -34,19 +45,23 @@ const testimonials = [
 ];
 
 /**
- * TestimonialsSection
+ * TestimonialsSection Component
  *
- * Renders a testimonials section with client photos, jewellery images, and quotes.
- * Features a Swiper carousel for navigation between testimonials with responsive design.
+ * Displays customer testimonials with profile images, purchased jewelry
+ * photos, and expandable feedback quotes in a carousel format.
  *
- * @returns {JSX.Element} The testimonials section with client feedback display.
- *
- * @example
- * <TestimonialsSection />
+ * @returns {JSX.Element} Testimonials showcase section
  */
 const TestimonialsSection = () => {
+  /**
+   * State to track expanded testimonial quotes
+   */
   const [expandedQuotes, setExpandedQuotes] = useState<number[]>([]);
 
+  /**
+   * Toggles the expansion state of a testimonial quote
+   * @param {number} index - Index of the quote to toggle
+   */
   const toggleQuote = (index: number) => {
     setExpandedQuotes((prev) =>
       prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
@@ -182,3 +197,11 @@ const TestimonialsSection = () => {
 };
 
 export default TestimonialsSection;
+
+/**
+ * 📌 Notes:
+ * - Features responsive testimonial cards
+ * - Implements expandable quotes on mobile
+ * - Uses Swiper for smooth transitions
+ * - Includes hover animations
+ */

@@ -1,3 +1,13 @@
+/**
+ * --------------------------------------------------------
+ * ✏️ Author: DjArtimus
+ * 📅 Created: 12-08-2025 - 04-09-2025
+ *
+ * 📌 Description:
+ *   Main footer component with navigation sections, payment methods,
+ *   social media links, and language/currency selectors.
+ * --------------------------------------------------------
+ */
 import Image from "next/image";
 import Link from "next/link";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
@@ -10,9 +20,10 @@ import {
   PiWallet,
   PiYoutubeLogoFill,
 } from "react-icons/pi";
-// import AnimatedUnderline from "../ui/AnimatedUnderline";
 
-// Explore section links
+/**
+ * Navigation links for the Explore section
+ */
 const exploreLinks = [
   { name: "Gemstones", href: "/gemstones" },
   { name: "Jewellery", href: "/jewellery" },
@@ -20,7 +31,9 @@ const exploreLinks = [
   { name: "Services", href: "/services" },
 ];
 
-// Contact section links
+/**
+ * Navigation links for the Contact section
+ */
 const contactLinks = [
   { name: "Contact Us", href: "/contact" },
   { name: "About Us", href: "/about" },
@@ -29,14 +42,17 @@ const contactLinks = [
 ];
 
 /**
- * Footer
+ * Footer Component
  *
- * Renders the main site footer with navigation, contact, newsletter, and social links.
+ * Renders the main site footer with multiple sections:
+ * - About section with logo and company description
+ * - Explore section with main navigation links
+ * - Contact section with support and policy links
+ * - Payment methods display
+ * - Language and currency selectors
+ * - Social media links
  *
- * @returns {JSX.Element} The footer component for the Maedric site.
- *
- * @example
- * <Footer />
+ * @returns {JSX.Element} Footer component
  */
 const Footer: React.FC = () => (
   <footer className="bg-primary text-neutral pt-24 pb-6">
@@ -238,5 +254,15 @@ const Footer: React.FC = () => (
     </div>
   </footer>
 );
+
+
+
+/**
+ * 📌 Notes:
+ * - Features responsive grid layout
+ * - Implements hover animations
+ * - Displays supported payment methods
+ * - Includes social media integration
+ */
 
 export default Footer;

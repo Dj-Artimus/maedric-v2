@@ -1,8 +1,47 @@
+/**
+ * --------------------------------------------------------
+ * ✏️ Author: DjArtimus
+ * 📅 Created: 12-08-2025 - 04-09-2025
+ *
+ * 📌 Description:
+ *   A customizable text input component that supports various styles, validation states,
+ *   and input types including multiline text areas.
+ * --------------------------------------------------------
+ */
+
 "use client";
 import React from "react";
 
+/**
+ * VariantType
+ * 
+ * Defines the visual style variants available for the EditText component.
+ * @type {('outlined' | 'filled' | 'standard')}
+ */
 type VariantType = 'outlined' | 'filled' | 'standard';
 
+/**
+ * EditTextProps Interface
+ * 
+ * @interface EditTextProps
+ * @property {string} value - Current value of the input
+ * @property {(value: string) => void} onValueChange - Handler function for value changes
+ * @property {string} [placeholder] - Placeholder text when input is empty
+ * @property {string} [type] - HTML input type (e.g., 'text', 'email', 'password')
+ * @property {boolean} [disabled] - Whether the input is disabled
+ * @property {boolean} [required] - Whether the input is required
+ * @property {string} [className] - Additional CSS classes
+ * @property {string} [label] - Label text for the input
+ * @property {boolean} [error] - Whether the input has an error state
+ * @property {string} [helperText] - Helper or error text to display below input
+ * @property {VariantType} [variant] - Visual style variant
+ * @property {boolean} [fullWidth] - Whether input should take full width
+ * @property {boolean} [multiline] - Whether input should be a multiline textarea
+ * @property {number} [rows] - Number of rows for multiline textarea
+ * @property {number} [maxLength] - Maximum character length
+ * @property {boolean} [autoFocus] - Whether input should auto-focus
+ * @property {boolean} [readOnly] - Whether input is read-only
+ */
 export interface EditTextProps {
   value: string;
   onValueChange: (value: string) => void;
@@ -23,6 +62,28 @@ export interface EditTextProps {
   readOnly?: boolean;
 }
 
+/**
+ * EditText Component
+ * 
+ * A customizable text input component that supports various styles, validation states,
+ * and input types including multiline text areas.
+ * 
+ * @param {EditTextProps & React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement>} props - Component props
+ * @returns {JSX.Element} Rendered EditText component
+ * 
+ * @example
+ * // Basic usage
+ * <EditText value={email} onValueChange={setEmail} placeholder="Enter email" />
+ * 
+ * @example
+ * // With validation
+ * <EditText 
+ *   value={email} 
+ *   onValueChange={setEmail} 
+ *   error={!isValidEmail} 
+ *   helperText="Please enter a valid email"
+ * />
+ */
 const EditText: React.FC<
   EditTextProps & React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement>
 > = ({

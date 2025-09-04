@@ -1,4 +1,16 @@
+/**
+ * --------------------------------------------------------
+ * ✏️ Author: DjArtimus
+ * 📅 Created: 12-08-2025 - 04-09-2025
+ *
+ * 📌 Description:
+ *   Showcases popular jewelry products in a responsive slider
+ *   with product details, pricing, and quick navigation.
+ * --------------------------------------------------------
+ */
+
 "use client";
+
 import AnimatedUnderline from "@/components/ui/AnimatedUnderline";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,8 +25,19 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import { POPULAR_PRODUCTS } from "@/utils/constants";
 
+/**
+ * Type definition for Swiper instance
+ */
 type SwiperInstance = SwiperType;
 
+/**
+ * PopularProductsSection Component
+ *
+ * Displays a curated selection of popular jewelry products
+ * with product images, descriptions, and interactive elements.
+ *
+ * @returns {JSX.Element} Popular products showcase section
+ */
 const PopularProductsSection: React.FC = () => {
   // Popular products data
   const popularProducts = POPULAR_PRODUCTS;
@@ -78,7 +101,10 @@ const PopularProductsSection: React.FC = () => {
               >
                 {popularProducts.map((item) => (
                   <SwiperSlide key={item.id}>
-                    <Link href={`/product/${item.id}`} className="cursor-pointer">
+                    <Link
+                      href={`/product/${item.id}`}
+                      className="cursor-pointer"
+                    >
                       <div
                         className={`flex flex-col gap-[10px] h-fit items-center xs:min-w-[300px] sm:min-w-[350px] md:min-w-[310px] border border-[#d2ae6d] p-[22px] sm:p-5 group`}
                       >
@@ -127,5 +153,13 @@ const PopularProductsSection: React.FC = () => {
     </section>
   );
 };
+
+/**
+ * 📌 Notes:
+ * - Uses Swiper for product carousel
+ * - Features responsive product cards
+ * - Implements hover animations
+ * - Includes line-clamp for descriptions
+ */
 
 export default PopularProductsSection;

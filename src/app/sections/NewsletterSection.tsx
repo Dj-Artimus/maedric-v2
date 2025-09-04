@@ -1,10 +1,32 @@
+/**
+ * --------------------------------------------------------
+ * ✏️ Author: DjArtimus
+ * 📅 Created: 12-08-2025 - 04-09-2025
+ *
+ * 📌 Description:
+ *   Newsletter section component that allows users to subscribe
+ *   to Maedric's newsletter for updates and exclusive offers.
+ * --------------------------------------------------------
+ */
+
 "use client";
+
 import EditText from "@/components/ui/EditText";
 import SlantedFillButton from "@/components/ui/SlantedFillButton";
 import { useNewsletter } from "@/hooks/useNewsletter";
-import React from "react";
 import { SlArrowRight } from "react-icons/sl";
 
+/**
+ * NewsletterSection
+ *
+ * Renders a newsletter subscription section with email input and subscribe button.
+ * Handles form submission and displays subscription status.
+ *
+ * @returns {JSX.Element} Newsletter section with subscription form
+ *
+ * @example
+ * <NewsletterSection />
+ */
 const NewsletterSection: React.FC = () => {
   const { email, setEmail, isSubscribing, message, handleSubscribe } =
     useNewsletter();

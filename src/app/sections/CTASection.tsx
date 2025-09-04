@@ -1,6 +1,27 @@
+/**
+ * --------------------------------------------------------
+ * ✏️ Author: DjArtimus
+ * 📅 Created: 12-08-2025 - 04-09-2025
+ *
+ * 📌 Description:
+ *   A call-to-action section that encourages users to request quotes or
+ *   discover more about the brand's legacy.
+ * --------------------------------------------------------
+ */
+
 import Link from "next/link";
 import React from "react";
 
+/**
+ * CTASection
+ *
+ * Renders a call-to-action section with heading and action buttons.
+ *
+ * @returns {JSX.Element} The CTA section component
+ *
+ * @example
+ * <CTASection />
+ */
 const CTASection: React.FC = () => {
   return (
     <section className="relative w-full lg:max-w-4xl xl:max-w-6xl px-4 py-6 lg:px-32 text-center border-y">

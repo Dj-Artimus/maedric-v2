@@ -1,6 +1,30 @@
+/**
+ * --------------------------------------------------------
+ * ✏️ Author: Maedric Team
+ * 📅 Created: July 2025
+ *
+ * 📌 Description:
+ *   A versatile Button component with various styles, sizes, and states including loading.
+ * --------------------------------------------------------
+ */
+
 'use client';
 import React from 'react';
 
+/**
+ * ButtonProps Interface
+ * 
+ * @interface ButtonProps
+ * @property {React.ReactNode} children - Content to be displayed inside the button
+ * @property {() => void} [onClick] - Function to be called when button is clicked
+ * @property {'primary' | 'secondary' | 'outline' | 'ghost' | 'danger'} [variant='primary'] - Visual style variant
+ * @property {'xs' | 'sm' | 'md' | 'lg' | 'xl'} [size='md'] - Size of the button
+ * @property {boolean} [disabled=false] - Whether the button is disabled
+ * @property {'button' | 'submit' | 'reset'} [type='button'] - HTML button type
+ * @property {string} [className=''] - Additional CSS classes
+ * @property {boolean} [fullWidth=false] - Whether button should take full width
+ * @property {boolean} [loading=false] - Whether to show loading state
+ */
 interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
@@ -13,6 +37,26 @@ interface ButtonProps {
   loading?: boolean;
 }
 
+/**
+ * Button Component
+ * 
+ * A versatile button component with various styles, sizes, and states.
+ * 
+ * @param {ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>} props - Button properties
+ * @returns {JSX.Element} Rendered Button component
+ * 
+ * @example
+ * // Primary button
+ * <Button>Click Me</Button>
+ * 
+ * @example
+ * // Disabled secondary button
+ * <Button variant="secondary" disabled>Disabled</Button>
+ * 
+ * @example
+ * // Loading button with full width
+ * <Button loading fullWidth>Processing...</Button>
+ */
 const Button: React.FC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = ({ 
   children, 
   onClick, 
@@ -25,6 +69,7 @@ const Button: React.FC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElemen
   loading = false,
   ...props
 }) => {
+  // Style variants mapping
   const variants = {
     primary: 'bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 focus:ring-blue-500',
     secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300 active:bg-gray-400 focus:ring-gray-300',
@@ -48,7 +93,13 @@ const Button: React.FC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElemen
   // Responsive focus ring
   const responsiveFocus = 'focus:ring-2 sm:focus:ring-2 md:focus:ring-4';
 
-  // Loading spinner component
+  /**
+   * LoadingSpinner Component
+   * 
+   * Renders an animated spinner for loading state
+   * 
+   * @returns {JSX.Element} SVG spinner animation
+   */
   const LoadingSpinner = () => (
     <svg 
       className="animate-spin h-4 w-4 sm:h-5 sm:w-5 mr-2 sm:mr-3" 

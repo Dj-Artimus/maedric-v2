@@ -1,15 +1,41 @@
+/**
+ * --------------------------------------------------------
+ * ✏️ Author: DjArtimus
+ * 📅 Created: 12-08-2025 - 04-09-2025
+ *
+ * 📌 Description:
+ *   Displays featured jewelry collections in card format with
+ *   hover animations and gradient overlays for visual appeal.
+ * --------------------------------------------------------
+ */
+
 "use client";
-// import AnimatedUnderline from "@/components/ui/AnimatedUnderline";
+
 import Image from "next/image";
 import React from "react";
 import { HiArrowLongRight } from "react-icons/hi2";
+// import AnimatedUnderline from "@/components/ui/AnimatedUnderline";
 
+/**
+ * Interface defining the structure of a featured card
+ */
+interface FeaturedCard {
+  title: string;
+  bgImage: string;
+}
+
+/**
+ * FeaturedCardsSection Component
+ *
+ * Renders a section of featured cards with hover effects
+ * and responsive image loading.
+ *
+ * @returns {JSX.Element} Featured cards showcase section
+ *
+ * @example
+ * <FeaturedCardsSection />
+ */
 const FeaturedCardsSection: React.FC = () => {
-  interface FeaturedCard {
-    title: string;
-    bgImage: string;
-  }
-
   const featuredCards: FeaturedCard[] = [
     {
       title: "Rare Gems. Remarkable Stories.",
@@ -40,7 +66,7 @@ const FeaturedCardsSection: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary flex flex-row justify-between items-end p-[20px] sm:p-[40px]">
                 <h3 className="text-[20px] sm:text-[24px] md:text-[28px] font-quiche font-normal leading-[24px] sm:leading-[28px] md:leading-[32px] text-left capitalize text-white w-[65%] mt-[348px]">
                   {/* <AnimatedUnderline underlineColor="accent"> */}
-                    {card.title}
+                  {card.title}
                   {/* </AnimatedUnderline> */}
                 </h3>
                 <div className="flex flex-row justify-end items-center py-[6px] group-hover:animate-pulse">
@@ -54,5 +80,12 @@ const FeaturedCardsSection: React.FC = () => {
     </section>
   );
 };
+
+/**
+ * 📌 Notes:
+ * - Features hover animations on cards
+ * - Implements gradient overlays
+ * - Uses responsive image loading
+ */
 
 export default FeaturedCardsSection;

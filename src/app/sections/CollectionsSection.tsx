@@ -1,4 +1,16 @@
+/**
+ * --------------------------------------------------------
+ * ✏️ Author: DjArtimus
+ * 📅 Created: 12-08-2025 - 04-09-2025
+ *
+ * 📌 Description:
+ *   Displays curated jewelry collections in a responsive slider
+ *   format with custom navigation and interactive hover effects.
+ * --------------------------------------------------------
+ */
+
 "use client";
+
 import AnimatedUnderline from "@/components/ui/AnimatedUnderline";
 import Image from "next/image";
 import React, { useState } from "react";
@@ -12,8 +24,19 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import { COLLECTIONS } from "@/utils/constants";
 
+/**
+ * Type alias for Swiper instance
+ */
 type SwiperInstance = SwiperType;
 
+/**
+ * CollectionsSection Component
+ *
+ * Showcases featured jewelry collections with image sliders,
+ * navigation controls, and descriptive text.
+ *
+ * @returns {JSX.Element} Collections showcase section
+ */
 const CollectionsSection: React.FC = () => {
   // Collections data
   const collections = COLLECTIONS;
@@ -119,3 +142,10 @@ const CollectionsSection: React.FC = () => {
 };
 
 export default CollectionsSection;
+
+/**
+ * 📌 Notes:
+ * - Implements Swiper for smooth transitions
+ * - Features responsive card layouts
+ * - Uses hover animations for interactions
+ */

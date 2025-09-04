@@ -1,9 +1,30 @@
+/**
+ * --------------------------------------------------------
+ * ✏️ Author: DjArtimus
+ * 📅 Created: 12-08-2025 - 04-09-2025
+ *
+ * 📌 Description:
+ *   Hero section component that displays a full-screen video background with
+ *   overlaid content and call-to-action button.
+ * --------------------------------------------------------
+ */
+
 "use client";
 import AnimatedUnderline from "@/components/ui/AnimatedUnderline";
 import HorizontalFillButton from "@/components/ui/HorizontalFillButton";
 import React from "react";
 import { HiArrowLongRight } from "react-icons/hi2";
 
+/**
+ * HeroSection
+ *
+ * Renders the main hero section with video background and call-to-action.
+ *
+ * @returns {JSX.Element} The hero section component
+ *
+ * @example
+ * <HeroSection />
+ */
 const HeroSection: React.FC = () => {
   return (
     <section className="w-full h-[85vh] md:h-[90vh] lg:h-[100vh] bg-primary/60 flex flex-col md:flex-row items-center justify-start relative scroll-smooth overflow-visible ">

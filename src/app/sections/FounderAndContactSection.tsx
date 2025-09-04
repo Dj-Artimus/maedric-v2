@@ -1,8 +1,32 @@
+/**
+ * --------------------------------------------------------
+ * ✏️ Author: DjArtimus
+ * 📅 Created: 12-08-2025 - 04-09-2025
+ *
+ * 📌 Description:
+ *   Combines founder introduction and contact information in a
+ *   visually appealing section with dynamic image loading.
+ * --------------------------------------------------------
+ */
+
+"use client";
+
 import AnimatedUnderline from "@/components/ui/AnimatedUnderline";
 import SlantedFillButton from "@/components/ui/SlantedFillButton";
 import Image from "next/image";
 import React from "react";
 
+/**
+ * FounderAndContactSection Component
+ *
+ * Displays founder's story alongside contact information
+ * with responsive layout and call-to-action buttons.
+ *
+ * @returns {JSX.Element} Founder and contact information section
+ *
+ * @example
+ * <FounderAndContactSection />
+ */
 const FounderAndContactSection: React.FC = () => (
   <section className="bg-white py-12 md:py-16 w-full border-y">
     <div className="lg:max-w-5xl xl:max-w-6xl mx-auto xs:max-sm:px-6 px-4">
@@ -114,5 +138,12 @@ const FounderAndContactSection: React.FC = () => (
     </div>
   </section>
 );
+
+/**
+ * 📌 Notes:
+ * - Features responsive image loading
+ * - Implements interactive contact buttons
+ * - Uses grid layout for different screen sizes
+ */
 
 export default FounderAndContactSection;

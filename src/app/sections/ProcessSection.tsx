@@ -1,4 +1,17 @@
+/**
+ * --------------------------------------------------------
+ * ✏️ Author: DjArtimus
+ * 📅 Created: 12-08-2025 - 04-09-2025
+ *
+ * 📌 Description:
+ *   Showcases Maedric's jewelry creation process through an
+ *   interactive slider with step-by-step explanations and
+ *   animated image transitions.
+ * --------------------------------------------------------
+ */
+
 "use client";
+
 import Image from "next/image";
 import React, { useRef, useState } from "react";
 
@@ -14,15 +27,25 @@ import "swiper/css/scrollbar";
 import { FreeMode, Scrollbar } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+/**
+ * ProcessSection Component
+ *
+ * Displays the jewelry creation process with interactive steps,
+ * animated images, and responsive layouts for mobile and desktop.
+ *
+ * @returns {JSX.Element} Process section with interactive steps
+ */
 const ProcessSection: React.FC = () => {
-  // Process steps data
+  /**
+   * Process data and state management
+   */
   const processSteps = PROCESS_STEPS;
   const swiperRef = useRef<SwiperClass | null>(null);
-
-  // State for active image index
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
-  // Images for each process step
+  /**
+   * Array of process step images with transitions
+   */
   const processImages = [
     "/images/processImg.png",
     "/images/collection1.png",
@@ -32,12 +55,17 @@ const ProcessSection: React.FC = () => {
     "/images/featureCTA_Img1.png",
   ];
 
-  // Handle hover for desktop with smooth transition
+  /**
+   * Handles hover state for desktop view
+   * @param {number} index - Index of hovered step
+   */
   const handleStepHover = (index: number) => {
     setActiveImageIndex(index);
   };
 
-  // Reset to default image when not hovering any step
+  /**
+   * Resets image to default state
+   */
   const handleMouseLeave = () => {
     setActiveImageIndex(0);
   };
@@ -179,5 +207,13 @@ const ProcessSection: React.FC = () => {
     </section>
   );
 };
+
+/**
+ * 📌 Notes:
+ * - Features hover-triggered image transitions
+ * - Implements mobile-specific swiper navigation
+ * - Uses custom scrollbar styling
+ * - Supports responsive layouts
+ */
 
 export default ProcessSection;

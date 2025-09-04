@@ -1,3 +1,14 @@
+/**
+ * --------------------------------------------------------
+ * ✏️ Author: DjArtimus
+ * 📅 Created: 12-08-2025 - 04-09-2025
+ *
+ * 📌 Description:
+ *   Main navigation header component with responsive design,
+ *   mobile menu support, and scroll-based styling.
+ * --------------------------------------------------------
+ */
+
 "use client";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -9,7 +20,9 @@ import { LiaPhoneSolid } from "react-icons/lia";
 import { PiHeart, PiShoppingCartSimple, PiUser } from "react-icons/pi";
 import AnimatedUnderline from "../ui/AnimatedUnderline";
 
-// Navigation links for the header
+/**
+ * Navigation links for the header
+ */
 const navLinks = [
   { name: "About", href: "/about" },
   { name: "Jewellery", href: "/jewellery" },
@@ -18,6 +31,10 @@ const navLinks = [
   { name: "Contact", href: "/contact" },
 ];
 
+/**
+ * Custom hook for managing body scroll lock
+ * @param {boolean} lock - Whether to lock body scroll
+ */
 function useBodyScrollLock(lock = false) {
   const scrollY = useRef(0);
 
@@ -50,6 +67,14 @@ function useBodyScrollLock(lock = false) {
   }, [lock]);
 }
 
+/**
+ * Header Component
+ *
+ * Main navigation component with responsive design and
+ * mobile menu functionality.
+ *
+ * @returns {JSX.Element} Header navigation component
+ */
 const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false); // To track scrolling
@@ -190,3 +215,10 @@ const Header: React.FC = () => {
 };
 
 export default Header;
+
+/**
+ * 📌 Notes:
+ * - Features responsive mobile menu
+ * - Implements scroll-based styling
+ * - Uses animated underline effects
+ */

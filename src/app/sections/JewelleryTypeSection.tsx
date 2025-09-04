@@ -1,19 +1,41 @@
+/**
+ * --------------------------------------------------------
+ * ✏️ Author: DjArtimus
+ * 📅 Created: 12-08-2025 - 04-09-2025
+ *
+ * 📌 Description:
+ *   A showcase section displaying different jewelry categories
+ *   in a responsive slider format with navigation controls.
+ * --------------------------------------------------------
+ */
+
 "use client";
+
 import AnimatedUnderline from "@/components/ui/AnimatedUnderline";
 import { JEWELLERY_CATEGORIES } from "@/utils/constants";
 import Image from "next/image";
 import React, { useState } from "react";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
+import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import type { Swiper as SwiperType } from "swiper";
 
-
+/**
+ * Type definition for Swiper instance
+ */
 type SwiperInstance = SwiperType;
 
+/**
+ * JewelleryTypeSection Component
+ *
+ * Displays a scrollable grid of jewelry categories with
+ * navigation arrows and hover effects.
+ *
+ * @returns {JSX.Element} Jewelry categories section
+ */
 const JewelleryTypeSection: React.FC = () => {
   // Jewellery categories data
   const jewelleryCategories = JEWELLERY_CATEGORIES;
@@ -42,9 +64,7 @@ const JewelleryTypeSection: React.FC = () => {
               <button
                 aria-label="Previous"
                 className={`featured-prev-type hidden sm:flex items-center ${
-                  isBeginning
-                    ? "opacity-30"
-                    : "cursor-pointer"
+                  isBeginning ? "opacity-30" : "cursor-pointer"
                 }`}
                 disabled={isBeginning}
               >
@@ -114,3 +134,10 @@ const JewelleryTypeSection: React.FC = () => {
 };
 
 export default JewelleryTypeSection;
+
+/**
+ * 📌 Notes:
+ * - Uses Swiper for category navigation
+ * - Features responsive breakpoints
+ * - Implements hover animations
+ */

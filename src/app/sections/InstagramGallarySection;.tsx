@@ -1,3 +1,14 @@
+/**
+ * --------------------------------------------------------
+ * ✏️ Author: DjArtimus
+ * 📅 Created: 12-08-2025 - 04-09-2025
+ *
+ * 📌 Description:
+ *   A responsive Instagram-style gallery section that displays jewellery images
+ *   with hover effects and a "Follow Us" call-to-action.
+ * --------------------------------------------------------
+ */
+
 "use client";
 
 import AnimatedUnderline from "@/components/ui/AnimatedUnderline";
