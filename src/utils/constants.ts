@@ -26,7 +26,7 @@ export interface ProcessStep {
 
 // Jewellery categories data
 export const JEWELLERY_CATEGORIES: JewelleryItem[] = [
-  { id: '1', name: 'Ring', image: '/images/jewelleryTypeRing.png' },
+  { id: '1', name: 'Rings', image: '/images/jewelleryTypeRing.png' },
   { id: '2', name: 'Earrings', image: '/images/jewelleryTypeEarrings.png' },
   { id: '3', name: 'Necklace', image: '/images/jewelleryTypeNecklace.png' },
   { id: '4', name: 'Bracelet', image: '/images/jewelleryTypeBracelet.png' },
