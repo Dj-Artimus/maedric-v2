@@ -13,6 +13,7 @@
 
 import AnimatedUnderline from "@/components/ui/AnimatedUnderline";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
@@ -97,6 +98,7 @@ const CollectionsSection: React.FC = () => {
               >
                 {collections.map((item) => (
                   <SwiperSlide key={item.id}>
+                    <Link href={`/${item.name.toLowerCase().replace(/\s+/g, '-')}`} className="cursor-pointer">
                     <div
                       className={`flex flex-col gap-2 h-fit items-center xs:min-w-[300px] sm:min-w-[350px] md:min-w-[310px] border border-[#d2ae6d] p-5 pb-3 group`}
                     >
@@ -118,7 +120,7 @@ const CollectionsSection: React.FC = () => {
                         </h3>
                         <HiArrowLongRight className="w-7 h-7 hover:scale-110 transition-transform text-primary/70 group-hover:animate-pulse" />
                       </div>
-                    </div>
+                    </div></Link>
                   </SwiperSlide>
                 ))}
               </Swiper>

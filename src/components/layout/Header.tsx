@@ -105,7 +105,7 @@ const Header: React.FC = () => {
   return (
     <header className={`w-full sticky h-0 top-0 left-0 z-50 backdrop-blur-md`}>
       <div
-        className={`w-full flex mx-auto text-primary justify-between lg:justify-center items-start lg:items-center py-1 px-4 pe-2 sm:px-12 lg:px-4 ${isScrolled ? "lg:gap-[6%] xl:gap-[10%]" : "lg:gap-[20%] xl:gap-[27.6%] lg:pb-10"} ${mobileMenuOpen ? "h-screen" : ""}  ${isScrolled || (!isScrolled && mobileMenuOpen) ? "bg-white" : " hover:bg-white transition-colors duration-700"}`}
+        className={`w-full flex mx-auto text-primary justify-between lg:justify-center items-start lg:items-center py-1 px-4 pe-2 sm:px-12 lg:px-4 ${isScrolled ? "lg:gap-[6%] xl:gap-[14%]" : "lg:gap-[20%] xl:gap-[27.6%] lg:pb-10"} ${mobileMenuOpen ? "h-screen" : ""}  ${isScrolled || (!isScrolled && mobileMenuOpen) ? "bg-white" : " hover:bg-white transition-colors duration-700"}`}
       >
         {/* Contact Info */}
         <a
