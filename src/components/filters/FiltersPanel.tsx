@@ -79,7 +79,7 @@ export const FiltersPanel: React.FC<FiltersPanelProps> = ({ totalResults }) => {
           {/* Reset All */}
           <button
             onClick={resetAllFilters}
-            className="flex items-center gap-1   font-figtree font-medium text-text-secondary hover: "
+            className="flex items-center gap-1 font-figtree font-medium text-secondary hover: "
           >
             Reset All
             <RotateCcw className="w-4 h-4" />

@@ -31,7 +31,7 @@ export const FilterMetalType = () => {
           onClick={resetMetalTypeFilter}
           className="p-1 hover:bg-filter-bg rounded"
         >
-          <RotateCcw className="w-4 h-4 text-muted-foreground" />
+          <RotateCcw className="w-4 h-4 text-secondary" />
         </button>
       </div>
 

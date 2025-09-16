@@ -60,7 +60,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         {/* Favorite Icon */}
         <button
           onClick={() => setIsFavorited(!isFavorited)}
-          className="absolute top-2 right-2 p-2.5 rounded-full hover:text-primary hover:bg-white/40 shadow-inner shadow-white transition-colors"
+          className="absolute top-2 right-2 p-2.5 rounded-full text-secondary hover:text-primary hover:bg-white/40 shadow-inner shadow-white transition-colors"
         >
           {isFavorited ? (
             <IoMdHeart className={`w-6 h-6 transition-colors text-accent`} />
@@ -72,10 +72,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
       {/* Product Info */}
       <div className="">
-        <h3 className="font-figtree font-medium text-sec line-clamp-1">
+        <h3 className="font-figtree text-secondary font-medium line-clamp-1">
           {product.name}
         </h3>
-        <p className="text-sm font-figtree line-clamp-2">
+        <p className="text-sm text-secondary font-figtree line-clamp-2">
           {product.description}
         </p>
 
@@ -86,7 +86,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               SGD {product.price.toLocaleString()}
             </span>
             {product.originalPrice && (
-              <span className="font-figtree text-sm text-muted-foreground line-through">
+              <span className="font-figtree text-sm text-secondary line-through">
                 SGD {product.originalPrice.toLocaleString()}
               </span>
             )}

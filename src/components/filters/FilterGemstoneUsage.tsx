@@ -30,7 +30,7 @@ export const FilterGemstoneUsage = () => {
           onClick={resetGemstoneFilter}
           className="p-1 hover:bg-filter-bg rounded"
         >
-          <RotateCcw className="w-4 h-4 text-muted-foreground" />
+          <RotateCcw className="w-4 h-4 text-secondary" />
         </button>
       </div>
 
@@ -50,10 +50,10 @@ export const FilterGemstoneUsage = () => {
               `}
             >
               {gemstoneUsage.includes(gemstone.id) && (
-                <Check className="w-4 h-4 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+                <Check className="w-4 h-4 text-primary/80 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
               )}
             </button>
-            <span className="text-xs font-figtree text-text-primary text-center">
+            <span className="text-xs font-figtree text-primary text-center">
               {gemstone.label}
             </span>
           </div>
