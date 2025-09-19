@@ -4,6 +4,23 @@ import { useState } from "react";
 
 export const FilterRingSize = () => {
   const { ringSize, setRingSize, resetRingSizeFilter } = useFiltersStore();
+  const [isResetFilterAnimating, setIsResetFilterAnimating] = useState(false);
+
+  // Handle animation for reset all button
+  const resetFilter = () => {
+    // Trigger your filter reset logic here
+    console.log("Resetting all filters");
+
+    resetRingSizeFilter();
+
+    // Trigger the animation by setting isAnimating to true
+    setIsResetFilterAnimating(true);
+
+    // Remove the animation class after 1 sec (duration of the animation)
+    setTimeout(() => {
+      setIsResetFilterAnimating(false);
+    }, 1000); // Match the duration in your CSS
+  };
 
   const sizes = [
     "3.25",
@@ -55,21 +72,23 @@ export const FilterRingSize = () => {
   const [isSizeDropdownOpen, setIsSizeDropdownOpen] = useState(false);
 
   return (
-    <div className="relative border bg-white p-3">
+    <div className="relative flex flex-col justify-start gap-3 lg:gap-5 border bg-white p-3">
       {/* Header with reset button */}
-      <div className="flex items-center justify-between mb-5">
+      <div className="flex items-center justify-between">
         <h3 className="font-figtree font-medium text-primary">
           Your Ring Size
         </h3>
         <button
-          onClick={resetRingSizeFilter}
-          className="p-1 hover:bg-filter-bg rounded"
+          onClick={resetFilter}
+          className="p-1 text-secondary hover:text-primary rounded"
         >
-          <RotateCcw className="w-4 h-4 text-secondary" />
+          <RotateCcw
+            className={`w-4 h-4 ${isResetFilterAnimating ? "resetFilterAnimation" : ""}`}
+          />
         </button>
       </div>
 
-      <div className="flex w-full gap-2 justify-center text-secondary">
+      <div className="flex w-full gap-2 mb-2 justify-center items-center h-full text-secondary">
         {/* Unit dropdown */}
         <div className="relative w-full">
           <button
@@ -119,7 +138,7 @@ export const FilterRingSize = () => {
         <div className="relative w-full">
           <button
             onClick={() => setIsSizeDropdownOpen(!isSizeDropdownOpen)}
-            className="flex items-center justify-between px-2 py-1.5 w-full border border-primary text-center text-md font-figtree bg-white"
+            className="flex items-center justify-center gap-0.5 px-2 py-1.5 w-full border border-primary text-center text-md font-figtree bg-white"
           >
             <span>{ringSize.size || "Select Size"}</span>
             <ChevronDown

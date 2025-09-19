@@ -1,8 +1,23 @@
 import { useFiltersStore } from "@/store/useFiltersStore";
 import { Check, RotateCcw } from "lucide-react";
+import { useState } from "react";
 
 export const FilterKarat = () => {
   const { karats, setKarats, resetKaratFilter } = useFiltersStore();
+  const [isResetFilterAnimating, setIsResetFilterAnimating] = useState(false);
+
+  // Handle animation for reset all button
+  const resetFilter = () => {
+    resetKaratFilter();
+
+    // Trigger the animation by setting isAnimating to true
+    setIsResetFilterAnimating(true);
+
+    // Remove the animation class after 1 sec (duration of the animation)
+    setTimeout(() => {
+      setIsResetFilterAnimating(false);
+    }, 1000); // Match the duration in your CSS
+  };
 
   const karatOptions = [
     {
@@ -50,18 +65,20 @@ export const FilterKarat = () => {
   };
 
   return (
-    <div className="relative border bg-white p-3">
-      <div className="flex items-center justify-between mb-3">
+    <div className="relative border bg-white p-3 pb-1">
+      <div className="flex items-center justify-between mb-1">
         <h3 className="font-figtree font-medium text-primary">Karat</h3>
         <button
-          onClick={resetKaratFilter}
-          className="p-1 hover:bg-filter-bg rounded"
+          onClick={resetFilter}
+          className="p-1 text-secondary hover:text-primary rounded"
         >
-          <RotateCcw className="w-4 h-4 text-secondary" />
+          <RotateCcw
+            className={`w-4 h-4 ${isResetFilterAnimating ? "resetFilterAnimation" : ""}`}
+          />
         </button>
       </div>
 
-      <div className="flex w-5/6 justify-between flex-wrap px-2">
+      <div className="flex w-full lg:w-5/6 justify-between gap-4 overflow-x-auto p-2">
         {karatOptions.map((karat) => (
           <div key={karat.id} className="flex flex-col items-center gap-1.5">
             <button

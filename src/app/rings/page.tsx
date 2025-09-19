@@ -39,26 +39,23 @@ const RingsPage: React.FC = () => {
   ]);
 
   return (
-    <main className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <RingsHeroSection />
+    <div className="h-full w-full">
+      <main className="min-h-screen">
+        {/* Hero Section */}
+        <RingsHeroSection />
 
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto mt-16">
-        {/* Filters Panel */}
-        <FiltersPanel totalResults={totalResults} />
+        {/* Main Content */}
+        <div className="px-4 mx-auto mt-16">
+          {/* Filters Panel */}
+          <FiltersPanel totalResults={totalResults} />
 
-        {/* Product Grid */}
-        <ProductGrid />
-      </div>
-
-      {/* Mobile Filters Modal */}
-      {/* {filters.isMobileFiltersOpen && (
-        <div className="lg:hidden">
-          <FiltersPanel />
+          {/* Product Grid */}
+          <ProductGrid />
         </div>
-      )} */}
-    </main>
+      </main>
+      {/* Newsletter Section */}
+      {/* <NewsletterSection /> */}
+    </div>
   );
 };
 

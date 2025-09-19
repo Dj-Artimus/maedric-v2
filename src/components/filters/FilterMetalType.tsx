@@ -1,8 +1,26 @@
 import { useFiltersStore } from "@/store/useFiltersStore";
 import { Check, RotateCcw } from "lucide-react";
+import { useState } from "react";
 
 export const FilterMetalType = () => {
   const { metalTypes, setMetalTypes, resetMetalTypeFilter } = useFiltersStore();
+  const [isResetFilterAnimating, setIsResetFilterAnimating] = useState(false);
+
+  // Handle animation for reset all button
+  const resetFilter = () => {
+    // Trigger your filter reset logic here
+    console.log("Resetting all filters");
+
+    resetMetalTypeFilter();
+
+    // Trigger the animation by setting isAnimating to true
+    setIsResetFilterAnimating(true);
+
+    // Remove the animation class after 1 sec (duration of the animation)
+    setTimeout(() => {
+      setIsResetFilterAnimating(false);
+    }, 1000); // Match the duration in your CSS
+  };
 
   const metals = [
     { id: "gold", label: "Gold", color: "bg-gradient-tri-gold" },
@@ -24,18 +42,20 @@ export const FilterMetalType = () => {
   };
 
   return (
-    <div className="relative border bg-white p-3">
-      <div className="flex items-center justify-between mb-3">
+    <div className="relative border bg-white p-3 pb-1">
+      <div className="flex items-center justify-between mb-1">
         <h3 className="font-figtree font-medium text-primary">Metal Type</h3>
         <button
-          onClick={resetMetalTypeFilter}
-          className="p-1 hover:bg-filter-bg rounded"
+          onClick={resetFilter}
+          className="p-1 text-secondary hover:text-primary rounded"
         >
-          <RotateCcw className="w-4 h-4 text-secondary" />
+          <RotateCcw
+            className={`w-4 h-4 ${isResetFilterAnimating ? "resetFilterAnimation" : ""}`}
+          />
         </button>
       </div>
 
-      <div className="flex w-full justify-around">
+      <div className="flex w-full justify-around gap-4 overflow-x-auto py-2">
         {metals.map((metal) => (
           <div
             key={metal.id}

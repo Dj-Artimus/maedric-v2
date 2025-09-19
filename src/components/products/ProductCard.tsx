@@ -9,27 +9,6 @@ interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [isFavorited, setIsFavorited] = useState(product.isFavorited || false);
-  const getTagStyle = (tag: string) => {
-    switch (tag) {
-      case "sale":
-        return "bg-emerald-100 text-emerald-700 rounded-full px-2 py-1";
-      case "new":
-        return "bg-tag-new-bg text-tag-new rounded-full px-2 py-1";
-      case "top-rated":
-        return "bg-tag-toprated-bg text-tag-toprated rounded-full px-2 py-1";
-      default:
-        return "bg-gray-100 text-gray-600 rounded-full px-2 py-1";
-    }
-  };
-
-  const getTagLabel = (tag: string) => {
-    switch (tag) {
-      case "top-rated":
-        return "Top Rated";
-      default:
-        return tag.charAt(0).toUpperCase() + tag.slice(1);
-    }
-  };
 
   return (
     <div className="group cursor-pointer">
@@ -42,20 +21,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           fill
           priority
         />
-
-        {/* Tags */}
-        {product.tags.length > 0 && (
-          <div className="absolute top-2 left-2 flex flex-row gap-1.5 flex-wrap max-w-[calc(100%-3rem)]">
-            {product.tags.map((tag) => (
-              <span
-                key={tag}
-                className={`text-xs font-figtree font-semibold inline-block ${getTagStyle(tag)}`}
-              >
-                {getTagLabel(tag)}
-              </span>
-            ))}
-          </div>
-        )}
 
         {/* Favorite Icon */}
         <button

@@ -84,93 +84,90 @@ export class MockApiService {
     this.products = baseProducts;
   }
 
-  async getProducts(filters: Partial<FilterParams>): Promise<ApiResponse<Product[]>> {
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 300));
+async getProducts(filters: Partial<FilterParams>, limit: number, offset: number = 0): Promise<{ 
+  products: Product[]; 
+  meta: {
+    total: number;
+    hasNextPage: boolean;
+  }; 
+}> {
+  // Simulate API delay
+  await new Promise(resolve => setTimeout(resolve, 300));
 
-    let filteredProducts = [...this.products];
+  let filteredProducts = [...this.products];
 
-    // Apply price filter
-    if (filters.priceRange) {
-      filteredProducts = filteredProducts.filter(
-        product => product.price >= filters.priceRange!.min && product.price <= filters.priceRange!.max
-      );
-    }
-
-    // Apply metal type filter
-    if (filters.metalTypes && filters.metalTypes.length > 0) {
-      filteredProducts = filteredProducts.filter(
-        product => filters.metalTypes!.includes(product.metalType)
-      );
-    }
-
-    // Apply ring size filter - only if size is not the default "6"
-    if (filters.ringSize && filters.ringSize.size && filters.ringSize.size !== '6') {
-      filteredProducts = filteredProducts.filter(
-        product => product.ringSize === filters.ringSize!.size
-      );
-    }
-
-    // Apply karat filter
-    if (filters.karats && filters.karats.length > 0) {
-      filteredProducts = filteredProducts.filter(
-        product => product.karat && filters.karats!.includes(product.karat)
-      );
-    }
-
-    // Apply gemstone filter
-    if (filters.gemstoneUsage && filters.gemstoneUsage.length > 0) {
-      filteredProducts = filteredProducts.filter(
-        product => filters.gemstoneUsage!.includes(product.gemstoneUsage)
-      );
-    }
-
-    // Apply sorting
-    switch (filters.sortBy) {
-      case 'newest':
-        filteredProducts.sort((a, b) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0));
-        break;
-      case 'low-to-high':
-        filteredProducts.sort((a, b) => a.price - b.price);
-        break;
-      case 'high-to-low':
-        filteredProducts.sort((a, b) => b.price - a.price);
-        break;
-      case 'discount':
-        filteredProducts.sort((a, b) => (b.isSale ? 1 : 0) - (a.isSale ? 1 : 0));
-        break;
-      case 'top-rated':
-        filteredProducts.sort((a, b) => (b.isTopRated ? 1 : 0) - (a.isTopRated ? 1 : 0));
-        break;
-      default:
-        // Relevance - mix of top rated and sale items
-        filteredProducts.sort((a, b) => {
-          const aScore = (a.isTopRated ? 2 : 0) + (a.isSale ? 1 : 0);
-          const bScore = (b.isTopRated ? 2 : 0) + (b.isSale ? 1 : 0);
-          return bScore - aScore;
-        });
-    }
-
-    // Apply pagination
-    const page = filters.page || 1;
-    const limit = filters.limit || 20;
-    const startIndex = (page - 1) * limit;
-    const endIndex = startIndex + limit;
-    const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
-
-    const totalPages = Math.ceil(filteredProducts.length / limit);
-
-    return {
-      data: paginatedProducts,
-      meta: {
-        total: filteredProducts.length,
-        page,
-        totalPages,
-        hasNextPage: page < totalPages,
-        hasPreviousPage: page > 1
-      }
-    };
+  // Apply price filter
+  if (filters.priceRange) {
+    filteredProducts = filteredProducts.filter(
+      product => product.price >= filters.priceRange!.min && product.price <= filters.priceRange!.max
+    );
   }
+
+  // Apply metal type filter
+  if (filters.metalTypes && filters.metalTypes.length > 0) {
+    filteredProducts = filteredProducts.filter(
+      product => filters.metalTypes!.includes(product.metalType)
+    );
+  }
+
+  // Apply ring size filter - only if size is not the default "6"
+  if (filters.ringSize && filters.ringSize.size && filters.ringSize.size !== '6') {
+    filteredProducts = filteredProducts.filter(
+      product => product.ringSize === filters.ringSize!.size
+    );
+  }
+
+  // Apply karat filter
+  if (filters.karats && filters.karats.length > 0) {
+    filteredProducts = filteredProducts.filter(
+      product => product.karat && filters.karats!.includes(product.karat)
+    );
+  }
+
+  // Apply gemstone filter
+  if (filters.gemstoneUsage && filters.gemstoneUsage.length > 0) {
+    filteredProducts = filteredProducts.filter(
+      product => filters.gemstoneUsage!.includes(product.gemstoneUsage)
+    );
+  }
+
+  // Apply sorting
+  switch (filters.sortBy) {
+    case 'newest':
+      filteredProducts.sort((a, b) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0));
+      break;
+    case 'low-to-high':
+      filteredProducts.sort((a, b) => a.price - b.price);
+      break;
+    case 'high-to-low':
+      filteredProducts.sort((a, b) => b.price - a.price);
+      break;
+    case 'discount':
+      filteredProducts.sort((a, b) => (b.isSale ? 1 : 0) - (a.isSale ? 1 : 0));
+      break;
+    case 'top-rated':
+      filteredProducts.sort((a, b) => (b.isTopRated ? 1 : 0) - (a.isTopRated ? 1 : 0));
+      break;
+    default:
+      // Relevance - mix of top rated and sale items
+      filteredProducts.sort((a, b) => {
+        const aScore = (a.isTopRated ? 2 : 0) + (a.isSale ? 1 : 0);
+        const bScore = (b.isTopRated ? 2 : 0) + (b.isSale ? 1 : 0);
+        return bScore - aScore;
+      });
+  }
+
+  const products = filteredProducts.slice(offset, offset + limit);
+  const hasNextPage = offset + limit < filteredProducts.length;
+
+  return { 
+    products, 
+    meta: {
+      total: filteredProducts.length,
+      hasNextPage
+    } 
+  };
+}
 
   filtersToApiParams(filters: Partial<FilterParams>): Partial<FilterParams> {
     return {

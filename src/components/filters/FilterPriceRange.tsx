@@ -2,10 +2,27 @@ import { useFiltersStore } from "@/store/useFiltersStore";
 import { RotateCcw } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 
-export const FilterRange = () => {
+export const FilterPriceRange = () => {
   const { priceRange, setPriceRange, resetPriceFilter } = useFiltersStore();
   const [isDragging, setIsDragging] = useState<"min" | "max" | null>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
+  const [isResetFilterAnimating, setIsResetFilterAnimating] = useState(false);
+
+  // Handle animation for reset all button
+  const resetFilter = () => {
+    // Trigger your filter reset logic here
+    console.log("Resetting all filters");
+
+    resetPriceFilter();
+
+    // Trigger the animation by setting isAnimating to true
+    setIsResetFilterAnimating(true);
+
+    // Remove the animation class after 1 sec (duration of the animation)
+    setTimeout(() => {
+      setIsResetFilterAnimating(false);
+    }, 1000); // Match the duration in your CSS
+  };
 
   const min = 500;
   const max = 12000;
@@ -66,10 +83,12 @@ export const FilterRange = () => {
       <div className="flex items-center justify-between mb-3">
         <h3 className="font-figtree font-medium text-primary">Price</h3>
         <button
-          onClick={resetPriceFilter}
-          className="p-1 hover:bg-filter-bg rounded"
+          onClick={resetFilter}
+          className="p-1 text-secondary hover:text-primary rounded"
         >
-          <RotateCcw className="w-4 h-4 text-secondary" />
+          <RotateCcw
+            className={`w-4 h-4 ${isResetFilterAnimating ? "resetFilterAnimation" : ""}`}
+          />
         </button>
       </div>
 

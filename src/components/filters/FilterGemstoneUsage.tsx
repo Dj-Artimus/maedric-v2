@@ -1,9 +1,24 @@
 import { useFiltersStore } from "@/store/useFiltersStore";
 import { Check, RotateCcw } from "lucide-react";
+import { useState } from "react";
 
 export const FilterGemstoneUsage = () => {
   const { gemstoneUsage, setGemstoneUsage, resetGemstoneFilter } =
     useFiltersStore();
+  const [isResetFilterAnimating, setIsResetFilterAnimating] = useState(false);
+
+  // Handle animation for reset all button
+  const resetFilter = () => {
+    resetGemstoneFilter();
+
+    // Trigger the animation by setting isAnimating to true
+    setIsResetFilterAnimating(true);
+
+    // Remove the animation class after 1 sec (duration of the animation)
+    setTimeout(() => {
+      setIsResetFilterAnimating(false);
+    }, 1000); // Match the duration in your CSS
+  };
 
   const gemstones = [
     { id: "metal-only", label: "Metal Only", color: "bg-gray-400" },
@@ -21,20 +36,22 @@ export const FilterGemstoneUsage = () => {
   };
 
   return (
-    <div className="relative border bg-white p-3 ">
-      <div className="flex items-center justify-between mb-3">
+    <div className="relative border bg-white p-3 pb-1">
+      <div className="flex items-center justify-between mb-1">
         <h3 className="font-figtree font-medium text-primary">
           Gemstone Usage
         </h3>
         <button
-          onClick={resetGemstoneFilter}
-          className="p-1 hover:bg-filter-bg rounded"
+          onClick={resetFilter}
+          className="p-1 text-secondary hover:text-primary rounded"
         >
-          <RotateCcw className="w-4 h-4 text-secondary" />
+          <RotateCcw
+            className={`w-4 h-4 ${isResetFilterAnimating ? "resetFilterAnimation" : ""}`}
+          />
         </button>
       </div>
 
-      <div className="flex gap-5">
+      <div className="flex gap-5 overflow-x-auto p-2">
         {gemstones.map((gemstone) => (
           <div key={gemstone.id} className="flex flex-col items-center gap-1">
             <button

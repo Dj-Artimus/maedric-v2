@@ -1,3 +1,4 @@
+import ReadMoreBox from "@/components/ui/ReadMoreButtonBox";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { FaXmark } from "react-icons/fa6";
@@ -28,7 +29,7 @@ const CTATopBanner: React.FC<{
           const targetScrollY =
             window.scrollY +
             bannerRect.top +
-            bannerRect.height / 0.78 -
+            bannerRect.height / 0.85 -
             window.innerHeight / 2;
           window.scrollTo({
             top: targetScrollY,
@@ -62,18 +63,18 @@ const CTATopBanner: React.FC<{
       ref={ctaBannerRef}
       id="cta-top-banner"
       className={`
-        w-full z-20 absolute left-1/2 -translate-x-1/2 -bottom-96 overflow-hidden
+        w-full z-30
         transition-all duration-500 ease-out
         ${
           isBannerActive
-            ? "opacity-100 translate-y-24 scale-100 pointer-events-auto"
-            : "opacity-0 -translate-y-80 scale-90 pointer-events-none"
+            ? "opacity-100 translate-y-6 -mb-2 xs:translate-y-10 sm:translate-y-[-60px] sm:mb-[60px] md1:mb-[-70px] lg:mb-[-60px] scale-100 pointer-events-auto"
+            : "opacity-0 -translate-y-96 scale-90 pointer-events-none"
         }
       `}
       style={{ transformOrigin: "top center" }} // ensures scale animates from top
     >
-      <div className="container mx-auto px-4 py-6">
-        <div className="relative bg-card border border-accent overflow-hidden shadow-elegant">
+      <div className="md1:container mx-auto">
+        <div className="relative bg-card border mx-auto max-w-[512px] sm:max-w-full border-accent overflow-hidden shadow-elegant">
           {/* Close Button */}
           <button
             onClick={handleClose}
@@ -84,22 +85,48 @@ const CTATopBanner: React.FC<{
           </button>
 
           {/* Banner Content */}
-          <div className="relative flex">
+          <div className="relative w-full sm:flex">
             <Image
               src="/images/cta-banner.png"
               alt="Discover our exclusive ring collection"
-              className="w-full lg:max-w-lg aspect-square object-cover"
+              className="w-full max-w-[512px] sm:max-w-[38vw] sm:max-lg:max-h-[38vw] lg:max-w-[432px] xl:max-w-lg aspect-square object-cover"
               width={512}
               height={512}
             />
 
             {/* Overlay Content */}
             <div className="bg-black w-full flex items-center">
-              <div className="px-6 md:px-12 max-w-2xl">
+              <div className="px-6 py-4 lg:px-12 max-w-2xl">
                 <h3 className="font-quiche text-2xl md:text-3xl text-white mb-3">
                   Header Title Goes Here
                 </h3>
-                <div className="font-figtree text-white/90 text-md space-y-3">
+                <div className="font-figtree text-white/90 text-md sm:hidden">
+                  <ReadMoreBox
+                    bgButton="bg-black"
+                    textColor="text-white"
+                    readMoreColor="text-white/60"
+                    readLessColor="text-accent"
+                    idx={1}
+                    buttonPosition="right-0"
+                  >
+                    Contrary to popular belief, Lorem Ipsum is not simply random
+                    text. It has roots in a piece of classical Latin literature
+                    from 45 BC, making it over 2000 years old.
+                    <br />
+                    Richard McClintock, a Latin professor at Hampden-Sydney
+                    College in Virginia, looked up one of the more obscure Latin
+                    words, consectetur, from a Lorem Ipsum passage, and going
+                    through the cites of the word in classical literature,
+                    discovered the undoubtable source.
+                    <br />
+                    Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of
+                    &quot;de Finibus Bonorum et Malorum&quot; (The Extremes of
+                    Good and Evil) by Cicero, written in 45 BC. This book is a
+                    treatise on the theory of ethics, very popular during the
+                    Renaissance.
+                  </ReadMoreBox>
+                </div>
+                <div className="hidden sm:block font-figtree text-white/90 text-md space-y-3 sm:pr-3 lg:pr-0 sm:max-lg:max-h-[26vw] overflow-y-scroll lg:overflow-y-hidden">
                   <p className="leading-relaxed">
                     Contrary to popular belief, Lorem Ipsum is not simply random
                     text. It has roots in a piece of classical Latin literature
@@ -113,10 +140,11 @@ const CTATopBanner: React.FC<{
                     discovered the undoubtable source.
                   </p>
                   <p className="leading-relaxed">
-                    Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of &quot;de
-                    Finibus Bonorum et Malorum&quot; (The Extremes of Good and Evil)
-                    by Cicero, written in 45 BC. This book is a treatise on the
-                    theory of ethics, very popular during the Renaissance.
+                    Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of
+                    &quot;de Finibus Bonorum et Malorum&quot; (The Extremes of
+                    Good and Evil) by Cicero, written in 45 BC. This book is a
+                    treatise on the theory of ethics, very popular during the
+                    Renaissance.
                   </p>
                 </div>
               </div>

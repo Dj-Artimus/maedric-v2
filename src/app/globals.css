@@ -52,25 +52,25 @@
   --color-neutral: #e7eaee;
   --color-headerText: #f3f6fa;
 
-      /* Tag colors */
-    --tag-sale: 123 46% 34%; /* #388E3C */
-    --tag-sale-bg: 123 46% 95%; /* Light green background */
-    --tag-new: 45 94% 47%; /* #FBC02D */
-    --tag-new-bg: 45 94% 95%; /* Light yellow background */
-    --tag-toprated: 0 100% 27%; /* #8B0000 */
-    --tag-toprated-bg: 0 100% 95%; /* Light red background */
-    
-    /* Metal colors */
-    --gold: 45 94% 47%; /* #FBC02D */
-    --platinum: 0 0% 88%; /* #E0E0E0 */
-    --titanium: 0 0% 46%; /* #757575 */
-    --silver: 0 0% 74%; /* #BDBDBD */
-    --stainless: 0 0% 62%; /* #9E9E9E */
-    
-    /* Gemstone colors */
-    --ruby: 0 69% 47%; /* #C62828 */
-    --sapphire: 209 79% 43%; /* #1565C0 */
-    --emerald: 123 59% 37%; /* #2E7D32 */
+  /* Tag colors */
+  --tag-sale: 123 46% 34%; /* #388E3C */
+  --tag-sale-bg: 123 46% 95%; /* Light green background */
+  --tag-new: 45 94% 47%; /* #FBC02D */
+  --tag-new-bg: 45 94% 95%; /* Light yellow background */
+  --tag-toprated: 0 100% 27%; /* #8B0000 */
+  --tag-toprated-bg: 0 100% 95%; /* Light red background */
+
+  /* Metal colors */
+  --gold: 45 94% 47%; /* #FBC02D */
+  --platinum: 0 0% 88%; /* #E0E0E0 */
+  --titanium: 0 0% 46%; /* #757575 */
+  --silver: 0 0% 74%; /* #BDBDBD */
+  --stainless: 0 0% 62%; /* #9E9E9E */
+
+  /* Gemstone colors */
+  --ruby: 0 69% 47%; /* #C62828 */
+  --sapphire: 209 79% 43%; /* #1565C0 */
+  --emerald: 123 59% 37%; /* #2E7D32 */
 
   /* Custom fonts */
   --font-cinzel: "Cinzel", serif;
@@ -202,44 +202,20 @@
   z-index: 1;
 }
 
-/* Phone Ringing Animation */
-@keyframes phoneRinging {
+@keyframes reset-filters {
   0% {
     transform: rotate(0deg);
   }
-  10% {
-    transform: rotate(-7deg);
-  }
-  20% {
-    transform: rotate(7deg);
-  }
-  30% {
-    transform: rotate(-7deg);
-  }
-  40% {
-    transform: rotate(7deg);
-  }
   50% {
-    transform: rotate(-7deg);
-  }
-  60% {
-    transform: rotate(7deg);
-  }
-  70% {
-    transform: rotate(-7deg);
-  }
-  80% {
-    transform: rotate(0deg);
+    transform: rotate(-360deg);
   }
   100% {
     transform: rotate(0deg);
   }
 }
 
-.animate-ringing {
-  animation: phoneRinging 3s ease;
-  transform-origin: 50% 50%;
-  display: inline-block;
+.resetFilterAnimation {
+  animation: reset-filters 1s ease-in infinite;
 }
 
 /* Add new class for hover state */
@@ -263,20 +239,8 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: auto;
 }
 
 @layer utilities {
-  .line-clamp-1 {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
 }
