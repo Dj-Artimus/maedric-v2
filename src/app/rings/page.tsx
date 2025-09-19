@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 import { FiltersPanel } from "@/components/filters/FiltersPanel";
 import { ProductGrid } from "@/components/products/ProductGrid";
 // import { useToast } from "@/hooks/use-toast";
+import ScrollToTopButton from "@/components/ui/ScrollToTopButton";
 import { mockApi } from "@/lib/mockApi";
 import { useFiltersStore } from "@/store/useFiltersStore";
+import NewsletterSection from "../sections/NewsletterSection";
 import RingsHeroSection from "./sections/RingsHeroSection";
 
 const RingsPage: React.FC = () => {
@@ -54,7 +56,10 @@ const RingsPage: React.FC = () => {
         </div>
       </main>
       {/* Newsletter Section */}
-      {/* <NewsletterSection /> */}
+      <NewsletterSection />
+
+      {/* Scroll to Top Button */}
+      <ScrollToTopButton />
     </div>
   );
 };

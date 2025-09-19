@@ -32,7 +32,7 @@ const NewsletterSection: React.FC = () => {
     useNewsletter();
 
   return (
-    <section className="w-full z-50 -mb-16">
+    <section className="w-full z-50 translate-y-16 -mt-16">
       <div className="sm:max-w-xl md:max-w-2xl md1:max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto px-6 lg:px-4">
         <div className="bg-accent z-50 flex flex-col gap-5 lg:gap-0 lg:flex-row justify-between items-center w-full py-6 pb-8 lg:py-6 lg:pb-6 px-6 transition-all duration-1000">
           <div className="flex flex-col xs:max-lg:justify-center justify-start xs:max-lg:items-center items-start w-full mb-[6px]">

@@ -1,4 +1,3 @@
-// src/components/ui/ReadMoreBox.tsx
 import React, { useState } from "react";
 
 interface ReadMoreBoxProps {
@@ -8,6 +7,9 @@ interface ReadMoreBoxProps {
   idx?: number;
   enableScreenSize?: string;
   disableScreenSize?: string;
+  textColor?: string;
+  buttonPosition?: "left-0" | "right-0" | "center";
+  bgButton?: string;
 }
 
 const ReadMoreBox = ({
@@ -17,7 +19,6 @@ const ReadMoreBox = ({
   readLessColor = "text-accent",
   buttonPosition = "right-0",
   idx = 0,
-  enableScreenSize = "",
   disableScreenSize = "sm",
   bgButton = "bg-white",
 }: ReadMoreBoxProps) => {
@@ -29,19 +30,22 @@ const ReadMoreBox = ({
     );
   };
 
+  // Safely convert children to a string for length check
+  const textContent = React.Children.toArray(children).join("");
+
   return (
     <div className="relative">
       <p
-        className={` w-full ${textColor} ${
+        className={`w-full ${textColor} ${
           expandedText.includes(idx)
             ? ""
-            : "line-clamp-3 overflow-hidden text-clips"
+            : "line-clamp-3 overflow-hidden text-ellipsis"
         } relative`}
       >
         {children}
       </p>
       <span className={`block ${disableScreenSize}:hidden`}>
-        {children.toString().length > 100 && !expandedText.includes(idx) && (
+        {textContent.length > 100 && !expandedText.includes(idx) && (
           <span
             className={`hover:${readLessColor} ${readMoreColor} ${bgButton} absolute ${buttonPosition} bottom-0 pl-1 pr-0 inline-block z-10 ml-1 transition-colors duration-200 font-medium cursor-pointer`}
             onClick={() => toggleText(idx)}
@@ -49,7 +53,7 @@ const ReadMoreBox = ({
             ...read more
           </span>
         )}
-        {children.toString().length > 100 && expandedText.includes(idx) && (
+        {textContent.length > 100 && expandedText.includes(idx) && (
           <span
             className={`block ${readLessColor} hover:${readMoreColor} transition-colors duration-200 font-medium cursor-pointer text-right mt-2`}
             onClick={() => toggleText(idx)}
