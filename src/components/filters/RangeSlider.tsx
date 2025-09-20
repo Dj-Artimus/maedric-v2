@@ -97,7 +97,7 @@ const RangeSlider: React.FC<RangeSliderProps> = ({
   };
 
   return (
-    <div className="relative border bg-white p-3">
+    <div className="relative md:h-full border bg-white p-3">
       <div className="flex items-center justify-between mb-3">
         <h3 className="font-figtree font-medium text-primary">{title}</h3>
         {onReset && (

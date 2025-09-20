@@ -83,7 +83,7 @@ const NecklaceFiltersPanel: React.FC<NecklaceFiltersPanelProps> = ({
       {/* Mobile Filter Components */}
       <div className="md:hidden relative">
         {isAllFiltersOpen && (
-          <div className="flex flex-col justify-between w-screen h-screen fixed top-0 left-0 z-[110] bg-white">
+          <div className="flex flex-col justify-between w-screen h-screen fixed top-0 left-0 z-[110] bg-white pb-10">
             <div className="flex flex-col">
               <div className="flex shrink-0 items-center justify-between text-lg text-primary hover:text-secondary border-b p-2 px-4">
                 <span>Filter By</span>

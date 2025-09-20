@@ -85,9 +85,12 @@ export const FilterKarat: React.FC<FilterKaratProps> = ({
       </div>
 
       {/* Options */}
-      <div className="flex w-full h-full flex-grow items-center justify-between gap-4 overflow-x-auto p-2">
+      <div className="flex w-full h-full flex-grow gap-6 overflow-x-auto p-2">
         {karatOptions.map((karat) => (
-          <div key={karat.id} className="flex flex-col items-center gap-1.5">
+          <div
+            key={karat.id}
+            className="flex w-8 flex-col items-center gap-1.5"
+          >
             <button
               onClick={() => toggleKarat(karat.id)}
               className={`

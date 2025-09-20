@@ -18,7 +18,7 @@ export const BannerCTA: React.FC<BannerCTAProps> = ({
   href,
 }) => {
   return (
-    <div className="col-span-2 relative h-[412px] border border-accent overflow-hidden group cursor-pointer">
+    <div className="col-span-2 relative min-h-[412px] h-full border border-accent overflow-hidden group cursor-pointer">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105"

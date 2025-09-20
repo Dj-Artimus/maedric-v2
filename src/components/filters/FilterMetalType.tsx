@@ -59,11 +59,11 @@ export const FilterMetalType: React.FC<FilterMetalTypeProps> = ({
       </div>
 
       {/* Options */}
-      <div className="flex w-full justify-around gap-4 overflow-x-auto py-2">
+      <div className="flex w-full gap-6 overflow-x-auto p-2">
         {metals.map((metal) => (
           <div
             key={metal.id}
-            className="flex flex-col items-center gap-1 flex-shrink-0 grow-0"
+            className=" w-8 flex flex-col items-center gap-1 flex-shrink-0 grow-0"
           >
             <button
               onClick={() => toggleMetal(metal.id)}

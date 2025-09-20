@@ -38,9 +38,7 @@ export const FilterAttachmentMethod: React.FC<FilterAttachmentMethodProps> = ({
   };
 
   return (
-    <div className="relative border bg-white p-3">
-      {" "}
-      {/* Removed pb-1 from original */}
+    <div className="relative flex flex-col border bg-white p-3">
       {/* Header */}
       <div className="flex items-center justify-between mb-2">
         {" "}
@@ -60,9 +58,7 @@ export const FilterAttachmentMethod: React.FC<FilterAttachmentMethodProps> = ({
         </button>
       </div>
       {/* Options */}
-      <div className="flex w-full gap-2">
-        {" "}
-        {/* Using gap-2 for spacing between buttons */}
+      <div className="flex w-full gap-2 p-2">
         {methods.map((method) => (
           <button
             key={method.id}

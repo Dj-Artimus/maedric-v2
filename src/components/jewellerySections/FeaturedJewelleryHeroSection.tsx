@@ -1,36 +1,26 @@
 "use client";
-import HorizontalFillButton from "@/components/ui/HorizontalFillButton";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
-import JewelleryCTATopBanner from "./JewelleryCTATopBanner";
 
-interface JewelleryHeroSectionProps {
+interface FeaturedJewelleryHeroSectionProps {
   title: string;
   description: string;
   breadcrumb: { label: string; href?: string }[];
   desktopImage: string;
   mobileImage: string;
   mobileImagePosition?: string;
-  ctaButtonText?: string;
-  ctaImage: string;
-  ctaImageAlt: string;
-  ctaTitle: string;
-  ctaDescription: string[];
 }
 
-const JewelleryHeroSection: React.FC<JewelleryHeroSectionProps> = ({
+const FeaturedJewelleryHeroSection: React.FC<
+  FeaturedJewelleryHeroSectionProps
+> = ({
   title,
   description,
   breadcrumb,
   desktopImage,
   mobileImage,
   mobileImagePosition = "object-left",
-  ctaButtonText = "Learn More",
-  ctaImage,
-  ctaImageAlt,
-  ctaTitle,
-  ctaDescription,
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isCTABannerVisible, setIsCTABannerVisible] = useState(false);
@@ -118,39 +108,13 @@ const JewelleryHeroSection: React.FC<JewelleryHeroSectionProps> = ({
                 <p className="font-figtree text-sm md:text-[16px] max-w-md tracking-wide">
                   {description}
                 </p>
-
-                {/* CTA Button */}
-                <div className="pt-4">
-                  <HorizontalFillButton
-                    backgroundColor="transparent"
-                    fillColor="#d2ae6d"
-                    className="w-full h-fit xl:w-fit flex items-center gap-3 xl:text-nowrap text-sm font-figtree font-normal tracking-[3px] text-center uppercase text-white border-[1.5px] border-white bg-transparent hover:text-primary px-5 py-3 md:px-6 md:py-4 group"
-                    onClick={handleLearnMore}
-                  >
-                    {ctaButtonText}
-                  </HorizontalFillButton>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* CTA Banner */}
-      <div className="z-30 relative w-full h-full px-4">
-        <JewelleryCTATopBanner
-          isVisible={isCTABannerVisible}
-          setIsVisible={setIsCTABannerVisible}
-          onClose={handleCloseBanner}
-          ctaBannerRef={ctaBannerRef}
-          image={ctaImage}
-          alt={ctaImageAlt}
-          title={ctaTitle}
-          description={ctaDescription}
-        />
-      </div>
     </section>
   );
 };
 
-export default JewelleryHeroSection;
+export default FeaturedJewelleryHeroSection;

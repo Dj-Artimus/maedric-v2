@@ -72,7 +72,7 @@ export const FilterRingSize = () => {
   const [isSizeDropdownOpen, setIsSizeDropdownOpen] = useState(false);
 
   return (
-    <div className="relative flex flex-col justify-start gap-3 lg:gap-5 border bg-white p-3">
+    <div className="relative flex flex-col justify-start gap-2 border bg-white p-3">
       {/* Header with reset button */}
       <div className="flex items-center justify-between">
         <h3 className="font-figtree font-medium text-primary">
