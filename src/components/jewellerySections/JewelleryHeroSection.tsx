@@ -1,14 +1,40 @@
+"use client";
 import HorizontalFillButton from "@/components/ui/HorizontalFillButton";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import CTATopBanner from "./CTATopBanner";
+import React, { useEffect, useRef, useState } from "react";
+import JewelleryCTATopBanner from "./JewelleryCTATopBanner";
 
-const RingsHeroSection: React.FC = () => {
+interface JewelleryHeroSectionProps {
+  title: string;
+  description: string;
+  breadcrumb: { label: string; href?: string }[];
+  desktopImage: string;
+  mobileImage: string;
+  mobileImagePosition?: string;
+  ctaButtonText?: string;
+  ctaImage: string;
+  ctaImageAlt: string;
+  ctaTitle: string;
+  ctaDescription: string[];
+}
+
+const JewelleryHeroSection: React.FC<JewelleryHeroSectionProps> = ({
+  title,
+  description,
+  breadcrumb,
+  desktopImage,
+  mobileImage,
+  mobileImagePosition = "object-left",
+  ctaButtonText = "Learn More",
+  ctaImage,
+  ctaImageAlt,
+  ctaTitle,
+  ctaDescription,
+}) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isCTABannerVisible, setIsCTABannerVisible] = useState(false);
 
-  // Add refs for smooth scrolling
   const heroRef = useRef<HTMLDivElement>(null);
   const ctaBannerRef = useRef<HTMLDivElement>(null);
 
@@ -16,12 +42,10 @@ const RingsHeroSection: React.FC = () => {
     setIsLoaded(true);
   }, []);
 
-  // Smooth scroll to CTA Banner and show at the same time
   const handleLearnMore = () => {
     setIsCTABannerVisible(!isCTABannerVisible);
   };
 
-  // Hide banner and scroll to Hero at the same time
   const handleCloseBanner = () => {
     setIsCTABannerVisible(false);
     heroRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -31,14 +55,14 @@ const RingsHeroSection: React.FC = () => {
     <section
       id="hero-section"
       ref={heroRef}
-      className={`relative transition-transform duration-1000 h-full`}
+      className="relative transition-transform duration-1000 h-full"
     >
       <div className="min-h-[500px] max-h-[85vh] xs:min-h-screen xs:max-h-screen z-10">
         {/* Desktop Hero Image */}
         <div className="hidden sm:block absolute inset-0">
           <Image
-            src="/images/hero-desktop.jpg"
-            alt="Elegant woman wearing luxury ring"
+            src={desktopImage}
+            alt={title}
             className="w-full h-full max-h-screen object-cover object-right"
             fill
             priority
@@ -47,13 +71,14 @@ const RingsHeroSection: React.FC = () => {
         {/* Mobile Hero Image */}
         <div className="sm:hidden absolute inset-0">
           <Image
-            src="/images/hero-mobile.png"
-            alt="Beautiful woman in traditional attire showcasing jewelry"
-            className="w-full h-full min-h-[500px] max-h-[85vh] xs:max-h-screen object-cover object-left"
+            src={mobileImage}
+            alt={title}
+            className={`w-full h-full min-h-[500px] max-h-[85vh] xs:max-h-screen object-cover ${mobileImagePosition}`}
             fill
             priority
           />
         </div>
+
         {/* Black Overlay */}
         <div className="absolute inset-0 w-full h-[85vh] min-h-[500px] max-h-[85vh] xs:h-screen xs:max-h-full bg-gradient-to-t sm:bg-gradient-to-r from-black lg:from-20% to-transparent" />
         {/* White Overlay */}
@@ -68,26 +93,33 @@ const RingsHeroSection: React.FC = () => {
           <div className="sm:container sm:mx-auto">
             <div className="max-w-2xl">
               <div className="space-y-2 text-white">
-                <div className="text-gray-500 text-md font-figtree -mb-1">
-                  <Link href="/">Home</Link>{" "}
-                  <span className="text-[14px]">
-                    {"  "}&gt;{"  "}
-                  </span>
-                  <span className="text-neutral">Rings</span>
+                {/* Breadcrumb */}
+                <div className="text-white/60 text-md font-figtree -mb-1">
+                  {breadcrumb.map((crumb, idx) => (
+                    <span key={idx}>
+                      {crumb.href ? (
+                        <Link href={crumb.href}>{crumb.label}</Link>
+                      ) : (
+                        <span className="text-neutral">{crumb.label}</span>
+                      )}
+                      {idx < breadcrumb.length - 1 && (
+                        <span className="text-[14px]">{"  >  "}</span>
+                      )}
+                    </span>
+                  ))}
                 </div>
-                <div>
-                  <h1 className="font-quiche text-2xl md:text-3xl lg:text-4xl">
-                    One ring to say it all
-                  </h1>
-                </div>
-                <div>
-                  <p className="font-figtree text-sm md:text-[16px] max-w-md tracking-wide">
-                    Rings hold a variety of meanings depending on ring
-                    selection. Whether to engagement, marriage or promise
-                    between a couple to a show of prestige for a business
-                    partner.
-                  </p>
-                </div>
+
+                {/* Title */}
+                <h1 className="font-quiche capitalize text-2xl md:text-3xl lg:text-4xl">
+                  {title}
+                </h1>
+
+                {/* Description */}
+                <p className="font-figtree text-sm md:text-[16px] max-w-md tracking-wide">
+                  {description}
+                </p>
+
+                {/* CTA Button */}
                 <div className="pt-4">
                   <HorizontalFillButton
                     backgroundColor="transparent"
@@ -95,7 +127,7 @@ const RingsHeroSection: React.FC = () => {
                     className="w-full h-fit xl:w-fit flex items-center gap-3 xl:text-nowrap text-sm font-figtree font-normal tracking-[3px] text-center uppercase text-white border-[1.5px] border-white bg-transparent hover:text-primary px-3 py-3 sm:px-4 xl:px-5 xl:ps-5 sm:py-3 group"
                     onClick={handleLearnMore}
                   >
-                    Learn More
+                    {ctaButtonText}
                   </HorizontalFillButton>
                 </div>
               </div>
@@ -104,16 +136,21 @@ const RingsHeroSection: React.FC = () => {
         </div>
       </div>
 
+      {/* CTA Banner */}
       <div className="z-30 relative w-full h-full px-4">
-        <CTATopBanner
+        <JewelleryCTATopBanner
           isVisible={isCTABannerVisible}
           setIsVisible={setIsCTABannerVisible}
           onClose={handleCloseBanner}
           ctaBannerRef={ctaBannerRef}
+          image={ctaImage}
+          alt={ctaImageAlt}
+          title={ctaTitle}
+          description={ctaDescription}
         />
       </div>
     </section>
   );
 };
 
-export default RingsHeroSection;
+export default JewelleryHeroSection;

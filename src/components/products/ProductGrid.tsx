@@ -1,11 +1,32 @@
+// src/components/products/ProductGrid.tsx
 import { mockApi } from "@/lib/mockApi";
 import { Product } from "@/lib/products";
-import { useFiltersStore } from "@/store/useFiltersStore";
+import { FiltersState } from "@/store/useFiltersStore";
 import React, { useEffect, useState } from "react";
+import { StoreApi, UseBoundStore } from "zustand";
 import { ProductCard } from "./ProductCard";
 import ProductsBanners from "./ProductsBanners";
 
-export const ProductGrid = () => {
+// Define a generic interface for the component's props
+interface ProductGridProps<T extends FiltersState> {
+  useFiltersStore: UseBoundStore<StoreApi<T>>;
+  bannerImages: {
+    src: string;
+    alt: string;
+    href: string;
+    title: string;
+    subtitle: string;
+    buttonText: string;
+  }[];
+  filtersToApiParams: (filters: T) => Record<string, unknown>;
+}
+
+// Define the component as a generic function
+export const ProductGrid = <T extends FiltersState>({
+  useFiltersStore,
+  bannerImages,
+  filtersToApiParams,
+}: ProductGridProps<T>) => {
   const filters = useFiltersStore();
   const [products, setProducts] = useState<Product[]>([]);
   const [meta, setMeta] = useState<{
@@ -28,7 +49,7 @@ export const ProductGrid = () => {
     const fetchProducts = async () => {
       setIsLoading(true);
       try {
-        const params = mockApi.filtersToApiParams(filters);
+        const params = filtersToApiParams(filters);
         const { products: newProducts, meta: newMeta } =
           await mockApi.getProducts(params, 20, offset);
 
@@ -44,7 +65,7 @@ export const ProductGrid = () => {
     };
 
     fetchProducts();
-  }, [filters, offset]);
+  }, [filters, offset, filtersToApiParams]);
 
   // Infinite scroll observer
   useEffect(() => {
@@ -85,8 +106,7 @@ export const ProductGrid = () => {
           products.map((product, index) => (
             <React.Fragment key={product.id}>
               <ProductCard product={product} />
-
-              <ProductsBanners index={index} />
+              <ProductsBanners index={index} bannerImages={bannerImages} />
             </React.Fragment>
           ))
         )}

@@ -1,4 +1,5 @@
-export interface Product {
+// Base Product interface
+export interface BaseProduct {
   id: string;
   name: string;
   description: string;
@@ -15,18 +16,74 @@ export interface Product {
   stockCount?: number;
   isOutOfStock?: boolean;
   isFavorited?: boolean;
+}
+
+// Ring Product
+export interface RingProduct extends BaseProduct {
+  type: "ring";
   ringSize?: string;
 }
 
-const productImages = [
+// Earring Product
+export interface EarringProduct extends BaseProduct {
+  type: "earring";
+  attachmentMethod: "clip-on" | "post-and-back";
+  weight?: number; // in grams
+}
+
+// Necklace Product
+export interface NecklaceProduct extends BaseProduct {
+  type: "necklace";
+  length?: number; // in cm
+  necklaceType: "collar" | "choker" | "princess" | "matinee" | "opera" | "rope";
+}
+
+// Bracelet Product
+export interface BraceletProduct extends BaseProduct {
+  type: "bracelet";
+  // ADDED: Attachment method for bracelets
+  attachmentMethod: "clip-on" | "post-and-back";
+  circumference?: number; // in cm
+}
+
+export type Product =
+  | RingProduct
+  | EarringProduct
+  | NecklaceProduct
+  | BraceletProduct;
+
+// Image paths for each product type
+const ringProductImages = [
   "/images/product-1.png",
   "/images/product-2.png",
   "/images/product-3.png",
   "/images/product-4.png",
 ];
 
-export function generateProducts(count: number = 100): Product[] {
-  const products: Product[] = [];
+const earringProductImages = [
+  "/images/earringsProduct1.png",
+  "/images/earringsProduct2.png",
+  "/images/earringsProduct3.png",
+  "/images/earringsProduct4.png",
+];
+
+const necklaceProductImages = [
+  "/images/necklaceProduct1.png",
+  "/images/necklaceProduct2.png",
+  "/images/necklaceProduct3.png",
+  "/images/necklaceProduct4.png",
+];
+
+const braceletProductImages = [
+  "/images/braceletProduct1.png",
+  "/images/braceletProduct2.png",
+  "/images/braceletProduct3.png",
+  "/images/braceletProduct4.png",
+];
+
+// Ring generation
+export function generateRingProducts(count: number = 100): RingProduct[] {
+  const products: RingProduct[] = [];
   const names = [
     "Eternal Blossom Diamond Ring",
     "Royal Sapphire Statement Ring",
@@ -64,7 +121,7 @@ export function generateProducts(count: number = 100): Product[] {
     "14k-white",
     "18k-white",
   ];
-  const gemstoneTypes: Product["gemstoneUsage"][] = [
+  const gemstoneTypes: BaseProduct["gemstoneUsage"][] = [
     "metal-only",
     "ruby",
     "sapphire",
@@ -87,8 +144,7 @@ export function generateProducts(count: number = 100): Product[] {
     "9.5",
     "10",
   ];
-
-  const metalTypes: Product["metalType"][] = [
+  const metalTypes: BaseProduct["metalType"][] = [
     "gold",
     "platinum",
     "titanium",
@@ -107,24 +163,23 @@ export function generateProducts(count: number = 100): Product[] {
     const isTopRated = Math.random() < 0.25;
     const stockCount =
       Math.random() < 0.1 ? Math.floor(Math.random() * 5) + 1 : 999;
-
-    // Don't allow sale items to be out of stock
     const isSale = !isOutOfStock && Math.random() < 0.3;
     const salePrice = isSale ? Math.floor(basePrice * 0.7) : basePrice;
 
     const productTags: string[] = [];
     if (isNew) productTags.push("new");
-    if (isSale && !isOutOfStock) productTags.push("sale"); // Only add sale tag if not out of stock
+    if (isSale && !isOutOfStock) productTags.push("sale");
     if (isTopRated) productTags.push("top-rated");
 
-    const product: Product = {
-      id: `product-${i + 1}`,
+    const product: RingProduct = {
+      type: "ring",
+      id: `ring-${i + 1}`,
       name: names[Math.floor(Math.random() * names.length)],
       description:
         descriptions[Math.floor(Math.random() * descriptions.length)],
       price: salePrice,
       originalPrice: isSale ? basePrice : undefined,
-      images: [productImages[i % productImages.length]],
+      images: [ringProductImages[i % ringProductImages.length]],
       metalType,
       karat:
         metalType === "gold" || metalType === "silver"
@@ -145,4 +200,355 @@ export function generateProducts(count: number = 100): Product[] {
   }
 
   return products;
+}
+
+// Earring generation
+export function generateEarringProducts(count: number = 100): EarringProduct[] {
+  const products: EarringProduct[] = [];
+  const names = [
+    "Classic Pearl Drops",
+    "Diamond Stud Elegance",
+    "Chandelier Crystal Cascade",
+    "Vintage Ruby Teardrops",
+    "Modern Geometric Hoops",
+    "Sapphire Cluster Dangles",
+    "Gold Filigree Drops",
+    "Emerald Art Deco Studs",
+    "Platinum Diamond Hoops",
+    "Rose Gold Floral Studs",
+    "Silver Moon Phase Earrings",
+    "Titanium Minimalist Studs",
+  ];
+
+  const descriptions = [
+    "Elegant pearl drop earrings with delicate gold accents for timeless sophistication.",
+    "Brilliant diamond studs in classic four-prong setting, perfect for everyday luxury.",
+    "Dramatic chandelier earrings featuring cascading crystals that catch light beautifully.",
+    "Vintage-inspired ruby teardrop earrings with intricate metalwork details.",
+    "Contemporary geometric hoop design for modern minimalist style.",
+    "Luxurious sapphire cluster earrings surrounded by diamond halos.",
+    "Intricate gold filigree drops showcasing traditional craftsmanship.",
+    "Art Deco inspired emerald studs with geometric diamond patterns.",
+    "Classic platinum hoops adorned with pavé diamonds for maximum sparkle.",
+    "Romantic rose gold earrings featuring delicate floral motifs.",
+  ];
+
+  const attachmentMethods: EarringProduct["attachmentMethod"][] = [
+    "clip-on",
+    "post-and-back",
+  ];
+  const metalTypes: BaseProduct["metalType"][] = [
+    "gold",
+    "platinum",
+    "titanium",
+    "silver",
+    "stainless-steel",
+  ];
+  const karatTypes = [
+    "14k",
+    "18k",
+    "23k",
+    "14k-rose",
+    "18k-rose",
+    "14k-white",
+    "18k-white",
+  ];
+  const gemstoneTypes: BaseProduct["gemstoneUsage"][] = [
+    "metal-only",
+    "ruby",
+    "sapphire",
+    "emerald",
+    "diamonds",
+  ];
+
+  for (let i = 0; i < count; i++) {
+    const basePrice = Math.floor(Math.random() * 8000) + 300;
+    const metalType = metalTypes[Math.floor(Math.random() * metalTypes.length)];
+    const gemstoneUsage =
+      gemstoneTypes[Math.floor(Math.random() * gemstoneTypes.length)];
+    const weight = Math.round((Math.random() * 11.5 + 0.5) * 10) / 10; // 0.5g to 12g
+
+    const isOutOfStock = Math.random() < 0.05;
+    const isNew = Math.random() < 0.2;
+    const isTopRated = Math.random() < 0.25;
+    const stockCount =
+      Math.random() < 0.1 ? Math.floor(Math.random() * 5) + 1 : 999;
+    const isSale = !isOutOfStock && Math.random() < 0.3;
+    const salePrice = isSale ? Math.floor(basePrice * 0.7) : basePrice;
+
+    const productTags: string[] = [];
+    if (isNew) productTags.push("new");
+    if (isSale && !isOutOfStock) productTags.push("sale");
+    if (isTopRated) productTags.push("top-rated");
+
+    const product: EarringProduct = {
+      type: "earring",
+      id: `earring-${i + 1}`,
+      name: names[Math.floor(Math.random() * names.length)],
+      description:
+        descriptions[Math.floor(Math.random() * descriptions.length)],
+      price: salePrice,
+      originalPrice: isSale ? basePrice : undefined,
+      images: [earringProductImages[i % earringProductImages.length]],
+      metalType,
+      karat:
+        metalType === "gold" || metalType === "silver"
+          ? karatTypes[Math.floor(Math.random() * karatTypes.length)]
+          : undefined,
+      gemstoneUsage,
+      attachmentMethod:
+        attachmentMethods[Math.floor(Math.random() * attachmentMethods.length)],
+      weight,
+      tags: productTags,
+      isNew,
+      isSale,
+      isTopRated,
+      stockCount,
+      isOutOfStock,
+      isFavorited: false,
+    };
+
+    products.push(product);
+  }
+
+  return products;
+}
+
+// Necklace generation
+export function generateNecklaceProducts(
+  count: number = 100
+): NecklaceProduct[] {
+  const products: NecklaceProduct[] = [];
+  const names = [
+    "Classic Pearl Strand",
+    "Diamond Tennis Necklace",
+    "Vintage Locket Chain",
+    "Ruby Pendant Elegance",
+    "Sapphire Statement Collar",
+    "Gold Rope Chain",
+    "Emerald Drop Necklace",
+    "Platinum Bar Pendant",
+    "Rose Gold Infinity",
+    "Silver Charm Necklace",
+    "Titanium Modern Chain",
+    "Diamond Riviera Necklace",
+  ];
+
+  const descriptions = [
+    "Timeless pearl strand necklace with lustrous cultured pearls and secure clasp.",
+    "Brilliant diamond tennis necklace featuring continuous sparkle in elegant setting.",
+    "Vintage-inspired locket on delicate chain, perfect for cherished memories.",
+    "Stunning ruby pendant surrounded by diamond halo on elegant chain.",
+    "Bold sapphire statement collar for dramatic evening elegance.",
+    "Classic gold rope chain with intricate weave pattern and secure clasp.",
+    "Elegant emerald drop necklace with cascading design and diamond accents.",
+    "Modern platinum bar pendant on sleek chain for minimalist sophistication.",
+    "Romantic rose gold infinity symbol representing eternal love.",
+    "Playful silver charm necklace with customizable pendant options.",
+  ];
+
+  const necklaceTypes: NecklaceProduct["necklaceType"][] = [
+    "collar",
+    "choker",
+    "princess",
+    "matinee",
+    "opera",
+    "rope",
+  ];
+  const metalTypes: BaseProduct["metalType"][] = [
+    "gold",
+    "platinum",
+    "titanium",
+    "silver",
+    "stainless-steel",
+  ];
+  const karatTypes = [
+    "14k",
+    "18k",
+    "23k",
+    "14k-rose",
+    "18k-rose",
+    "14k-white",
+    "18k-white",
+  ];
+  const gemstoneTypes: BaseProduct["gemstoneUsage"][] = [
+    "metal-only",
+    "ruby",
+    "sapphire",
+    "emerald",
+    "diamonds",
+  ];
+
+  for (let i = 0; i < count; i++) {
+    const basePrice = Math.floor(Math.random() * 12000) + 500;
+    const metalType = metalTypes[Math.floor(Math.random() * metalTypes.length)];
+    const gemstoneUsage =
+      gemstoneTypes[Math.floor(Math.random() * gemstoneTypes.length)];
+    const length = Math.floor(Math.random() * 18) + 28; // 28-45 cm range
+
+    const isOutOfStock = Math.random() < 0.05;
+    const isNew = Math.random() < 0.2;
+    const isTopRated = Math.random() < 0.25;
+    const stockCount =
+      Math.random() < 0.1 ? Math.floor(Math.random() * 5) + 1 : 999;
+    const isSale = !isOutOfStock && Math.random() < 0.3;
+    const salePrice = isSale ? Math.floor(basePrice * 0.7) : basePrice;
+
+    const productTags: string[] = [];
+    if (isNew) productTags.push("new");
+    if (isSale && !isOutOfStock) productTags.push("sale");
+    if (isTopRated) productTags.push("top-rated");
+
+    const product: NecklaceProduct = {
+      type: "necklace",
+      id: `necklace-${i + 1}`,
+      name: names[Math.floor(Math.random() * names.length)],
+      description:
+        descriptions[Math.floor(Math.random() * descriptions.length)],
+      price: salePrice,
+      originalPrice: isSale ? basePrice : undefined,
+      images: [necklaceProductImages[i % necklaceProductImages.length]],
+      metalType,
+      karat:
+        metalType === "gold" || metalType === "silver"
+          ? karatTypes[Math.floor(Math.random() * karatTypes.length)]
+          : undefined,
+      gemstoneUsage,
+      necklaceType:
+        necklaceTypes[Math.floor(Math.random() * necklaceTypes.length)],
+      length,
+      tags: productTags,
+      isNew,
+      isSale,
+      isTopRated,
+      stockCount,
+      isOutOfStock,
+      isFavorited: false,
+    };
+
+    products.push(product);
+  }
+
+  return products;
+}
+
+// Bracelet generation
+export function generateBraceletProducts(
+  count: number = 100
+): BraceletProduct[] {
+  const products: BraceletProduct[] = [];
+  const names = [
+    "Diamond Tennis Bracelet",
+    "Gold Cuban Link",
+    "Silver Charm Bracelet",
+    "Ruby Bangle Elegance",
+    "Sapphire Eternity Band",
+    "Platinum Cuff Bracelet",
+    "Rose Gold Mesh Chain",
+    "Titanium Sport Band",
+    "Emerald Station Bracelet",
+    "Diamond Halo Bangle",
+    "Vintage Filigree Cuff",
+    "Modern Geometric Bracelet",
+  ];
+
+  const descriptions = [
+    "Classic tennis bracelet featuring brilliant diamonds in secure prong settings.",
+    "Bold Cuban link bracelet in solid gold with high-polish finish.",
+    "Customizable charm bracelet with secure clasp and multiple charm options.",
+    "Elegant ruby bangle with channel-set stones for sophisticated style.",
+    "Continuous sapphire eternity band symbolizing endless love.",
+    "Statement platinum cuff with brushed finish and diamond accents.",
+    "Delicate rose gold mesh bracelet with adjustable sliding clasp.",
+    "Durable titanium bracelet perfect for active lifestyle.",
+    "Sophisticated emerald station bracelet with diamond spacers.",
+    "Luxurious diamond halo bangle with intricate metalwork.",
+  ];
+
+  // UPDATED: Added bracelet attachment types
+  const attachmentMethods: BraceletProduct["attachmentMethod"][] = [
+    "clip-on",
+    "post-and-back",
+  ];
+  const metalTypes: BaseProduct["metalType"][] = [
+    "gold",
+    "platinum",
+    "titanium",
+    "silver",
+    "stainless-steel",
+  ];
+  const karatTypes = [
+    "14k",
+    "18k",
+    "23k",
+    "14k-rose",
+    "18k-rose",
+    "14k-white",
+    "18k-white",
+  ];
+  const gemstoneTypes: BaseProduct["gemstoneUsage"][] = [
+    "metal-only",
+    "ruby",
+    "sapphire",
+    "emerald",
+    "diamonds",
+  ];
+
+  for (let i = 0; i < count; i++) {
+    const basePrice = Math.floor(Math.random() * 10000) + 400;
+    const metalType = metalTypes[Math.floor(Math.random() * metalTypes.length)];
+    const gemstoneUsage =
+      gemstoneTypes[Math.floor(Math.random() * gemstoneTypes.length)];
+    const circumference = Math.floor(Math.random() * 18) + 8; // 8-25 cm range
+
+    const isOutOfStock = Math.random() < 0.05;
+    const isNew = Math.random() < 0.2;
+    const isTopRated = Math.random() < 0.25;
+    const stockCount =
+      Math.random() < 0.1 ? Math.floor(Math.random() * 5) + 1 : 999;
+    const isSale = !isOutOfStock && Math.random() < 0.3;
+    const salePrice = isSale ? Math.floor(basePrice * 0.7) : basePrice;
+
+    const productTags: string[] = [];
+    if (isNew) productTags.push("new");
+    if (isSale && !isOutOfStock) productTags.push("sale");
+    if (isTopRated) productTags.push("top-rated");
+
+    const product: BraceletProduct = {
+      type: "bracelet",
+      id: `bracelet-${i + 1}`,
+      name: names[Math.floor(Math.random() * names.length)],
+      description:
+        descriptions[Math.floor(Math.random() * descriptions.length)],
+      price: salePrice,
+      originalPrice: isSale ? basePrice : undefined,
+      images: [braceletProductImages[i % braceletProductImages.length]],
+      metalType,
+      karat:
+        metalType === "gold" || metalType === "silver"
+          ? karatTypes[Math.floor(Math.random() * karatTypes.length)]
+          : undefined,
+      gemstoneUsage,
+      // ADDED: Randomly assign an attachment method
+      attachmentMethod:
+        attachmentMethods[Math.floor(Math.random() * attachmentMethods.length)],
+      circumference,
+      tags: productTags,
+      isNew,
+      isSale,
+      isTopRated,
+      stockCount,
+      isOutOfStock,
+      isFavorited: false,
+    };
+
+    products.push(product);
+  }
+
+  return products;
+}
+
+// Export old function for backward compatibility
+export function generateProducts(count: number = 100): RingProduct[] {
+  return generateRingProducts(count);
 }

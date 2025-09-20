@@ -1,23 +1,20 @@
-import { useFiltersStore } from "@/store/useFiltersStore";
+"use client";
+
 import { Check, RotateCcw } from "lucide-react";
 import { useState } from "react";
 
-export const FilterKarat = () => {
-  const { karats, setKarats, resetKaratFilter } = useFiltersStore();
+interface FilterKaratProps {
+  selectedKarats: string[];
+  onChange: (selected: string[]) => void;
+  onReset: () => void;
+}
+
+export const FilterKarat: React.FC<FilterKaratProps> = ({
+  selectedKarats,
+  onChange,
+  onReset,
+}) => {
   const [isResetFilterAnimating, setIsResetFilterAnimating] = useState(false);
-
-  // Handle animation for reset all button
-  const resetFilter = () => {
-    resetKaratFilter();
-
-    // Trigger the animation by setting isAnimating to true
-    setIsResetFilterAnimating(true);
-
-    // Remove the animation class after 1 sec (duration of the animation)
-    setTimeout(() => {
-      setIsResetFilterAnimating(false);
-    }, 1000); // Match the duration in your CSS
-  };
 
   const karatOptions = [
     {
@@ -57,28 +54,38 @@ export const FilterKarat = () => {
     },
   ];
 
-  const toggleKarat = (karatId: string) => {
-    const newKarats = karats.includes(karatId)
-      ? karats.filter((id) => id !== karatId)
-      : [...karats, karatId];
-    setKarats(newKarats);
+  const resetFilter = () => {
+    onReset();
+    setIsResetFilterAnimating(true);
+    setTimeout(() => setIsResetFilterAnimating(false), 1000);
+  };
+
+  const toggleKarat = (id: string) => {
+    const newSelected = selectedKarats.includes(id)
+      ? selectedKarats.filter((item) => item !== id)
+      : [...selectedKarats, id];
+    onChange(newSelected);
   };
 
   return (
-    <div className="relative border bg-white p-3 pb-1">
-      <div className="flex items-center justify-between mb-1">
+    <div className="relative flex flex-col md:h-full justify-between border bg-white p-3 pb-1">
+      {/* Header */}
+      <div className="flex items-center grow-0 justify-between mb-1">
         <h3 className="font-figtree font-medium text-primary">Karat</h3>
         <button
           onClick={resetFilter}
           className="p-1 text-secondary hover:text-primary rounded"
         >
           <RotateCcw
-            className={`w-4 h-4 ${isResetFilterAnimating ? "resetFilterAnimation" : ""}`}
+            className={`w-4 h-4 ${
+              isResetFilterAnimating ? "resetFilterAnimation" : ""
+            }`}
           />
         </button>
       </div>
 
-      <div className="flex w-full lg:w-5/6 justify-between gap-4 overflow-x-auto p-2">
+      {/* Options */}
+      <div className="flex w-full h-full flex-grow items-center justify-between gap-4 overflow-x-auto p-2">
         {karatOptions.map((karat) => (
           <div key={karat.id} className="flex flex-col items-center gap-1.5">
             <button
@@ -86,14 +93,14 @@ export const FilterKarat = () => {
               className={`
                 relative w-8 h-8 rounded-full ${karat.color}
                 ${
-                  karats.includes(karat.id)
+                  selectedKarats.includes(karat.id)
                     ? "ring-2 ring-primary ring-offset-1"
                     : "hover:ring-1 hover:ring-offset-1"
                 }
                 transition-all duration-200
               `}
             >
-              {karats.includes(karat.id) && (
+              {selectedKarats.includes(karat.id) && (
                 <Check className="w-4 h-4 text-primary/80 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
               )}
             </button>

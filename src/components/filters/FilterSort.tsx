@@ -1,9 +1,25 @@
-import { useFiltersStore } from "@/store/useFiltersStore";
+// src/components/filters/FilterSort.tsx
+
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 
-export const FilterSort = () => {
-  const { sortBy, setSortBy } = useFiltersStore();
+// 1. Define the prop types with a dedicated interface
+interface FilterSortProps {
+  sortBy:
+    | "relevance"
+    | "newest"
+    | "low-to-high"
+    | "high-to-low"
+    | "discount"
+    | "top-rated";
+  setSortBy: (sort: FilterSortProps["sortBy"]) => void;
+}
+
+// 2. Apply the interface to the component's function signature
+export const FilterSort: React.FC<FilterSortProps> = ({
+  sortBy,
+  setSortBy,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const sortOptions = [

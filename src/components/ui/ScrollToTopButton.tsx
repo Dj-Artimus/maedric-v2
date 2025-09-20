@@ -40,7 +40,7 @@ const ScrollToTopButton: React.FC = () => {
     <div
       className={`fixed ${
         showScrollTop ? "md:block" : "hidden"
-      } bottom-8 right-8 rounded-full overflow-hidden z-[999] group`}
+      } bottom-8 right-8 rounded-full overflow-hidden z-[100] group`}
     >
       {/* Arrow Up */}
       <SlantedFillButton

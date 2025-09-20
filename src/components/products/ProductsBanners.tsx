@@ -1,17 +1,32 @@
+// src/components/products/ProductsBanners.tsx
+
 "use client";
 import React, { useEffect, useState } from "react";
 import { BannerCTA } from "./BannerCTA";
 
-const ProductsBanners: React.FC<{ index: number }> = ({ index }) => {
-  // Helper: get banner cycle for given columns
+interface ProductsBannersProps {
+  index: number;
+  bannerImages: {
+    src: string;
+    alt: string;
+    href: string;
+    title: string;
+    subtitle: string;
+    buttonText: string;
+  }[];
+}
+
+const ProductsBanners: React.FC<ProductsBannersProps> = ({
+  index,
+  bannerImages,
+}) => {
   const getBannerCycle = (cols: number) => {
     if (cols === 3) {
-      return [9, 14]; // cycle: 9 → banner-1, 14 → banner-2
+      return [9, 14];
     }
-    return [8, 12]; // cycle: 8 → banner-1, 12 → banner-2
+    return [8, 12];
   };
 
-  // 👉 detect current cols (1,2,3,4)
   const [cols, setCols] = useState(4);
   useEffect(() => {
     const updateCols = () => {
@@ -27,7 +42,6 @@ const ProductsBanners: React.FC<{ index: number }> = ({ index }) => {
 
   const cycle = getBannerCycle(cols);
 
-  // 🧮 figure out which banner belongs at this index
   let total = 0;
   let stepIndex = 0;
 
@@ -35,10 +49,16 @@ const ProductsBanners: React.FC<{ index: number }> = ({ index }) => {
     const step = cycle[stepIndex % cycle.length];
     total += step;
     if (total === index + 1) {
-      const bannerType = stepIndex % 2 === 0 ? "banner-1" : "banner-2";
+      const bannerData = bannerImages[stepIndex % 2];
       return (
         <div className="xs:col-span-2">
-          <BannerCTA type={bannerType} />
+          <BannerCTA
+            image={bannerData.src}
+            title={bannerData.title}
+            subtitle={bannerData.subtitle}
+            buttonText={bannerData.buttonText}
+            href={bannerData.href}
+          />
         </div>
       );
     }

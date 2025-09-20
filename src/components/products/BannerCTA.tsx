@@ -1,51 +1,46 @@
+// src/components/products/BannerCTA.tsx
 import React from "react";
 import HorizontalFillButton from "../ui/HorizontalFillButton";
 
 interface BannerCTAProps {
-  type: "banner-1" | "banner-2";
+  image: string;
+  title: string;
+  subtitle: string;
+  buttonText: string;
+  href: string;
 }
 
-export const BannerCTA: React.FC<BannerCTAProps> = ({ type }) => {
-  const bannerConfig = {
-    "banner-1": {
-      image: "/images/banner-1.png",
-      title: "Looking For Something Truly One Of A Kind?",
-      subtitle: "Discover our exclusive custom ring collection",
-      buttonText: "SHOP NOW",
-    },
-    "banner-2": {
-      image: "/images/banner-2.png",
-      title: "Discover The Beauty Of Uniqueness",
-      subtitle: "Handcrafted perfection in every detail",
-      buttonText: "SHOP NOW",
-    },
-  };
-
-  const config = bannerConfig[type];
-
+export const BannerCTA: React.FC<BannerCTAProps> = ({
+  image,
+  title,
+  subtitle,
+  buttonText,
+  href,
+}) => {
   return (
     <div className="col-span-2 relative h-[412px] border border-accent overflow-hidden group cursor-pointer">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
-        style={{ backgroundImage: `url(${config.image})` }}
+        style={{ backgroundImage: `url(${image})` }}
       />
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 " />
 
       {/* Content */}
-      <div className="absolute bottom-0 left-0 h-fit flex justify-between items-center p-8 z-10">
+      <div className="absolute bottom-0 left-0 h-fit flex flex-col justify-end p-8 z-10">
         <h2 className="font-quiche text-white text-2xl mb-2 max-w-[50%]">
-          {config.title}
+          {title}
         </h2>
+        <p className="text-white text-sm mb-4">{subtitle}</p>
         <HorizontalFillButton
           backgroundColor="transparent"
           fillColor="#d2ae6d"
           className="w-full h-fit xl:w-fit flex items-center gap-3 xl:text-nowrap text-[15px] font-figtree font-normal tracking-[3px] text-center uppercase text-white border-[1.5px] border-white bg-transparent hover:text-primary px-3 py-3 sm:px-4 xl:px-5 xl:ps-5 sm:py-3 group"
-          href=""
+          href={href}
         >
-          {config.buttonText}
+          {buttonText}
         </HorizontalFillButton>
       </div>
     </div>

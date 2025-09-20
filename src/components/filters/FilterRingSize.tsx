@@ -1,9 +1,9 @@
-import { useFiltersStore } from "@/store/useFiltersStore";
+import { useRingFiltersStore } from "@/store/useFiltersStore";
 import { ChevronDown, RotateCcw } from "lucide-react";
 import { useState } from "react";
 
 export const FilterRingSize = () => {
-  const { ringSize, setRingSize, resetRingSizeFilter } = useFiltersStore();
+  const { ringSize, setRingSize, resetRingSizeFilter } = useRingFiltersStore();
   const [isResetFilterAnimating, setIsResetFilterAnimating] = useState(false);
 
   // Handle animation for reset all button

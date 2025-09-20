@@ -1,38 +1,43 @@
-import { useFiltersStore } from "@/store/useFiltersStore";
 import { RotateCcw } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 
-export const FilterPriceRange = () => {
-  const { priceRange, setPriceRange, resetPriceFilter } = useFiltersStore();
+export interface RangeValue {
+  min: number;
+  max: number;
+}
+
+interface RangeSliderProps {
+  title: string; // e.g. "Price", "Weight"
+  value: RangeValue; // controlled state
+  onChange: (range: RangeValue) => void; // fired on release
+  onReset?: () => void; // optional reset handler
+  min: number;
+  max: number;
+  step?: number;
+  formatValue?: (val: number) => string; // custom formatter
+}
+
+const RangeSlider: React.FC<RangeSliderProps> = ({
+  title,
+  value,
+  onChange,
+  onReset,
+  min,
+  max,
+  step = 1,
+  formatValue = (val) => val.toString(),
+}) => {
   const [isDragging, setIsDragging] = useState<"min" | "max" | null>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
-  const [isResetFilterAnimating, setIsResetFilterAnimating] = useState(false);
-
-  // Local state while dragging (prevents live API calls)
-  const [localRange, setLocalRange] = useState(priceRange);
+  const [localRange, setLocalRange] = useState<RangeValue>(value);
+  const [isResetAnimating, setIsResetAnimating] = useState(false);
 
   useEffect(() => {
-    setLocalRange(priceRange);
-  }, [priceRange]);
+    setLocalRange(value);
+  }, [value]);
 
-  const resetFilter = () => {
-    resetPriceFilter();
-    setIsResetFilterAnimating(true);
-    setTimeout(() => {
-      setIsResetFilterAnimating(false);
-    }, 1000);
-  };
-
-  const min = 500;
-  const max = 12000;
-
-  const getPositionFromValue = (value: number) =>
-    ((value - min) / (max - min)) * 100;
-
-  const getValueFromPosition = (position: number) => {
-    const value = (position / 100) * (max - min) + min;
-    return Math.round(value / 100) * 100;
-  };
+  const getPositionFromValue = (val: number) =>
+    ((val - min) / (max - min)) * 100;
 
   const handleStart =
     (type: "min" | "max") => (e: React.MouseEvent | React.TouchEvent) => {
@@ -41,17 +46,22 @@ export const FilterPriceRange = () => {
     };
 
   useEffect(() => {
+    const getValueFromPosition = (pos: number) => {
+      const val = (pos / 100) * (max - min) + min;
+      return Math.round(val / step) * step;
+    };
+
     const handleMove = (clientX: number) => {
       if (!isDragging || !sliderRef.current) return;
 
       const rect = sliderRef.current.getBoundingClientRect();
-      const position = ((clientX - rect.left) / rect.width) * 100;
-      const value = getValueFromPosition(Math.max(0, Math.min(100, position)));
+      const pos = ((clientX - rect.left) / rect.width) * 100;
+      const val = getValueFromPosition(Math.max(0, Math.min(100, pos)));
 
-      if (isDragging === "min" && value <= localRange.max) {
-        setLocalRange({ ...localRange, min: value });
-      } else if (isDragging === "max" && value >= localRange.min) {
-        setLocalRange({ ...localRange, max: value });
+      if (isDragging === "min" && val <= localRange.max) {
+        setLocalRange({ ...localRange, min: val });
+      } else if (isDragging === "max" && val >= localRange.min) {
+        setLocalRange({ ...localRange, max: val });
       }
     };
 
@@ -60,7 +70,7 @@ export const FilterPriceRange = () => {
 
     const handleEnd = () => {
       if (isDragging) {
-        setPriceRange(localRange); // ✅ apply filter only on release
+        onChange(localRange); // ✅ apply filter only on release
         setIsDragging(null);
       }
     };
@@ -78,27 +88,31 @@ export const FilterPriceRange = () => {
       document.removeEventListener("touchmove", handleTouchMove);
       document.removeEventListener("touchend", handleEnd);
     };
-  }, [isDragging, localRange, setPriceRange]);
+  }, [isDragging, localRange, onChange, min, max, step]);
 
-  const formatPrice = (value: number) =>
-    value >= 1000 ? `$${Math.round(value / 1000)}k` : `$${value}`;
+  const reset = () => {
+    onReset?.();
+    setIsResetAnimating(true);
+    setTimeout(() => setIsResetAnimating(false), 1000);
+  };
 
   return (
     <div className="relative border bg-white p-3">
       <div className="flex items-center justify-between mb-3">
-        <h3 className="font-figtree font-medium text-primary">Price</h3>
-        <button
-          onClick={resetFilter}
-          className="p-1 text-secondary hover:text-primary rounded"
-        >
-          <RotateCcw
-            className={`w-4 h-4 ${
-              isResetFilterAnimating ? "resetFilterAnimation" : ""
-            }`}
-          />
-        </button>
+        <h3 className="font-figtree font-medium text-primary">{title}</h3>
+        {onReset && (
+          <button
+            onClick={reset}
+            className="p-1 text-secondary hover:text-primary rounded"
+          >
+            <RotateCcw
+              className={`w-4 h-4 ${isResetAnimating ? "resetFilterAnimation" : ""}`}
+            />
+          </button>
+        )}
       </div>
 
+      {/* Slider Track */}
       <div className="my-4 mt-6 px-2">
         <div
           ref={sliderRef}
@@ -140,20 +154,23 @@ export const FilterPriceRange = () => {
         </div>
       </div>
 
+      {/* Value Labels */}
       <div className="flex justify-between pt-1">
         <input
           type="text"
-          value={formatPrice(localRange.min)}
-          className="w-14 px-1 border text-primary text-md font-figtree text-center"
+          value={formatValue(localRange.min)}
+          className="w-16 px-1 border text-primary text-md font-figtree text-center"
           readOnly
         />
         <input
           type="text"
-          value={formatPrice(localRange.max)}
-          className="w-14 px-1 border text-primary text-md font-figtree text-center"
+          value={formatValue(localRange.max)}
+          className="w-16 px-1 border text-primary text-md font-figtree text-center"
           readOnly
         />
       </div>
     </div>
   );
 };
+
+export default RangeSlider;

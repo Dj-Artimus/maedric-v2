@@ -1,41 +1,41 @@
 "use client";
-import RingsFiltersPanel from "@/components/filters/RingsFiltersPanel";
-import JewelleryHeroSection from "@/components/jewellerySections/JewelleryHeroSection";
+import { useEffect, useState } from "react";
+
+import EarringsFiltersPanel from "@/components/filters/EarringsFiltersPanel";
 import { ProductGrid } from "@/components/products/ProductGrid";
 import ScrollToTopButton from "@/components/ui/ScrollToTopButton";
 import { mockApi } from "@/lib/mockApi";
-import { useRingFiltersStore } from "@/store/useFiltersStore";
-import { useEffect, useState } from "react";
+import { useEarringFiltersStore } from "@/store/useFiltersStore";
+import JewelleryHeroSection from "../../components/jewellerySections/JewelleryHeroSection";
 import NewsletterSection from "../sections/NewsletterSection";
 
-const RingsPage: React.FC = () => {
+const EarringsPage: React.FC = () => {
   const [totalResults, setTotalResults] = useState(105);
-  const filters = useRingFiltersStore();
+  const filters = useEarringFiltersStore();
 
-  const ringBannerImages = [
+  const earringsBannerImages = [
     {
-      src: "/images/ringBanner1.png",
-      alt: "Ring Banner 1",
-      href: "/rings",
+      src: "/images/earringsBanner1.png",
+      alt: "Earrings Banner 1",
+      href: "/earrings",
       title: "Looking For Something Truly One Of A Kind?",
-      subtitle: "Discover our exclusive custom ring collection",
+      subtitle: "Discover our exclusive custom earrings collection",
       buttonText: "SHOP NOW",
     },
     {
-      src: "/images/ringBanner2.png",
-      alt: "Ring Banner 2",
-      href: "/rings",
+      src: "/images/earringsBanner2.png",
+      alt: "Earrings Banner 2",
+      href: "/earrings",
       title: "Discover The Beauty Of Uniqueness",
       subtitle: "Handcrafted perfection in every detail",
       buttonText: "SHOP NOW",
     },
   ];
 
-  // Load products based on current filters
   useEffect(() => {
     const fetchMeta = async () => {
       try {
-        const params = mockApi.ringsFiltersToApiParams(filters);
+        const params = mockApi.earringsFiltersToApiParams(filters);
         const response = await mockApi.getProducts(params);
         setTotalResults(response.meta.total);
       } catch (error) {
@@ -48,23 +48,25 @@ const RingsPage: React.FC = () => {
     filters,
     filters.priceRange,
     filters.metalTypes,
-    filters.ringSize,
     filters.karats,
     filters.gemstoneUsage,
     filters.sortBy,
+    filters.attachmentMethod,
+    filters.weight,
   ]);
 
   return (
     <div className="h-full w-full">
       <main className="min-h-screen">
         <JewelleryHeroSection
-          title="One ring to say it all"
-          description="Rings hold a variety of meanings depending on ring selection. Whether to engagement, marriage or promise between a couple to a show of prestige for a business partner."
-          breadcrumb={[{ label: "Home", href: "/" }, { label: "Rings" }]}
-          desktopImage="/images/hero-desktop.jpg"
-          mobileImage="/images/hero-mobile.png"
-          ctaImage="/images/jewelleryCTABanner.png"
-          ctaImageAlt="Discover our exclusive ring collection"
+          title="Elevate your look with stunning earrings"
+          description="Timeless studs to bold statement pieces. Perfect for any occasion, they add just the right touch of sparkle."
+          breadcrumb={[{ label: "Home", href: "/" }, { label: "Earrings" }]}
+          desktopImage="/images/earringsHero.jpg"
+          mobileImage="/images/earringsHero.jpg"
+          mobileImagePosition="object-right"
+          ctaImage="/images/earringsTopBanner.png"
+          ctaImageAlt="Discover our exclusive earrings collection"
           ctaTitle="Header Title Goes Here"
           ctaDescription={[
             "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
@@ -72,13 +74,13 @@ const RingsPage: React.FC = () => {
             "Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of &quot; Dede Finibus Bonorum et Malorum &quot; (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance.",
           ]}
         />
-
         <div className="px-4 mx-auto mt-16">
-          <RingsFiltersPanel totalResults={totalResults} />
-          <ProductGrid
-            useFiltersStore={useRingFiltersStore}
-            bannerImages={ringBannerImages}
-            filtersToApiParams={mockApi.ringsFiltersToApiParams}
+          <EarringsFiltersPanel totalResults={totalResults} />
+          {/* CORRECTED: Specify the generic type parameter */}
+          <ProductGrid<typeof filters>
+            useFiltersStore={useEarringFiltersStore}
+            bannerImages={earringsBannerImages}
+            filtersToApiParams={mockApi.earringsFiltersToApiParams}
           />
         </div>
       </main>
@@ -88,4 +90,4 @@ const RingsPage: React.FC = () => {
   );
 };
 
-export default RingsPage;
+export default EarringsPage;

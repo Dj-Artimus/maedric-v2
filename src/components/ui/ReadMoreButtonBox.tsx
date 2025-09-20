@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 interface ReadMoreBoxProps {
-  children: React.ReactNode;
+  text: string[];
   readMoreColor?: string;
   readLessColor?: string;
   idx?: number;
@@ -13,7 +13,7 @@ interface ReadMoreBoxProps {
 }
 
 const ReadMoreBox = ({
-  children,
+  text,
   textColor = "text-secondary",
   readMoreColor = "text-primary",
   readLessColor = "text-accent",
@@ -30,20 +30,23 @@ const ReadMoreBox = ({
     );
   };
 
-  // Safely convert children to a string for length check
-  const textContent = React.Children.toArray(children).join("");
+  // Flatten text array to measure length
+  const textContent = text.join(" ");
 
   return (
     <div className="relative">
-      <p
+      <div
         className={`w-full ${textColor} ${
           expandedText.includes(idx)
             ? ""
             : "line-clamp-3 overflow-hidden text-ellipsis"
-        } relative`}
+        } relative space-y-3`}
       >
-        {children}
-      </p>
+        {text.map((para, idx) => (
+          <p key={idx}>{para}</p>
+        ))}
+      </div>
+
       <span className={`block ${disableScreenSize}:hidden`}>
         {textContent.length > 100 && !expandedText.includes(idx) && (
           <span
