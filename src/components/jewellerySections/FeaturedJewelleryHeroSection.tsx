@@ -23,23 +23,12 @@ const FeaturedJewelleryHeroSection: React.FC<
   mobileImagePosition = "object-left",
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isCTABannerVisible, setIsCTABannerVisible] = useState(false);
 
   const heroRef = useRef<HTMLDivElement>(null);
-  const ctaBannerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setIsLoaded(true);
   }, []);
-
-  const handleLearnMore = () => {
-    setIsCTABannerVisible(!isCTABannerVisible);
-  };
-
-  const handleCloseBanner = () => {
-    setIsCTABannerVisible(false);
-    heroRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
 
   return (
     <section
