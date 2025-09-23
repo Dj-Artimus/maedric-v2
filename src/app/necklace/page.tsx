@@ -14,7 +14,7 @@ const NecklacePage: React.FC = () => {
 
   const necklaceBannerImages = [
     {
-      src: "/images/necklaceBanner1.jpg",
+      src: "/images/necklaceBanner1.png",
       alt: "Necklace Banner 1",
       href: "/necklaces",
       title: "Looking For Something Truly One Of A Kind?",
@@ -22,7 +22,7 @@ const NecklacePage: React.FC = () => {
       buttonText: "SHOP NOW",
     },
     {
-      src: "/images/necklaceBanner2.jpg",
+      src: "/images/necklaceBanner2.png",
       alt: "Necklace Banner 2",
       href: "/necklaces",
       title: "Discover The Beauty Of Uniqueness",

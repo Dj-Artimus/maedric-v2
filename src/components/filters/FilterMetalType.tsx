@@ -59,7 +59,7 @@ export const FilterMetalType: React.FC<FilterMetalTypeProps> = ({
       </div>
 
       {/* Options */}
-      <div className="flex w-full gap-6 overflow-x-auto p-2">
+      <div className="flex w-full gap-8 scrollbar-thin overflow-x-auto p-2">
         {metals.map((metal) => (
           <div
             key={metal.id}

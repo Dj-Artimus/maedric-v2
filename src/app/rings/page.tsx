@@ -73,7 +73,7 @@ const RingsPage: React.FC = () => {
           ]}
         />
 
-        <div className="px-4 mx-auto mt-16">
+        <div className="px-4 xl:px-28 mx-auto mt-16">
           <RingsFiltersPanel totalResults={totalResults} />
           <ProductGrid
             useFiltersStore={useRingFiltersStore}

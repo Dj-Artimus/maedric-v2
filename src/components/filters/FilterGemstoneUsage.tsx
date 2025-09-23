@@ -57,7 +57,7 @@ export const FilterGemstoneUsage: React.FC<FilterGemstoneUsageProps> = ({
       </div>
 
       {/* Options */}
-      <div className="flex gap-6 h-full flex-grow overflow-x-auto p-2">
+      <div className="flex gap-8 h-full flex-grow overflow-x-auto scrollbar-thin p-2">
         {gemstones.map((gem) => (
           <div key={gem.id} className=" w-8 flex flex-col items-center gap-1">
             <button

@@ -85,7 +85,7 @@ export const FilterKarat: React.FC<FilterKaratProps> = ({
       </div>
 
       {/* Options */}
-      <div className="flex w-full h-full flex-grow gap-6 overflow-x-auto p-2">
+      <div className="flex w-full h-full flex-grow gap-8 overflow-x-auto scrollbar-thin p-2">
         {karatOptions.map((karat) => (
           <div
             key={karat.id}

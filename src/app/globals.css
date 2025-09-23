@@ -120,6 +120,10 @@
 }
 
 .scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+.scrollbar-primary {
   scrollbar-color: #051e331a transparent;
 }
 

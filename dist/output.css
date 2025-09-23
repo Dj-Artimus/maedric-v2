@@ -2252,6 +2252,10 @@ video {
   scrollbar-color: #051e331a transparent;
 }
 
+.scrollbar-primary {
+  scrollbar-color: #051e331a transparent;
+}
+
 .scrollbar-accent {
   scrollbar-color: #d2ae6d transparent;
 }
