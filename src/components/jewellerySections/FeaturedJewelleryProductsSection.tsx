@@ -156,7 +156,7 @@ const FeaturedJewelleryProductsSection: React.FC<
                 <div className="flex flex-col justify-center items-center">
                   <button
                     onClick={handlePrevClick}
-                    className="p-1 sm:p-2 h-20 xs:h-24 sm:w-24 sm:h-auto flex justify-center items-center border  text-primary/70 hover:text-primary transition-colors cursor-pointer"
+                    className="p-1 sm:p-2 h-20 xs:h-24 sm:w-24 sm:h-auto flex justify-center items-center  text-primary/70 hover:text-primary transition-colors cursor-pointer"
                     aria-label="Previous"
                   >
                     <SlArrowUp className="w-6 h-6 -rotate-90 sm:rotate-0" />
@@ -257,7 +257,7 @@ const FeaturedJewelleryProductsSection: React.FC<
                 <div className="flex flex-col justify-center items-center sm:mt-[-16px]">
                   <button
                     onClick={handleNextClick}
-                    className="p-1 sm:p-2 h-20 xs:h-24 sm:h-auto sm:w-24 flex justify-center items-center border text-primary/70 hover:text-primary transition-colors cursor-pointer"
+                    className="p-1 sm:p-2 h-20 xs:h-24 sm:h-auto sm:w-24 flex justify-center items-center text-primary/70 hover:text-primary transition-colors cursor-pointer"
                     aria-label="Next"
                   >
                     <SlArrowDown className="w-6 h-6 -rotate-90 sm:rotate-0" />
