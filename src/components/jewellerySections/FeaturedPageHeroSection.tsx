@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-interface FeaturedJewelleryHeroSectionProps {
+interface FeaturedPageHeroSectionProps {
   title: string;
   description: string;
   breadcrumb: { label: string; href?: string }[];
@@ -12,8 +12,8 @@ interface FeaturedJewelleryHeroSectionProps {
   mobileImagePosition?: string;
 }
 
-const FeaturedJewelleryHeroSection: React.FC<
-  FeaturedJewelleryHeroSectionProps
+const FeaturedPageHeroSection: React.FC<
+  FeaturedPageHeroSectionProps
 > = ({
   title,
   description,
@@ -24,21 +24,15 @@ const FeaturedJewelleryHeroSection: React.FC<
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const heroRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     setIsLoaded(true);
   }, []);
 
   return (
-    <section
-      id="hero-section"
-      ref={heroRef}
-      className="relative transition-transform duration-1000 h-full"
-    >
+    <section className="relative transition-transform duration-1000 h-full">
       <div className="min-h-[500px] max-h-[85vh] xs:min-h-screen xs:max-h-screen z-10">
         {/* Desktop Hero Image */}
-        <div className="hidden sm:block absolute inset-0">
+        <div className="hidden sm:block">
           <Image
             src={desktopImage}
             alt={title}
@@ -48,7 +42,7 @@ const FeaturedJewelleryHeroSection: React.FC<
           />
         </div>
         {/* Mobile Hero Image */}
-        <div className="sm:hidden absolute inset-0">
+        <div className="sm:hidden">
           <Image
             src={mobileImage}
             alt={title}
@@ -59,7 +53,7 @@ const FeaturedJewelleryHeroSection: React.FC<
         </div>
 
         {/* Black Overlay */}
-        <div className="absolute inset-0 w-full h-[85vh] min-h-[500px] max-h-[85vh] xs:h-screen xs:max-h-full bg-gradient-to-t sm:bg-gradient-to-r from-black lg:from-20% to-transparent" />
+        <div className="absolute inset-0 w-full h-full bg-gradient-to-t sm:bg-gradient-to-r from-black lg:from-20% to-transparent" />
         {/* White Overlay */}
         <div className="absolute inset-0 w-full h-24 lg:h-32 bg-gradient-to-b from-neutral/70 via-neutral/30 to-transparent" />
 
@@ -106,4 +100,4 @@ const FeaturedJewelleryHeroSection: React.FC<
   );
 };
 
-export default FeaturedJewelleryHeroSection;
+export default FeaturedPageHeroSection;

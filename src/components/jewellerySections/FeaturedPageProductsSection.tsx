@@ -21,32 +21,47 @@ export interface FeaturedProduct {
 }
 
 // Define the props interface for the component
-interface FeaturedJewelleryProductsSectionProps {
+interface FeaturedPageProductsSectionProps {
   products: FeaturedProduct[];
 }
 
-const FeaturedJewelleryProductsSection: React.FC<
-  FeaturedJewelleryProductsSectionProps
+const FeaturedPageProductsSection: React.FC<
+  FeaturedPageProductsSectionProps
 > = ({ products }) => {
   const [activeProductIndex, setActiveProductIndex] = useState(0);
-  const swiperRef = useRef<SwiperType | null>(null);
+  const mobileSwiperRef = useRef<SwiperType | null>(null);
+  const desktopSwiperRef = useRef<SwiperType | null>(null);
+  // Detect screen size (simple hook or window.matchMedia)
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
+
+  // Handle previous button click
+  const handlePrevClick = () => {
+    if (isMobile && mobileSwiperRef.current) {
+      mobileSwiperRef.current.slidePrev();
+    } else if (!isMobile && desktopSwiperRef.current) {
+      desktopSwiperRef.current.slidePrev();
+    }
+  };
+
+  // Handle next button
+  const handleNextClick = () => {
+    if (isMobile && mobileSwiperRef.current) {
+      mobileSwiperRef.current.slideNext();
+    } else if (!isMobile && desktopSwiperRef.current) {
+      desktopSwiperRef.current.slideNext();
+    }
+  };
 
   // Create a doubled array for infinite scroll
   const extendedProducts = [...products, ...products];
 
-  // Handle previous button click
-  const handlePrevClick = () => {
-    if (swiperRef.current) swiperRef.current.slidePrev();
-  };
-
-  // Handle next button click
-  const handleNextClick = () => {
-    if (swiperRef.current) swiperRef.current.slideNext();
-  };
-
   // Handle direct thumbnail click
   const handleThumbnailClick = (clickedIndex: number) => {
-    if (swiperRef.current) swiperRef.current.slideToLoop(clickedIndex);
+    if (isMobile && mobileSwiperRef.current) {
+      mobileSwiperRef.current.slideToLoop(clickedIndex);
+    } else if (!isMobile && desktopSwiperRef.current) {
+      desktopSwiperRef.current.slideToLoop(clickedIndex);
+    }
   };
 
   // Handle slider change
@@ -59,7 +74,7 @@ const FeaturedJewelleryProductsSection: React.FC<
 
   return (
     <section className="w-full bg-white">
-      <div className="mx-auto sm:max-xl:container max-w-6xl px-[15.5px] py-10 lg:py-28">
+      <div className="mx-auto sm:max-xl:container max-w-6xl px-[15.5px] py-28">
         {/* Section Heading */}
         <div className="text-center mb-12">
           <h2 className="font-quiche text-3xl md:text-4xl text-primary capitalize">
@@ -153,7 +168,7 @@ const FeaturedJewelleryProductsSection: React.FC<
 
               {/* Thumbnail Slider Section */}
               <div className="flex sm:flex-col h-full items-center justify-center">
-                <div className="flex flex-col justify-center items-center">
+                <div className="flex flex-col justify-center items-center z-10">
                   <button
                     onClick={handlePrevClick}
                     className="p-1 sm:p-2 h-20 xs:h-24 sm:w-24 sm:h-auto flex justify-center items-center  text-primary/70 hover:text-primary transition-colors cursor-pointer"
@@ -166,7 +181,7 @@ const FeaturedJewelleryProductsSection: React.FC<
                 {/* Horizontal Swiper for Thumbnails */}
                 <div className="block sm:hidden h-20 xs:h-24 w-[78vw] rounded-sm bg-white relative">
                   <Swiper
-                    onSwiper={(swiper) => (swiperRef.current = swiper)}
+                    onSwiper={(swiper) => (mobileSwiperRef.current = swiper)}
                     direction="horizontal"
                     slidesPerView={4}
                     spaceBetween={0}
@@ -188,7 +203,6 @@ const FeaturedJewelleryProductsSection: React.FC<
                             handleThumbnailClick(globalIndex % products.length)
                           }
                         >
-                          {/* We've simplified this inner div to a single container */}
                           <div className="relative w-20 h-20 xs:w-24 xs:h-24 overflow-hidden">
                             <Image
                               src={product.image}
@@ -211,50 +225,57 @@ const FeaturedJewelleryProductsSection: React.FC<
                 </div>
 
                 {/* Vertical Swiper for Thumbnails */}
-                <div className="hidden sm:block w-24 h-[430px] rounded-sm bg-white relative">
-                  {/* Golden Border - Only for first product */}
-                  <div className="absolute left-1 sm:left-0 top-0 w-full max-sm:w-24 h-24 bg-[#d2ae6d]/10 border-2 border-[#d2ae6d] z-10 pointer-events-none" />
+                <div className="hidden sm:block w-24 h-[530px] rounded-sm bg-white relative">
                   <Swiper
-                    onSwiper={(swiper) => (swiperRef.current = swiper)}
+                    onSwiper={(swiper) => (desktopSwiperRef.current = swiper)}
                     direction="vertical"
-                    slidesPerView={4}
+                    slidesPerView={5}
                     spaceBetween={0}
                     loop={true}
                     modules={[Navigation]}
                     onSlideChange={handleSlideChange}
+                    initialSlide={2} // Sets the initial active slide to the third one (index 2).
+                    centeredSlides={true} // Centers the active slide.
                     className="w-full h-full"
                   >
                     {extendedProducts.map((product, globalIndex) => (
                       <SwiperSlide key={`${product.id}-${globalIndex}`}>
-                        <div
-                          className="relative w-full h-20 xs:h-24 cursor-pointer flex items-center justify-center hover:bg-gray-50 transition-colors"
-                          onClick={() =>
-                            handleThumbnailClick(globalIndex % products.length)
-                          }
-                        >
-                          {/* Square aspect ratio container */}
-                          <div className="relative w-20 h-20 xs:w-24 xs:h-24 border overflow-hidden">
-                            <Image
-                              src={product.image}
-                              alt={product.name}
-                              fill
-                              className="object-contain object-center p-1.5"
-                            />
-                            {/* Small shadow */}
-                            <div
-                              className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-10 h-0.5 bg-black/70 blur-[3px]"
-                              style={{
-                                borderRadius: "100% / 100%", // horizontal radius / vertical radius
-                              }}
-                            />
+                        {({ isActive }) => (
+                          <div
+                            className={`relative w-full h-20 xs:h-24 cursor-pointer flex items-center justify-center transition-colors ${
+                              isActive &&
+                              "border-[2px] bg-accent/10 border-[#d2ae6d]"
+                            }`}
+                            onClick={() =>
+                              handleThumbnailClick(
+                                globalIndex % products.length
+                              )
+                            }
+                          >
+                            {/* Square aspect ratio container */}
+                            <div className="relative w-20 h-20 xs:w-24 xs:h-24 border overflow-hidden">
+                              <Image
+                                src={product.image}
+                                alt={product.name}
+                                fill
+                                className="object-contain object-center p-1.5"
+                              />
+                              {/* Small shadow */}
+                              <div
+                                className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-10 h-0.5 bg-black/70 blur-[3px]"
+                                style={{
+                                  borderRadius: "100% / 100%", // horizontal radius / vertical radius
+                                }}
+                              />
+                            </div>
                           </div>
-                        </div>
+                        )}
                       </SwiperSlide>
                     ))}
                   </Swiper>
                 </div>
 
-                <div className="flex flex-col justify-center items-center sm:mt-[-16px]">
+                <div className="flex flex-col justify-center items-center sm:mt-[-12px] bg-white z-10">
                   <button
                     onClick={handleNextClick}
                     className="p-1 sm:p-2 h-20 xs:h-24 sm:h-auto sm:w-24 flex justify-center items-center text-primary/70 hover:text-primary transition-colors cursor-pointer"
@@ -267,10 +288,10 @@ const FeaturedJewelleryProductsSection: React.FC<
             </div>
           </div>
         </div>
+        <div className="bg-white w-full h-44 absolute bottom-0 left-0"></div>
       </div>
-      <div className="bg-white w-full h-44 absolute bottom-0 left-0"></div>
     </section>
   );
 };
 
-export default FeaturedJewelleryProductsSection;
+export default FeaturedPageProductsSection;

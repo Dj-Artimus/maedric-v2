@@ -59,7 +59,7 @@ const JewelleryHeroSection: React.FC<JewelleryHeroSectionProps> = ({
     >
       <div className="min-h-[500px] max-h-[85vh] xs:min-h-screen xs:max-h-screen z-10">
         {/* Desktop Hero Image */}
-        <div className="hidden sm:block absolute inset-0">
+        <div className="hidden sm:block0">
           <Image
             src={desktopImage}
             alt={title}
@@ -69,7 +69,7 @@ const JewelleryHeroSection: React.FC<JewelleryHeroSectionProps> = ({
           />
         </div>
         {/* Mobile Hero Image */}
-        <div className="sm:hidden absolute inset-0">
+        <div className="sm:hidden">
           <Image
             src={mobileImage}
             alt={title}
@@ -80,7 +80,8 @@ const JewelleryHeroSection: React.FC<JewelleryHeroSectionProps> = ({
         </div>
 
         {/* Black Overlay */}
-        <div className="absolute inset-0 w-full h-[85vh] min-h-[500px] max-h-[85vh] xs:h-screen xs:max-h-full bg-gradient-to-t sm:bg-gradient-to-r from-black lg:from-20% to-transparent" />
+        <div className="absolute inset-0 w-full h-full bg-gradient-to-t sm:bg-gradient-to-r from-black lg:from-20% to-transparent" />
+
         {/* White Overlay */}
         <div className="absolute inset-0 w-full h-24 lg:h-32 bg-gradient-to-b from-neutral/70 via-neutral/30 to-transparent" />
 
