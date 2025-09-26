@@ -7,7 +7,7 @@ import ScrollToTopButton from "@/components/ui/ScrollToTopButton";
 import { useSmartWindowSnap } from "@/hooks/useSmartWindowSnap";
 
 const JewelleryFeaturedPage: React.FC = () => {
-  useSmartWindowSnap({ debounceMs: 120, threshold: 0.1, settleMs: 700 });
+  useSmartWindowSnap({ debounceMs: 40, threshold: 0.1, settleMs: 700 });
 
   const featuredRings = [
     {

@@ -29,12 +29,21 @@ export const FilterAttachmentMethod: React.FC<FilterAttachmentMethodProps> = ({
     setTimeout(() => setIsResetFilterAnimating(false), 1000); // Match the duration in your CSS
   };
 
+  /**
+   * MODIFIED FUNCTION: Allows multiple selections.
+   * If the method is already selected, remove it.
+   * If the method is not selected, add it to the list.
+   */
   const toggleMethod = (id: string) => {
-    // This filter type allows only one selection at a time, like a radio button.
-    // If the clicked method is already selected, unselect it.
-    // Otherwise, select the clicked method.
-    const newSelected = selectedMethods.includes(id) ? [] : [id];
-    onChange(newSelected);
+    if (selectedMethods.includes(id)) {
+      // If already selected, remove it (unselect)
+      const newSelected = selectedMethods.filter((methodId) => methodId !== id);
+      onChange(newSelected);
+    } else {
+      // If not selected, add it (select)
+      const newSelected = [...selectedMethods, id];
+      onChange(newSelected);
+    }
   };
 
   return (

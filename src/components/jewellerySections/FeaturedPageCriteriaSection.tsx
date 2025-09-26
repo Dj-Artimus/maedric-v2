@@ -42,15 +42,19 @@ const FeaturedPageCriteriaSection: React.FC<
       >
         {/* Left Content - Criteria Image */}
         <div className="w-full flex justify-center">
-          <div className="w-fit relative overflow-hidden group">
-            <Image
-              src={criteriaImages[activeImageIndex]}
-              alt="Featured Jewellery Criteria Image"
-              priority
-              width={580}
-              height={725}
-              className="object-cover object-right-top aspect-[3/4] h-full transition-all duration-1000 ease-in-out"
-            />
+          <div className=" w-full max-w-[580px] relative max-h-[725px] aspect-[3/4] bg-black/70 overflow-hidden group">
+            {criteriaImages.map((image, index) => (
+              <Image
+                key={index}
+                src={image}
+                alt="featured Jewellery Criteria Img"
+                priority
+                fill
+                className={`object-cover object-right-top aspect-[3/4] h-full transition-all duration-700 ease-in-out ${
+                  activeImageIndex === index ? "opacity-100" : "opacity-0"
+                }`}
+              />
+            ))}
             <div className="absolute bottom-0 left-0 w-full h-full bg-black/30" />
           </div>
         </div>
@@ -103,7 +107,7 @@ const FeaturedPageCriteriaSection: React.FC<
             src={image}
             alt="featured Jewellery Static Bg Img"
             fill
-            className={`object-cover transition-opacity duration-500 ease-in-out ${
+            className={`object-cover transition-opacity duration-700 ease-in-out ${
               activeImageIndex === index ? "opacity-100" : "opacity-0"
             }`}
           />

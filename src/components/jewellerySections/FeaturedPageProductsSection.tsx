@@ -57,11 +57,36 @@ const FeaturedPageProductsSection: React.FC<
 
   // Handle direct thumbnail click
   const handleThumbnailClick = (clickedIndex: number) => {
-    if (isMobile && mobileSwiperRef.current) {
-      mobileSwiperRef.current.slideToLoop(clickedIndex);
-    } else if (!isMobile && desktopSwiperRef.current) {
-      desktopSwiperRef.current.slideToLoop(clickedIndex);
+    const swiper = isMobile
+      ? mobileSwiperRef.current
+      : desktopSwiperRef.current;
+    if (!swiper) return;
+
+    const current = swiper.realIndex;
+    const total = products.length;
+    const extendedTotal = extendedProducts.length;
+
+    // Calculate the shortest path between current and clicked
+    let diff = clickedIndex - current;
+
+    // Wrap-around: if the difference is more than half, go the other way
+    if (Math.abs(diff) > total / 2) {
+      diff = diff > 0 ? diff - total : diff + total;
     }
+
+    let targetIndex = current + diff;
+
+    // Wrap negative indices back into valid range
+    if (targetIndex < 0) {
+      targetIndex += extendedTotal;
+    }
+
+    // Special case: handle when swiper has looped beyond total
+    if (diff < -total / 2 && current >= total && clickedIndex < total) {
+      targetIndex = total - 1 + diff;
+    }
+
+    swiper.slideToLoop(targetIndex, 600);
   };
 
   // Handle slider change
@@ -234,7 +259,7 @@ const FeaturedPageProductsSection: React.FC<
                     loop={true}
                     modules={[Navigation]}
                     onSlideChange={handleSlideChange}
-                    initialSlide={2} // Sets the initial active slide to the third one (index 2).
+                    initialSlide={0} // Sets the initial active slide to the third one (index 2).
                     centeredSlides={true} // Centers the active slide.
                     className="w-full h-full"
                   >

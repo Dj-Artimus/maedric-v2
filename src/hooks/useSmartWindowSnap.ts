@@ -1,10 +1,9 @@
-// useSmartWindowSnap.ts
 import { useEffect } from "react";
 
 export function useSmartWindowSnap({
-  debounceMs = 120,
-  threshold = 0.5,
-  settleMs = 700,
+  debounceMs = 120, // how long after scroll stops to trigger snap
+  threshold = 0.5, // fraction of section height that must be scrolled to trigger snap
+  settleMs = 700, // how long to wait after scrolling ends before allowing another snap
 } = {}) {
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout> | null = null;

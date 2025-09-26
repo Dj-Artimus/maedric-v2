@@ -52,14 +52,14 @@ const GemestoneFeaturedPage: React.FC = () => {
       image: "/images/featuredGemstoneProduct5.png",
       price: "$15,800",
     },
-    {
-      id: 6,
-      name: "Fiery Red Ruby",
-      description:
-        "An expertly cut, octagonal-shaped ruby with a brilliant red luster. The sharp, clean facets maximize its light reflection, giving it a powerful and fiery presence and a flawless, polished appearance.",
-      image: "/images/featuredGemstoneProduct6.png",
-      price: "$3,300",
-    },
+    // {
+    //   id: 6,
+    //   name: "Fiery Red Ruby",
+    //   description:
+    //     "An expertly cut, octagonal-shaped ruby with a brilliant red luster. The sharp, clean facets maximize its light reflection, giving it a powerful and fiery presence and a flawless, polished appearance.",
+    //   image: "/images/featuredGemstoneProduct6.png",
+    //   price: "$3,300",
+    // },
     {
       id: 7,
       name: "Round Brilliant Diamond",
@@ -129,7 +129,8 @@ const GemestoneFeaturedPage: React.FC = () => {
               { label: "Featured" },
             ]}
             desktopImage="/images/featuredGemstoneHeroDesktop.jpg"
-            mobileImage="/images/featuredGemstoneHeroDesktop.jpg"
+            mobileImage="/images/featuredGemstoneHeroMobile.jpg"
+            mobileImagePosition="object-top"
           />
         </div>
         <FeaturedPageCriteriaSection
