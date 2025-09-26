@@ -59,21 +59,21 @@ const JewelleryHeroSection: React.FC<JewelleryHeroSectionProps> = ({
     >
       <div className="min-h-[500px] max-h-[85vh] xs:min-h-screen xs:max-h-screen z-10">
         {/* Desktop Hero Image */}
-        <div className="hidden sm:block w-full h-full max-h-screen">
+        <div className="hidden sm:block ">
           <Image
             src={desktopImage}
             alt={title}
-            className="object-cover object-right"
+            className="w-full h-full max-h-screen object-cover object-right"
             fill
             priority
           />
         </div>
         {/* Mobile Hero Image */}
-        <div className="sm:hidden w-full h-full min-h-[500px] max-h-[85vh] xs:max-h-screen">
+        <div className="sm:hidden">
           <Image
             src={mobileImage}
             alt={title}
-            className={`object-cover ${mobileImagePosition}`}
+            className={` w-full h-full min-h-[500px] max-h-[85vh] xs:max-h-screen object-cover ${mobileImagePosition}`}
             fill
             priority
           />
